@@ -5,1647 +5,921 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Personal Portfolio</title>
+  <title>Personal Portfolio</title>
 
-  <!--
-    - favicon
-  -->
+  <!-- favicon -->
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
 
-  <!--
-    - custom css link
-  -->
+  <!-- custom css link -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <!--
-    - google font link
-  -->
+  <!-- google font link -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
-  <!--
-    - #MAIN
-  -->
-
   <main>
-
-    <!--
-      - #SIDEBAR
-    -->
-
+    <!-- #SIDEBAR -->
     <aside class="sidebar" data-sidebar>
-
       <div class="sidebar-info">
-
         <figure class="avatar-box">
           <img src="./assets/images/emoji.png" alt="Achref Ben Yaagoub" width="80">
         </figure>
-
         <div class="info-content">
           <h1 class="name" title="Achref Ben Yaagoub">Achref Ben Yaagoub</h1>
-
-          <p class="title">Flutter  developer</p>
+          <p class="title">Flutter Developer & UX/UI Designer</p>
         </div>
-
         <button class="info_more-btn" data-sidebar-btn>
           <span>Show Contacts</span>
-
           <ion-icon name="chevron-down"></ion-icon>
         </button>
-
       </div>
-
       <div class="sidebar-info_more">
-
         <div class="separator"></div>
-
         <ul class="contacts-list">
-
           <li class="contact-item">
-
             <div class="icon-box">
               <ion-icon name="mail-outline"></ion-icon>
             </div>
-
             <div class="contact-info">
               <p class="contact-title">Email</p>
-
-              <a href="mailto:contact.achrefbenyaagoub@gmail.com"
-                class="contact-link">contact.achrefbenyaagoub@gmail.com</a>
+              <a href="mailto:contact.achrefbenyaagoub@gmail.com" class="contact-link">contact.achrefbenyaagoub@gmail.com</a>
             </div>
-
           </li>
-
           <li class="contact-item">
-
             <div class="icon-box">
               <ion-icon name="phone-portrait-outline"></ion-icon>
             </div>
-
             <div class="contact-info">
               <p class="contact-title">Phone</p>
-
-              <a href="tel:+216 53019984" class="contact-link">+216 53019984</a>
+              <a href="tel:+21653019984" class="contact-link">+216 53019984</a>
             </div>
-
           </li>
-
           <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-
-              <time datetime="1982-06-23">Oct 05, 2001</time>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
             <div class="icon-box">
               <ion-icon name="location-outline"></ion-icon>
             </div>
-
             <div class="contact-info">
               <p class="contact-title">Location</p>
-
               <address>Sousse, Tunisia</address>
             </div>
-
           </li>
-
         </ul>
-
         <div class="separator"></div>
-
         <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://github.com/Achref200" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.behance.net/achrefbenyaa" class="social-link">
-              <ion-icon name="logo-behance"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://github.com/Achref200" class="social-link">
-              <ion-icon name="logo-github"></ion-icon>
-            </a>
-          </li>
           <li class="social-item">
             <a href="https://www.linkedin.com/in/achref-ben-yaagoub-77b6b1229/" class="social-link">
               <ion-icon name="logo-linkedin"></ion-icon>
             </a>
           </li>
+          <li class="social-item">
+            <a href="https://www.behance.net/achrefbenyaa" class="social-link">
+              <ion-icon name="logo-behance"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <a href="https://github.com/Achref200" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
         </ul>
-
       </div>
-
     </aside>
 
-
-
-
-
-    <!--
-      - #main-content
-    -->
-
+    <!-- #main-content -->
     <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
+      <!-- #NAVBAR -->
       <nav class="navbar">
-
         <ul class="navbar-list">
-
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
+            <button class="navbar-link active" data-nav-link>About</button>
           </li>
-
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Resume</button>
           </li>
-
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Portfolio</button>
           </li>
-
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Blog</button>
           </li>
-
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Contact</button>
           </li>
-
         </ul>
-
       </nav>
 
-
-
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="about">
-
+      <!-- #ABOUT -->
+      <article class="about active" data-page="about">
         <header>
           <h2 class="h2 article-title">About me</h2>
         </header>
-
         <section class="about-text">
           <p>
-            I am a Software Engineering student and mobile developer specializing in Flutter and Dart technologies.
-            I strive to enhance my knowledge daily by exploring UX design and web development.
-            I am passionate about diving into new experiences and continuously improving my skills.
+            I am a Software Engineering student and Flutter developer with a solid background in mobile app development and UX/UI design. Skilled in building cross-platform applications, API integration, and creating intuitive user experiences.
           </p>
-
           <p>
-            My job is to build your website so that it is functional and user-friendly but at the same time attractive.
-            Moreover, I
-            add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
-            across your
-            message and identity in the most creative way. I created web design for many famous brand companies.
+            I am adaptable, detail-oriented, and eager to contribute to innovative projects while growing through international or freelance opportunities. My aim is to deliver functional, user-friendly, and visually appealing solutions that align with client goals and enhance user satisfaction.
           </p>
         </section>
-
-
-        <!--
-          - service
-        -->
-        <!-- 
-        <section class="service">
-
-          <h3 class="h3 service-title">What i'm doing</h3>
-
-          <ul class="service-list">
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg
-                " alt="design icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web & Mobile design</h4>
-
-                <p class="service-item-text">
-                  The most modern and high-quality design made at a professional level.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web development</h4>
-
-                <p class="service-item-text">
-                  High-quality development of sites at the professional level.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Mobile development</h4>
-
-                <p class="service-item-text">
-                  Professional development of crossplatform applications : iOS and Android.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="camera icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Game development</h4>
-
-                <p class="service-item-text">
-                  I make a very amazing games.
-                </p>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section> -->
-
-
-        <!--
-          - testimonials
-        -->
 
         <section class="testimonials">
-
-          <h3 class="h3 testimonials-title">What i'm doing</h3>
-
+          <h3 class="h3 testimonials-title">What I'm Doing</h3>
           <ul class="testimonials-list has-scrollbar">
-
             <li class="testimonials-item">
               <div class="content-card" data-testimonials-item>
-
                 <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/icon-design.svg" alt="Daniel lewis" width="40" data-testimonials-avatar>
+                  <img src="./assets/images/icon-design.svg" alt="Web & Mobile design" width="40" data-testimonials-avatar>
                 </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Web & Mobile design</h4>
-
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>UI/UX Design</h4>
                 <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    The most modern and high-quality design made at a professional level.
-                  </p>
+                  <p>Designing intuitive and responsive user interfaces using Figma and Adobe XD for web and mobile platforms.</p>
                 </div>
-
               </div>
             </li>
-
             <li class="testimonials-item">
               <div class="content-card" data-testimonials-item>
-
                 <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/icon-app.svg" alt="Jessica miller" width="40" data-testimonials-avatar>
+                  <img src="./assets/images/icon-app.svg" alt="Mobile Development" width="40" data-testimonials-avatar>
                 </figure>
-
                 <h4 class="h4 testimonials-item-title" data-testimonials-title>Mobile Development</h4>
-
                 <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Professional development of crossplatform applications : iOS and Android.
-                  </p>
+                  <p>Building cross-platform mobile applications using Flutter and Dart for Android and iOS.</p>
                 </div>
-
               </div>
             </li>
-
             <li class="testimonials-item">
               <div class="content-card" data-testimonials-item>
-
                 <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/icon-dev.svg" alt="Daniel lewis" width="40" data-testimonials-avatar>
+                  <img src="./assets/images/icon-dev.svg" alt="Web development" width="40" data-testimonials-avatar>
                 </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Web development</h4>
-
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Web Development</h4>
                 <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    High-quality development of sites at the professional level.
-                  </p>
+                  <p>Developing responsive websites using HTML, CSS, React.js, and backend technologies like PHP and SQL.</p>
                 </div>
-
               </div>
             </li>
-
             <li class="testimonials-item">
               <div class="content-card" data-testimonials-item>
-
                 <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/icon-dev.svg" alt="Jessica miller" width="40" data-testimonials-avatar>
+                  <img src="./assets/images/icon-dev.svg" alt="API Integration" width="40" data-testimonials-avatar>
                 </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Game Development</h4>
-
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>API Integration</h4>
                 <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    I make a very amazing games.
-                  </p>
+                  <p>Integrating REST and GraphQL APIs for seamless data synchronization and functionality.</p>
                 </div>
-
               </div>
             </li>
-
-
           </ul>
-
         </section>
 
-
-        <!--
-          - testimonials modal
-        -->
-
         <div class="modal-container" data-modal-container>
-
           <div class="overlay" data-overlay></div>
-
           <section class="testimonials-modal">
-
             <button class="modal-close-btn" data-modal-close-btn>
               <ion-icon name="close-outline"></ion-icon>
             </button>
-
             <div class="modal-img-wrapper">
               <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+                <img src="./assets/images/avatar-1.png" alt="Service" width="80" data-modal-img>
               </figure>
-
               <img src="./assets/images/icon-quote.svg" alt="quote icon">
             </div>
-
             <div class="modal-content">
-
               <h4 class="h3 modal-title" data-modal-title></h4>
-
-              <time datetime="2024-05-14">14 Mai, 2024</time>
-
+              <time datetime="2024-05-14">14 May, 2024</time>
               <div data-modal-text>
-                <p>
-
-                </p>
+                <p></p>
               </div>
-
             </div>
-
           </section>
-
         </div>
-
-
-        <!--
-          - clients
-        -->
-
-        <!-- <section class="clients">
-
-          <h3 class="h3 clients-title">Clients</h3>
-
-          <ul class="clients-list has-scrollbar">
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-1-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-2-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-3-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-4-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-5-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-6-color.png" alt="client logo">
-              </a>
-            </li>
-
-          </ul>
-
-        </section> -->
-
       </article>
 
-
-
-
-
-      <!--
-        - #RESUME
-      -->
-
+      <!-- #RESUME -->
       <article class="resume" data-page="resume">
-
         <header>
           <h2 class="h2 article-title">Resume</h2>
         </header>
-
         <section class="timeline">
-
           <div class="title-wrapper">
             <div class="icon-box">
               <ion-icon name="book-outline"></ion-icon>
             </div>
-
             <h3 class="h3">Education</h3>
           </div>
-
           <ol class="timeline-list">
-
             <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">MULTIDISCIPLINARY AND INTERNATIONAL DIGITAL UNIVERSITY - Tunisia Sousse
-              </h4>
-
+              <h4 class="h4 timeline-item-title">MULTIDISCIPLINARY AND INTERNATIONAL DIGITAL UNIVERSITY - Sousse, Tunisia</h4>
               <span>2023 — Current</span>
-
-              <p class="timeline-text">
-                Master’s Degree in Software engineering and computer Science .
-              </p>
-
+              <p class="timeline-text">Master’s Degree in Software Engineering</p>
             </li>
-
             <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">ISITCOM : Higher Institute of Computer Science and Communication
-                Technologies of Hammam Sousse.</h4>
-
+              <h4 class="h4 timeline-item-title">ISITCOM: Higher Institute of Computer Science and Communication Technologies - Hammam Sousse, Tunisia</h4>
               <span>2020 — 2023</span>
-
-              <p class="timeline-text">
-                Bachelor in Technology of Information and Communications ( Telecommunications ) .
-              </p>
-
+              <p class="timeline-text">Bachelor’s Degree in Technology of Information and Communications (Telecommunications)</p>
             </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">HIGH SCHOOL - Medenine Djerba </h4>
-
-              <span>2016 — 2020</span>
-
-              <p class="timeline-text">
-                High School Diploma Of Computer Sciences
-              </p>
-
-            </li>
-
           </ol>
-
         </section>
 
         <section class="timeline">
-
           <div class="title-wrapper">
             <div class="icon-box">
               <ion-icon name="book-outline"></ion-icon>
             </div>
-
-            <h3 class="h3">Experiences</h3>
+            <h3 class="h3">Professional Experience</h3>
           </div>
-
           <ol class="timeline-list">
             <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Mobile developer ( Quetratech )</h4>
-
-              <span>July 2024 — Current</span>
-
+              <h4 class="h4 timeline-item-title">Flutter Developer & UX/UI Designer - TREND IT (Remote, France)</h4>
+              <span>November 2024 — Current</span>
               <p class="timeline-text">
-                Worked by the following technologies/languages:
-                Swagger /
-                Trello /
-                Figma/
-                OneSignal /
-                (CRUD)
-               <br>
-                Flutter & Dart  
-                Integration Rest APIs
-                FIrebase
+                Developed and maintained cross-platform mobile applications using Flutter and Dart, ensuring optimal performance and responsiveness.<br>
+                Integrated RESTful APIs and WebSocket services, handling complex data synchronization.<br>
+                Implemented scalable state management solutions (Provider, GetX) for clean architecture.<br>
+                Optimized app performance through profiling, memory management, and frame rate improvements.
               </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title"> Freelancer : UX Designer & Web developer</h4>
-
-              <span>January 2022 — Current</span>
-
-              <p class="timeline-text">
-                Worked by the following technologies/languages:
-                Figma /
-                HTML/CSS /
-                React.js /
-                Tailwind <br>
-                HTML/CSS/JS
-                SQL/PHP (CRUD)
-                Bootstrap 5 <br>
-                Flutter & Dart  
-                Integration Rest APIs
-                FIrebase
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">UX Core Product : Mobile developer ( Insight + )</h4>
-
-              <span>Dec 2023 — April 2024</span>
-
-              <p class="timeline-text">
-                Experienced with the following technologies/languages:
-                - Flutter & Dart <br>
-                - Integration of REST and GraphQL APIs <br>
-                - Github and GItlab (Actions / Packages) / Mono repositories <br>
-                - UX UI design for the new platform. <br>
-                Developed mobile application in diverse operating system ( Windows & Mac ) using android and iOS
-                software .
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">IT Instructor</h4>
-
-              <span>March 2023 — February 2024</span>
-
-              <p class="timeline-text">
-                Studies BTS/ BTP student basic IT software ( PowerPoint - Exel - Word ). <br>
-                Trained How to be a UI UX Designer from scratch in bootcamps .<br>
-                Learned students how to start their professional workflow and how to create their portfolio and their
-                first steps in UI creation . <br>
-
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Game Developer intern (Tadreex) </h4>
-
-              <span>Mars 2023 — June 2023</span>
-
-              <p class="timeline-text">
-                Experienced with the following technologies/languages:
-                C#  /
-                Unity Game Engine /
-                Integration of REST APIs for users authentications /
-                Firebase database management <br>
-                Designed the game interfaces and modeled 3D and 2D screens and elements ( Characters , Textures , Trees ... ) by Blender .
-
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">UI UX Product Designer intern (GOMYCODE) </h4>
-
-              <span>January 2023 — Mars 2023</span>
-
-              <p class="timeline-text">
-                Designed user interfaces & user experience using Figma & Adobe XD <br>
-                Collaborated with product managers and engineers with Notion and Scrum Methodology  to gather requirements from users before designing ideas <br>
-                Created a Low-Fidelity and High-Fidelity prototypes for release and pre-production before delivery to the development team. <br>
-              </p>
-
             </li>
             <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Web Developer & Content Creator intern (Advance Web) </h4>
-
-              <span> June 2022 - Sept 2022</span>
-
+              <h4 class="h4 timeline-item-title">Flutter Developer - Quetratech (Mahdia, Tunisia)</h4>
+              <span>July 2024 — November 2024</span>
               <p class="timeline-text">
-                Created Arabic , French , and English articles which describe the company’s goals .  <br>
-                Experienced with the following technologies/languages:
-                - PHP/SQL  <br>
-                - SCSS/HTML/bootstrap 5 <br>
-                - React.js <br>
-                - Integration of REST APIs. <br>
-    
-                Created a simple website using WordPress . <br>
+                Developed mobile application features by integrating RESTful APIs using Swagger for documentation and testing.<br>
+                Managed authentication workflows through secure token management and web services.<br>
+                Organized tasks and project tracking using Trello for agile delivery.<br>
+                Designed and translated UI/UX prototypes into mobile app interfaces using Figma.
               </p>
-
+            </li>
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">UX Designer & Mobile Developer - INSIGHT+ (Ariana, Tunisia)</h4>
+              <span>December 2023 — April 2024</span>
+              <p class="timeline-text">
+                Integrated REST and GraphQL APIs to enhance app functionality and real-time performance.<br>
+                Utilized GitHub and GitLab for version control in mono repositories with CI/CD pipelines.<br>
+                Developed cross-platform mobile applications using Flutter and Dart for Android and iOS.<br>
+                Designed responsive, user-friendly interfaces for various devices and screen sizes.
+              </p>
+            </li>
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">UI/UX Product Designer - GOMYCODE (Tunis, Tunisia)</h4>
+              <span>January 2023 — March 2023</span>
+              <p class="timeline-text">
+                Designed user interfaces and experiences using Figma and Adobe XD.<br>
+                Collaborated with product managers and engineers using Notion and Scrum methodology.<br>
+                Created low-fidelity and high-fidelity prototypes for release and pre-production.
+              </p>
             </li>
           </ol>
-
         </section>
-
-
-
-
-
 
         <section class="service">
-
           <h3 class="h3 service-title">Certifications</h3>
-
           <ul class="service-list">
             <li class="service-item">
-
-              <!-- <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg
-                " alt="design icon" width="40">
-              </div> -->
-
-              
-
-           <div class="service-content-box">
-                <h4 class="h4 service-item-title">Flutter & Dart - The Complete Guide [2024 Edition]</h4>
-
-                <p class="service-item-text">
-                  From Udemy Courses 
-                </p>
-              </div> 
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Flutter & Dart</h4>
+                <p class="service-item-text">Udemy Course, 2023</p>
+              </div>
             </li>
             <li class="service-item">
-
-              <!-- <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg
-                " alt="design icon" width="40">
-              </div> -->
-
-              
-
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Oracle Cloud Infrastructure 2023 AI Foundations</h4>
-
-                <p class="service-item-text">
-                  It was my first step in the artificial intelligence field.
-                </p>
+                <p class="service-item-text">Oracle, 2023</p>
               </div>
-
             </li>
-
             <li class="service-item">
-
-              <!-- <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
-              </div> -->
-
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">AWS ACADEMY CLOUD FOUNDATIONS : </h4>
-
-                <p class="service-item-text">
-                  Amazon web services aWS 2022 , it was my first step in the cloud ans services field.
-                </p>
+                <h4 class="h4 service-item-title">AWS Academy Cloud Foundations</h4>
+                <p class="service-item-text">Amazon Web Services, 2022</p>
               </div>
-
             </li>
-
             <li class="service-item">
-
-              <!-- <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
-              </div> -->
-
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Scrum Fundamentals : </h4>
-
-                <p class="service-item-text">
-                  VMEdu 2023, it helped me to integrate with teamates .
-                </p>
+                <h4 class="h4 service-item-title">Scrum Fundamentals</h4>
+                <p class="service-item-text">VMEdu, 2023</p>
               </div>
-
             </li>
-
             <li class="service-item">
-
-              <!-- <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="camera icon" width="40">
-              </div> -->
-
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">how to become instructor  : GOMYCODE 2023.</h4>
-
-                <p class="service-item-text">
-                  I helped me to be a good IT instructor.
-                </p>
+                <h4 class="h4 service-item-title">How to Become an Instructor</h4>
+                <p class="service-item-text">GOMYCODE, 2023</p>
               </div>
-
-            </li>
-           
-            <li class="service-item">
-
-              <!-- <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="camera icon" width="40">
-              </div> -->
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title"> Game Development.</h4>
-
-                <p class="service-item-text">
-                  CGI Studio collaborated with Microsoft
-                  ESSTHS club 2022.                </p>
-              </div>
-
             </li>
           </ul>
-
         </section>
 
-
-
-
-
-
-
-
-
-
-
-
-        <!-- <section class="skill">
-
-          <h3 class="h3 skills-title">My skills</h3>
-
+        <section class="skill">
+          <h3 class="h3 skills-title">Technical Skills</h3>
           <ul class="skills-list content-card">
-
             <li class="skills-item">
-
               <div class="title-wrapper">
-                <h5 class="h5">Web design</h5>
-                <data value="80">80%</data>
+                <h5 class="h5">Mobile Development</h5>
+                <data value="90">Flutter, Dart (Android, iOS)</data>
               </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 10%;"></div>
-              </div>
-
             </li>
-
             <li class="skills-item">
-
               <div class="title-wrapper">
-                <h5 class="h5">Graphic design</h5>
-                <data value="70">70%</data>
+                <h5 class="h5">API Integration</h5>
+                <data value="85">REST, GraphQL</data>
               </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-
             </li>
-
             <li class="skills-item">
-
               <div class="title-wrapper">
-                <h5 class="h5">Branding</h5>
-                <data value="90">90%</data>
+                <h5 class="h5">Version Control</h5>
+                <data value="80">Git (GitHub, GitLab)</data>
               </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
             </li>
-
             <li class="skills-item">
-
               <div class="title-wrapper">
-                <h5 class="h5">WordPress</h5>
-                <data value="50">50%</data>
+                <h5 class="h5">UI/UX Design</h5>
+                <data value="90">Figma, Adobe XD, FigJam</data>
               </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 50%;"></div>
-              </div>
-
             </li>
-
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Front-End Web Development</h5>
+                <data value="85">HTML, CSS, React.js, Bootstrap, Tailwind, Swagger</data>
+              </div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Back-End Web Development</h5>
+                <data value="80">PHP, SQL, .NET, Java</data>
+              </div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Database Management</h5>
+                <data value="80">SQL, PL/SQL, Firebase</data>
+              </div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Tools</h5>
+                <data value="85">Notion, Scrum</data>
+              </div>
+            </li>
           </ul>
+        </section>
 
-        </section> -->
+        <section class="skill">
+          <h3 class="h3 skills-title">Languages</h3>
+          <ul class="skills-list content-card">
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">English</h5>
+                <data value="90">Advanced</data>
+              </div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">French</h5>
+                <data value="90">Advanced</data>
+              </div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Deutsch</h5>
+                <data value="30">Beginner</data>
+              </div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Arabic</h5>
+                <data value="100">Native</data>
+              </div>
+            </li>
+          </ul>
+        </section>
 
+        <section class="skill">
+          <h3 class="h3 skills-title">Soft Skills</h3>
+          <ul class="skills-list content-card">
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Adaptative & Flexible</h5>
+              </div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Multi-Passionate</h5>
+              </div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Team Worker</h5>
+              </div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Dynamic & Motivated</h5>
+              </div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Fast Learner</h5>
+              </div>
+            </li>
+          </ul>
+        </section>
       </article>
 
-
-
-
-
-        <!--
-          - #PORTFOLIO
-        -->
-
-        <article class="portfolio" data-page="portfolio">
-
-          <header>
-            <h2 class="h2 article-title">Portfolio</h2>
-          </header>
-
-          <section class="projects">
-
-            <ul class="filter-list">
-
-              <li class="filter-item">
-                <button class="active" data-filter-btn>All</button>
-              </li>
-
-              <li class="filter-item">
-                <button data-filter-btn>Web design</button>
-              </li>
-              <li class="filter-item">
-                <button data-filter-btn>Mobile design</button>
-              </li>
-              <li class="filter-item">
-                <button data-filter-btn>Applications</button>
-              </li>
-
-              <li class="filter-item">
-                <button data-filter-btn>Web development</button>
-              </li>
-
-            </ul>
-
-            <div class="filter-select-box">
-
-              <button class="filter-select" data-select>
-
-                <div class="select-value" data-selecct-value>Select category</div>
-
-                <div class="select-icon">
-                  <ion-icon name="chevron-down"></ion-icon>
-                </div>
-
-              </button>
-
-              <ul class="select-list">
-
-                <li class="select-item">
-                  <button data-select-item>All</button>
-                </li>
-
-                <li class="select-item">
-                  <button data-select-item>Web design</button>
-                </li>
-                <li class="select-item">
-                  <button data-select-item>Mobile design</button>
-                </li>
-                <li class="select-item">
-                  <button data-select-item>Applications</button>
-                </li>
-
-                <li class="select-item">
-                  <button data-select-item>Web development</button>
-                </li>
-
-              </ul>
-
-            </div>
-
-        <!--
-          - #WEB
-        -->
-            <ul class="project-list">
-
-              <li class="project-item  active" data-filter-item data-category="web development">
-                <a href="https://dubaii-offshore.vercel.app/">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img src="./assets/images/dubai_project.png" alt="finance" loading="lazy">
-
-                  </figure>
-
-                  <h3 class="project-title">Dubai Offshore</h3>
-
-                  <p class="project-category">Web development</p>
-
-                </a>
-              </li>
-
-              <li class="project-item  active" data-filter-item data-category="web development">
-                <a href="https://www.behance.net/gallery/210961279/Digivolution-Website">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/digivolutio_project.png" alt="finance" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">Digivolution Agency</h3>
-
-                  <p class="project-category">Web development</p>
-
-                </a>
-              </li>
-
-              <li class="project-item  active" data-filter-item data-category="web development">
-                <a href="https://github.com/Achref200/project_web_dev">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/planetfood_project.png" alt="finance" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">Planet food Restaurant</h3>
-
-                  <p class="project-category">Web development</p>
-
-                </a>
-              </li>
-
-
-          
-              <li class="project-item  active" data-filter-item data-category="web development">
-                <a href="https://www.behance.net/gallery/197091877/Travel-Website">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/travel_project.png" alt="finance" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">Travel Website</h3>
-
-                  <p class="project-category">Web development</p>
-
-                </a>
-              </li>
-              <li class="project-item  active" data-filter-item data-category="web development">
-                <a href="https://www.fleursdelyssa.com/">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/project-10.png" alt="finance" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">Fleur d'Elyssa</h3>
-
-                  <p class="project-category">Web development</p>
-
-                </a>
-              </li>
-
-          
-        <!--
-          - #DESIGN
-        -->
-
-            
-              <li class="project-item  active" data-filter-item data-category="web design">
-                <a href="https://www.behance.net/gallery/182840181/BarberShop-(-User-Barber-)-Flows-UI-UX-Design">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/design-1.png" alt="metaspark" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">Barbershop App</h3>
-
-                  <p class="project-category">Web design</p>
-
-                </a>
-              </li>
-
-
-              <li class="project-item  active" data-filter-item data-category="web design">
-                <a href="https://www.behance.net/gallery/182840181/BarberShop-(-User-Barber-)-Flows-UI-UX-Design">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/travel.png" alt="metaspark" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title"> Travel Website</h3>
-
-                  <p class="project-category">Web design</p>
-
-                </a>
-              </li>
-            
-              <li class="project-item  active" data-filter-item data-category="web design">
-                <a href="https://www.behance.net/gallery/176718625/Serenov-Responsive-web-design">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/design-2.png" alt="metaspark" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">E-commerce : SERENOV</h3>
-
-                  <p class="project-category">Web design</p>
-
-                </a>
-              </li>
-
-
-              <li class="project-item  active" data-filter-item data-category="web design">
-                <a href="#">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/food.png" alt="metaspark" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">Food Restaurant : Planet Food</h3>
-
-                  <p class="project-category">Web design</p>
-
-                </a>
-              </li>
-
-              <li class="project-item  active" data-filter-item data-category="mobile design">
-                <a href="#">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/design-3.png" alt="metaspark" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">Recloth</h3>
-
-                  <p class="project-category">Mobile design</p>
-
-                </a>
-              </li>
-              <li class="project-item  active" data-filter-item data-category="mobile design">
-                <a href="#">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/Thumbnail.png" alt="metaspark" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">NeuroSleep</h3>
-
-                  <p class="project-category">Mobile design</p>
-
-                </a>
-              </li>
-
-              <li class="project-item  active" data-filter-item data-category="mobile design">
-                <a href="https://www.behance.net/gallery/210962863/I-FIlter-Mobile-App">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/design-5.png" alt="metaspark" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">I filter</h3>
-
-                  <p class="project-category">Mobile design</p>
-
-                </a>
-              </li>
-          
-
-
-              <li class="project-item  active" data-filter-item data-category="mobile design">
-                <a href="https://www.behance.net/gallery/169225771/FeelArt-Ui-Mobile-Design">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/feelart.png" alt="metaspark" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">FeelArt</h3>
-
-                  <p class="project-category">Mobile design</p>
-
-                </a>
-              </li>
-
-              <li class="project-item  active" data-filter-item data-category="mobile design">
-                <a href="#">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/pp.png" alt="metaspark" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">Mobile Portfolio</h3>
-
-                  <p class="project-category">Mobile design</p>
-
-                </a>
-              </li>
-            
-              <li class="project-item  active" data-filter-item data-category="mobile design">
-                <a href="#">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/taxico.png" alt="metaspark" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">Taxico  </h3>
-
-                  <p class="project-category">Mobile design</p>
-
-                </a>
-              </li>
-              <li class="project-item  active" data-filter-item data-category="mobile design">
-                <a href="#">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/supavape.png" alt="metaspark" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">Supa Vape  </h3>
-
-                  <p class="project-category">Mobile design</p>
-
-                </a>
-              </li>
-
-              <li class="project-item  active" data-filter-item data-category="mobile design">
-                <a href="#">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/serfice.png" alt="metaspark" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title">Serfice </h3>
-
-                  <p class="project-category">Mobile design</p>
-
-                </a>
-              </li>
-
-
-              <li class="project-item  active" data-filter-item data-category="web design">
-                <a href="#">
-
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img src="./assets/images/Recloth Web 1.png" alt="metaspark" loading="lazy">
-                  </figure>
-
-                  <h3 class="project-title"> Recloth web  </h3>
-
-                  <p class="project-category">web design</p>
-
-                </a>
-              </li>
-        <!--
-          - #MOBILE
-        -->
-
-    
-
-          <li class="project-item active" data-filter-item data-category="applications">
-            <a href="#">
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-                <img src="./assets/images/mobile-1.png" alt="task manager" loading="lazy">
-              </figure>
-              <h3 class="project-title">Barbershop</h3>
-              <p class="project-category">Applications</p>
-            </a>
-          </li>
-        
-          <li class="project-item active" data-filter-item data-category="applications">
-            <a href="#">
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-                <img src="./assets/images/mobile-2.png" alt="brawlhalla" loading="lazy">
-              </figure>
-              <h3 class="project-title">Atastoon</h3>
-              <p class="project-category">Applications</p>
-            </a>
-          </li>
-        
-          <li class="project-item active" data-filter-item data-category="applications">
-            <a href="#">
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-                <img src="./assets/images/Exsys.png" alt="exsys mobile app" loading="lazy">
-              </figure>
-              <h3 class="project-title">Exsys Mobile App</h3>
-              <p class="project-category">Applications</p>
-            </a>
-          </li>
-        
-          <li class="project-item active" data-filter-item data-category="applications">
-            <a href="https://github.com/Achref200/sourie">
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-                <img src="./assets/images/design10.png" alt="travel app" loading="lazy">
-              </figure>
-              <h3 class="project-title">Travel App</h3>
-              <p class="project-category">Applications</p>
-            </a>
-          </li>
-        
-          <li class="project-item active" data-filter-item data-category="applications">
-            <a href="#">
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-                <img src="./assets/images/mobile-5.png" alt="ai assistant" loading="lazy">
-              </figure>
-              <h3 class="project-title">AI Assistant</h3>
-              <p class="project-category">Applications</p>
-            </a>
-          </li>
-          <li class="project-item active" data-filter-item data-category="applications">
-            <a href="#">
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-                <img src="./assets/images/mobile-6.png" alt="ai assistant" loading="lazy">
-              </figure>
-              <h3 class="project-title">Talent619</h3>
-              <p class="project-category">Applications</p>
-            </a>
-          </li>
-        
-
-
-
-            </ul>
-
-          </section>
-
-        </article>
-
-
-
-
-
-      <!--
-        - #BLOG
-      -->
-
-      <article class="blog" data-page="blog">
-
+      <!-- #PORTFOLIO -->
+      <article class="portfolio" data-page="portfolio">
         <header>
-          <h2 class="h2 article-title"></h2>
+          <h2 class="h2 article-title">Portfolio</h2>
         </header>
+        <section class="projects">
+          <ul class="filter-list">
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Web design</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Mobile design</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Applications</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Web development</button>
+            </li>
+          </ul>
+          <div class="filter-select-box">
+            <button class="filter-select" data-select>
+              <div class="select-value" data-selecct-value>Select category</div>
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+            </button>
+            <ul class="select-list">
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Web design</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Mobile design</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Applications</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Web development</button>
+              </li>
+            </ul>
+          </div>
+          <ul class="project-list">
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="https://dubaii-offshore.vercel.app/">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/dubai_project.png" alt="finance" loading="lazy">
+                </figure>
+                <h3 class="project-title">Dubai Offshore</h3>
+                <p class="project-category">Web development</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="https://www.behance.net/gallery/210961279/Digivolution-Website">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/digivolutio_project.png" alt="finance" loading="lazy">
+                </figure>
+                <h3 class="project-title">Digivolution Agency</h3>
+                <p class="project-category">Web development</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="https://github.com/Achref200/project_web_dev">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/planetfood_project.png" alt="finance" loading="lazy">
+                </figure>
+                <h3 class="project-title">Planet Food Restaurant</h3>
+                <p class="project-category">Web development</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="https://www.behance.net/gallery/197091877/Travel-Website">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/travel_project.png" alt="finance" loading="lazy">
+                </figure>
+                <h3 class="project-title">Travel Website</h3>
+                <p class="project-category">Web development</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="https://www.fleursdelyssa.com/">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/project-10.png" alt="finance" loading="lazy">
+                </figure>
+                <h3 class="project-title">Fleur d'Elyssa</h3>
+                <p class="project-category">Web development</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="web design">
+              <a href="https://www.behance.net/gallery/182840181/BarberShop-(-User-Barber-)-Flows-UI-UX-Design">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/design-1.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">Barbershop App</h3>
+                <p class="project-category">Web design</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="web design">
+              <a href="https://www.behance.net/gallery/182840181/BarberShop-(-User-Barber-)-Flows-UI-UX-Design">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/travel.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">Travel Website</h3>
+                <p class="project-category">Web design</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="web design">
+              <a href="https://www.behance.net/gallery/176718625/Serenov-Responsive-web-design">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/design-2.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">E-commerce: SERENOV</h3>
+                <p class="project-category">Web design</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="web design">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/food.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">Food Restaurant: Planet Food</h3>
+                <p class="project-category">Web design</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="mobile design">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/design-3.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">Recloth</h3>
+                <p class="project-category">Mobile design</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="mobile design">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/Thumbnail.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">NeuroSleep</h3>
+                <p class="project-category">Mobile design</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="mobile design">
+              <a href="https://www.behance.net/gallery/210962863/I-FIlter-Mobile-App">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/design-5.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">I Filter</h3>
+                <p class="project-category">Mobile design</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="mobile design">
+              <a href="https://www.behance.net/gallery/169225771/FeelArt-Ui-Mobile-Design">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/feelart.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">FeelArt</h3>
+                <p class="project-category">Mobile design</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="mobile design">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/pp.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">Mobile Portfolio</h3>
+                <p class="project-category">Mobile design</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="mobile design">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/taxico.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">Taxico</h3>
+                <p class="project-category">Mobile design</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="mobile design">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/supavape.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">Supa Vape</h3>
+                <p class="project-category">Mobile design</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="mobile design">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/serfice.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">Serfice</h3>
+                <p class="project-category">Mobile design</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="web design">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/Recloth Web 1.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">Recloth Web</h3>
+                <p class="project-category">Web design</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/mobile-1.png" alt="task manager" loading="lazy">
+                </figure>
+                <h3 class="project-title">Barbershop</h3>
+                <p class="project-category">Applications</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/mobile-2.png" alt="brawlhalla" loading="lazy">
+                </figure>
+                <h3 class="project-title">Atastoon</h3>
+                <p class="project-category">Applications</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/Exsys.png" alt="exsys mobile app" loading="lazy">
+                </figure>
+                <h3 class="project-title">Exsys Mobile App</h3>
+                <p class="project-category">Applications</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="https://github.com/Achref200/sourie">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/design10.png" alt="travel app" loading="lazy">
+                </figure>
+                <h3 class="project-title">Travel App</h3>
+                <p class="project-category">Applications</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/mobile-5.png" alt="ai assistant" loading="lazy">
+                </figure>
+                <h3 class="project-title">AI Assistant</h3>
+                <p class="project-category">Applications</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/mobile-6.png" alt="ai assistant" loading="lazy">
+                </figure>
+                <h3 class="project-title">Talent619</h3>
+                <p class="project-category">Applications</p>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </article>
 
+      <!-- #BLOG -->
+      <article class="blog" data-page="blog">
+        <header>
+          <h2 class="h2 article-title">Blog</h2>
+        </header>
         <section class="blog-posts">
-
           <ul class="blog-posts-list">
-
             <li class="blog-post-item">
               <a href="#">
-
                 <figure class="blog-banner-box">
                   <img src="./assets/images/club1.jpg" alt="Design conferences in 2022" loading="lazy">
                 </figure>
-
                 <div class="blog-content">
-
                   <div class="blog-meta">
                     <p class="blog-category">ATAST</p>
-
                     <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Mars 23, 2023</time>
+                    <time datetime="2023-03-23">March 23, 2023</time>
                   </div>
-
-                  <h3 class="h3 blog-item-title">Team leader</h3>
+                  <h3 class="h3 blog-item-title">Team Leader</h3>
                   <p class="blog-text">
-                    Tunisian Association for the Future of Science and Technology : Second Place in Business & Technology completion.
+                    Tunisian Association for the Future of Science and Technology: Second Place in Business & Technology competition.
                   </p>
-
                 </div>
-
               </a>
             </li>
-
             <li class="blog-post-item">
               <a href="#">
-
                 <figure class="blog-banner-box">
                   <img src="./assets/images/club2.jpg" alt="Best fonts every designer" loading="lazy">
                 </figure>
-
                 <div class="blog-content">
-
                   <div class="blog-meta">
                     <p class="blog-category">Hackathon</p>
-
                     <span class="dot"></span>
-
-                    <time datetime="2022-02-23">June 11, 2021</time>
+                    <time datetime="2021-06-11">June 11, 2021</time>
                   </div>
-
                   <h3 class="h3 blog-item-title">Speaker & Presenter</h3>
-
                   <p class="blog-text">
-                    ISITCOM GOOGLE Club : lil tech competition .
+                    ISITCOM GOOGLE Club: Lil Tech competition.
                   </p>
-
                 </div>
-
               </a>
             </li>
-
             <li class="blog-post-item">
               <a href="#">
-
                 <figure class="blog-banner-box">
                   <img src="./assets/images/club3.JPG" alt="Design digest #80" loading="lazy">
                 </figure>
-
                 <div class="blog-content">
-
                   <div class="blog-meta">
                     <p class="blog-category">Competition</p>
-
                     <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Dec 2, 2022</time>
+                    <time datetime="2022-12-02">Dec 2, 2022</time>
                   </div>
-
-                  <h3 class="h3 blog-item-title">Organization team</h3>
-
+                  <h3 class="h3 blog-item-title">Organization Team</h3>
                   <p class="blog-text">
-                   Nuit de l'info : International competition
+                    Nuit de l'info: International competition
                   </p>
-
                 </div>
-
               </a>
             </li>
-
             <li class="blog-post-item">
               <a href="#">
-
                 <figure class="blog-banner-box">
                   <img src="./assets/images/club4.png" alt="UI interactions of the week" loading="lazy">
                 </figure>
-
                 <div class="blog-content">
-
                   <div class="blog-meta">
-                    <p class="blog-category">Valenteer</p>
-
+                    <p class="blog-category">Volunteer</p>
                     <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Mars 2, 2022</time>
+                    <time datetime="2022-03-02">March 2, 2022</time>
                   </div>
-
-                  <h3 class="h3 blog-item-title">UX UI Designer Trainer</h3>
-
+                  <h3 class="h3 blog-item-title">UX/UI Designer Trainer</h3>
                   <p class="blog-text">
-                    At ATAST Club ISITCOM and Amideast 
+                    At ATAST Club ISITCOM and Amideast
                   </p>
-
                 </div>
-
               </a>
             </li>
-
             <li class="blog-post-item">
               <a href="#">
-
                 <figure class="blog-banner-box">
                   <img src="./assets/images/club5.png" alt="The forgotten art of spacing" loading="lazy">
                 </figure>
-
                 <div class="blog-content">
-
                   <div class="blog-meta">
                     <p class="blog-category">Club</p>
-
                     <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Mars 2, 2022</time>
+                    <time datetime="2022-03-02">March 2, 2022</time>
                   </div>
-
-                  <h3 class="h3 blog-item-title">Co leader & Founder & Sponsorship Manager</h3>
-
+                  <h3 class="h3 blog-item-title">Co-leader & Founder & Sponsorship Manager</h3>
                   <p class="blog-text">
-                    ATAST Club ISITCOM board member for 2 years                 
-                   </p>
-
+                    ATAST Club ISITCOM board member for 2 years
+                  </p>
                 </div>
-
               </a>
             </li>
-
             <li class="blog-post-item">
               <a href="#">
-
                 <figure class="blog-banner-box">
                   <img src="./assets/images/nuit-info.png" alt="Design digest #79" loading="lazy">
                 </figure>
-
                 <div class="blog-content">
-
                   <div class="blog-meta">
                     <p class="blog-category">Competition</p>
-
                     <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Dec 2, 2023</time>
+                    <time datetime="2023-12-02">Dec 2, 2023</time>
                   </div>
-
                   <h3 class="h3 blog-item-title">Team Lead</h3>
-
                   <p class="blog-text">
-                    Nuit de l'info : International competition                  </p>
-
+                    Nuit de l'info: International competition
+                  </p>
                 </div>
-
               </a>
             </li>
-
           </ul>
-
         </section>
-
       </article>
 
-
-
-
-
-      <!--
-        - #CONTACT
-      -->
-
+      <!-- #CONTACT -->
       <article class="contact" data-page="contact">
-
         <header>
           <h2 class="h2 article-title">Contact</h2>
         </header>
-
         <section class="mapbox" data-mapbox>
           <figure>
             <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d13102.804694097345!2d10.59142537003194!3d35.85089943300296!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2stn!4v1715918225811!5m2!1sfr!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </figure>
         </section>
-
         <section class="contact-form">
-
           <h3 class="h3 form-title">Contact Form</h3>
-
           <form action="#" class="form" data-form>
-
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
               <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
             </div>
-
             <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
-
           </form>
-
         </section>
-
       </article>
-
     </div>
-
   </main>
 
-
-
-
-
-
-  <!--
-    - custom js link
-  -->
+  <!-- custom js link -->
   <script src="./assets/js/script.js"></script>
 
-  <!--
-    - ionicon link
-  -->
+  <!-- ionicon link -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
 </body>
 
 </html>
