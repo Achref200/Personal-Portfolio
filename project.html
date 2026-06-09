@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Achref Ben Yaagoub | Portfolio</title>
-  <meta name="description" content="Achref Ben Yaagoub — software engineer and lead product designer based in Sousse, Tunisia. Flutter specialist building mobile apps, back-office tools, and design systems." />
+  <title>Project Details | Achref Ben Yaagoub</title>
+  <meta name="description" content="Project case study — Achref Ben Yaagoub." />
 
   <link rel="icon" href="./assets/images/logo.png" />
 
@@ -19,7 +19,6 @@
 
   <div class="app">
 
-    <!-- left rail (nav) -->
     <aside class="rail">
       <a href="./index.html" class="rail__brand" aria-label="Home">
         <span class="brand-monogram">ABY</span>
@@ -28,8 +27,8 @@
 
       <nav class="rail__nav" aria-label="Primary">
         <ul class="rail__list">
-          <li><a class="rail__link" href="./index.html"  aria-current="page">Home</a></li>
-          <li><a class="rail__link" href="./work.html">Work</a></li>
+          <li><a class="rail__link" href="./index.html">Home</a></li>
+          <li><a class="rail__link" href="./work.html" aria-current="page">Work</a></li>
           <li><a class="rail__link" href="./about.html">About</a></li>
           <li><a class="rail__link" href="./tweets.html">Tweets</a></li>
           <li><a class="rail__link" href="./contact.html">Contact</a></li>
@@ -56,97 +55,66 @@
       </div>
     </aside>
 
-    <main class="page">
+    <main class="page" data-project-root>
 
-      <!-- hero -->
-      <section class="hero container">
-        <p class="eyebrow" data-reveal>Portfolio · 2026</p>
-
-        <h1 class="display hero__name" data-reveal>
-          Achref<br />
-          <em>Ben&nbsp;Yaagoub</em><span style="color:var(--accent)">.</span>
-        </h1>
-
-        <div class="hero__meta">
-          <p class="lead hero__bio" data-reveal>
-            Software engineer &amp; lead product designer.
-            I design in Figma and ship in Flutter.
-          </p>
-
-          <div class="hero__cta" data-reveal>
-            <a class="btn" href="./work.html">
-              See the work
-              <span class="btn__arrow">→</span>
-            </a>
-            <a class="btn btn--ghost" href="./contact.html">Get in touch</a>
-          </div>
-        </div>
+      <!-- back -->
+      <section class="container project-top">
+        <a class="back-link" href="./work.html" data-reveal>← All work</a>
       </section>
 
-   
+      <!-- cover (top of the page) -->
+      <section class="container project-cover-section" data-project-cover-section hidden>
+        <figure class="project-cover" data-reveal>
+          <img data-project-cover alt="" />
+        </figure>
+      </section>
 
-      <!-- open to / interests -->
-      <section class="container open-to">
+      <!-- title / subtitle -->
+      <section class="container project-hero">
+        <p class="eyebrow" data-reveal data-project-category>—</p>
+
+        <h1 class="display project-hero__title" data-reveal data-project-title>—</h1>
+
+        <p class="lead project-hero__tagline" data-reveal data-project-tagline></p>
+      </section>
+
+      <!-- overview / description -->
+      <section class="container project-overview-section">
         <div class="section-head">
-          <h2 class="section-title" data-reveal>Open <em>to</em>.</h2>
-          <a class="link-arrow" href="./contact.html" data-reveal>Get in touch →</a>
+          <h2 class="section-title" data-reveal>Overview.</h2>
         </div>
+        <div class="project-description" data-reveal data-project-description></div>
+      </section>
 
-        <p class="lead open-to__lead" data-reveal>
-          Actively looking for the next chapter — ideally a role abroad
-          where I can grow alongside a strong product team.
-        </p>
-
-        <ul class="home-list" data-reveal>
+      <!-- information / meta strip -->
+      <section class="container project-meta-section">
+        <div class="section-head">
+          <h2 class="section-title" data-reveal>Information.</h2>
+        </div>
+        <ul class="project-meta" data-reveal>
           <li>
-            <span class="home-list__label">Looking for</span>
-            <span class="home-list__value">A new position abroad — Europe, Gulf, or remote-first.</span>
+            <span class="k">Year</span>
+            <span class="v" data-project-year>—</span>
           </li>
           <li>
-            <span class="home-list__label">Open roles</span>
-            <span class="home-list__value">Product Designer · Flutter Engineer · Design Engineer.</span>
+            <span class="k">Role</span>
+            <span class="v" data-project-role>—</span>
           </li>
           <li>
-            <span class="home-list__label">Modes</span>
-            <span class="home-list__value">Full-time, contract, relocation welcome.</span>
+            <span class="k">Stack</span>
+            <span class="v" data-project-stack>—</span>
           </li>
           <li>
-            <span class="home-list__label">Status</span>
-            <span class="home-list__value"><span class="dot dot--live"></span> Available — replying within a day.</span>
+            <span class="k">Link</span>
+            <span class="v" data-project-links>—</span>
           </li>
         </ul>
       </section>
-   <!-- selected work -->
-      <!-- <section class="container">
-        <div class="section-head">
-          <h2 class="section-title" data-reveal>Selected <em>work</em>.</h2>
-          <a class="link-arrow" href="./work.html" data-reveal>View all →</a>
-        </div>
 
-        <ul class="home-list" data-reveal>
-          <li>
-            <span class="home-list__label">Web</span>
-            <a class="home-list__value" href="./project.html?id=dubai-offshore">Dubai Offshore →</a>
-          </li>
-          <li>
-            <span class="home-list__label">Web</span>
-            <a class="home-list__value" href="./project.html?id=digivolution">Digivolution Agency →</a>
-          </li>
-          <li>
-            <span class="home-list__label">Mobile</span>
-            <a class="home-list__value" href="./project.html?id=deal">Deal →</a>
-          </li>
-          <li>
-            <span class="home-list__label">Platform</span>
-            <a class="home-list__value" href="./project.html?id=postuly">Postuly Tn →</a>
-          </li>
-        </ul>
-      </section> -->
-      <!-- footer / cta -->
       <footer class="foot">
         <div class="container foot__row">
           <p class="foot__big" data-reveal>
-            Got something in mind? <a href="./contact.html">Let's talk →</a>
+            Like what you see? <a href="./contact.html">Let's talk →</a>
           </p>
         </div>
       </footer>
