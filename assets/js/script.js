@@ -373,7 +373,7 @@
       category: 'Web Development',
       year: '2024',
       role: 'UI/UX Designer & Developer',
-      stack: ['HTML', 'CSS', 'JavaScript', 'GSAP'],
+      stack: ['Angular', 'TypeScript', 'HTML', 'CSS', 'GSAP'],
       description: [
         'A full marketing site for Digivolution, a digital agency focused on branding and growth. The design balances strong typography with motion to communicate energy without becoming noisy.',
         'Built from the ground up — wireframes in Figma, then shipped as a responsive, hand-coded front-end.'
@@ -389,7 +389,7 @@
       category: 'Web Development',
       year: '2023',
       role: 'Designer & Developer',
-      stack: ['HTML', 'CSS', 'JavaScript'],
+      stack: ['Angular', 'TypeScript', 'HTML', 'CSS'],
       description: [
         'A front-end project exploring how a food delivery experience can feel warmer and less transactional — generous typography, soft colour blocks, and a focus on the food itself.'
       ],
@@ -404,27 +404,12 @@
       category: 'Web Development',
       year: '2023',
       role: 'Designer & Front-end Developer',
-      stack: ['HTML', 'CSS', 'JavaScript'],
+      stack: ['Angular', 'TypeScript', 'HTML', 'CSS'],
       description: [
         'A travel discovery site that puts destinations front and centre with edge-to-edge imagery and a quiet, editorial typography system.'
       ],
       external: { label: 'Behance', href: 'https://www.behance.net/gallery/197091877/Travel-Website' },
       cover: './assets/images/travel_project.png',
-      gallery: []
-    },
-
-    'fleurs-delyssa': {
-      title: "Fleur d'Elyssa",
-      tagline: 'An e-commerce site for a florist brand.',
-      category: 'Web Development',
-      year: '2024',
-      role: 'Front-end Developer',
-      stack: ['HTML', 'CSS', 'JavaScript'],
-      description: [
-        'A live e-commerce site built for a florist brand — calm, romantic, and built to put the products in the spotlight.'
-      ],
-      external: { label: 'Live site', href: 'https://www.fleursdelyssa.com/' },
-      cover: null,
       gallery: []
     },
 
@@ -500,36 +485,6 @@
       ],
       external: { label: 'Behance', href: 'https://www.behance.net/achrefbenyaa' },
       cover: './assets/images/design-3.png',
-      gallery: []
-    },
-
-    'taxico': {
-      title: 'Taxico',
-      tagline: 'A ride-hailing concept built for clarity.',
-      category: 'Mobile UI/UX Design',
-      year: '2023',
-      role: 'Product Designer',
-      stack: ['Figma'],
-      description: [
-        'Taxico is a ride-hailing mobile design that strips the experience down to the essentials — pick-up, drop-off, fare, and trust signals — without the noise that usually crowds these apps.'
-      ],
-      external: { label: 'Behance', href: 'https://www.behance.net/achrefbenyaa' },
-      cover: './assets/images/taxico.png',
-      gallery: []
-    },
-
-    'supa-vape': {
-      title: 'Supa Vape',
-      tagline: 'An e-commerce mobile design for a vape brand.',
-      category: 'Mobile UI/UX Design',
-      year: '2023',
-      role: 'Product Designer',
-      stack: ['Figma'],
-      description: [
-        'Supa Vape is a mobile commerce design exploring how a niche product brand can stay bold and playful while still feeling structured and easy to shop.'
-      ],
-      external: { label: 'Behance', href: 'https://www.behance.net/achrefbenyaa' },
-      cover: './assets/images/supavape.png',
       gallery: []
     },
 
@@ -620,36 +575,6 @@
       ],
       external: { label: 'Behance', href: 'https://www.behance.net/achrefbenyaa' },
       cover: './assets/images/travel.png',
-      gallery: []
-    },
-
-    'barbershop-app': {
-      title: 'Barbershop App',
-      tagline: 'The shipped app behind the barbershop flows.',
-      category: 'Mobile Application',
-      year: '2023',
-      role: 'Designer & Flutter Developer',
-      stack: ['Flutter', 'Dart', 'REST APIs'],
-      description: [
-        'The development counterpart to the barbershop flows — a Flutter app that brings the user and barber experiences together with a single shared design system.'
-      ],
-      external: { label: 'Behance', href: 'https://www.behance.net/achrefbenyaa' },
-      cover: './assets/images/mobile-1.png',
-      gallery: []
-    },
-
-    'atastoon': {
-      title: 'Atastoon',
-      tagline: 'A food ordering mobile application.',
-      category: 'Mobile Application',
-      year: '2024',
-      role: 'Flutter Developer',
-      stack: ['Flutter', 'Dart', 'REST APIs'],
-      description: [
-        'Atastoon is a mobile food-ordering app — built for speed, with a focus on smooth menus, clean checkout, and a friendly visual identity.'
-      ],
-      external: { label: 'Behance', href: 'https://www.behance.net/achrefbenyaa' },
-      cover: null,
       gallery: []
     },
 
