@@ -145,6 +145,21 @@
   const filters = $$('[data-filter]');
   const projects = $$('[data-project]');
   if (filters.length && projects.length) {
+    // hide a whole section (and its heading) when the filter empties it
+    const sections = $$('.gallery, .archive__list').map((list) => ({
+      list,
+      // the archive heading lives in the parent section, not the list
+      section: list.closest('section')
+    }));
+
+    const syncSections = () => {
+      sections.forEach(({ list, section }) => {
+        const items = $$('[data-project]', list);
+        const anyVisible = items.some((el) => !el.hidden);
+        if (section) section.hidden = !anyVisible;
+      });
+    };
+
     filters.forEach((btn) => {
       btn.addEventListener('click', () => {
         const cat = btn.dataset.filter;
@@ -153,6 +168,7 @@
           const match = cat === 'all' || p.dataset.category.includes(cat);
           p.hidden = !match;
         });
+        syncSections();
       });
     });
   }
@@ -317,6 +333,78 @@
 
   // ---------------- project detail page ----------------
   const PROJECTS = {
+    'nesty': {
+      title: 'Nesty',
+      tagline: 'A two-sided rental marketplace for Tunisia — verified seekers, 3D tours, one honest calendar.',
+      category: 'Web Platform · Real estate',
+      year: '2026',
+      role: 'Product Designer & Front-end Engineer',
+      stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'i18n (EN/FR)', 'Vercel'],
+      description: [
+        'Nesty is a two-sided rental platform for the Tunisian market. Seekers browse verified homes; hosts and agencies list their places, show them in 3D, and manage nightly, monthly, and long leases from a single calendar.',
+        'The product is built around three promises that drive the entire interface: verified demand, so hosts meet pre-vetted seekers instead of tyre-kickers; 3D tours that let people fall for a space before they visit; and one honest calendar that makes double bookings structurally impossible.',
+        'The front-end splits cleanly into a seeker path and a host path from the first screen, with a dedicated agency login for professional listers. It ships bilingual EN/FR, supports light and dark themes, and includes an in-product assistant ("Ask Nesty") for guiding users through listing and booking.'
+      ],
+      external: { label: 'Live site', href: 'https://nesty-tn.vercel.app/' },
+      cover: './assets/images/nesty.png',
+      browser: true,
+      gallery: []
+    },
+
+    'voyagi': {
+      title: 'Voyagi',
+      tagline: 'B2B SaaS that gives travel agencies their catalogue, booking engine, and commission tracking.',
+      category: 'B2B SaaS · Travel tech',
+      year: '2026',
+      role: 'Product Designer & Front-end Engineer',
+      stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vercel'],
+      description: [
+        'Voyagi is a white-label software platform for travel agencies: everything an agency sells — excursions, hotels, transfers, packages — consolidated into one catalogue with a booking engine attached and commission tracking across collaborators.',
+        'The core positioning is ownership: clients book under the agency\'s own name, not the platform\'s. That single promise shaped the whole go-to-market page, from the rotating value proposition in the hero to the commissions and multi-workspace sections that follow.',
+        'I designed and built the marketing site that sells it — a demo-request funnel aimed at agency owners, with the pricing/commission model, per-role workspaces, client proof, and FAQ each answering a specific objection in the buying process. Shipped in French for the target market, fully responsive, with motion used to pace the narrative rather than decorate it.'
+      ],
+      external: { label: 'Live site', href: 'https://voyagi-landing.vercel.app/' },
+      cover: './assets/images/voyagi.png',
+      browser: true,
+      gallery: []
+    },
+
+    'marwen-travel': {
+      title: 'Marwen Travel',
+      tagline: 'A live booking site for private airport transfers and excursions across Türkiye.',
+      category: 'Web Development · Client work',
+      year: '2026',
+      role: 'Designer & Front-end Developer',
+      stack: ['Next.js', 'React', 'Tailwind CSS', 'Booking UX', 'i18n', 'SEO'],
+      description: [
+        'Marwen Travel is a production travel service running on its own domain out of Istanbul — private airport transfers, chauffeur-driven trips, curated excursions, and hotels across Türkiye. Real customers, real bookings.',
+        'The product problem was trust at the moment of arrival: a traveller landing in an unfamiliar country needs to know the price is fixed and someone will actually be waiting. The site answers that above the fold with a fixed-price promise, a 4.9 traveller rating, and a WhatsApp button beside every booking CTA — because this audience converts in chat, not in forms.',
+        'The centrepiece is a multi-mode booking widget — transfer, hourly hire, or excursion — with pickup and drop-off search, date and time, passenger count, and a round-trip option that surfaces its own discount. Built responsive and multilingual for an inbound audience that arrives in several languages, with live chat for the questions a form can\'t catch.'
+      ],
+      external: { label: 'Live site', href: 'https://marwentravel.com' },
+      cover: './assets/images/marwentravel.png',
+      browser: true,
+      gallery: []
+    },
+
+    'nurone': {
+      title: 'Nurone · Redesign',
+      tagline: 'A redesign for an AI-augmented engineering studio, delivered as an assessment.',
+      category: 'Web design · Redesign',
+      year: '2026',
+      role: 'Product Designer & Front-end Engineer',
+      stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', '3D / WebGL', 'Figma'],
+      description: [
+        'A full redesign for Nurone — an AI-augmented team of engineers, architects, and growth hackers that turns ideas and broken MVPs into products that scale. Delivered as a technical assessment, taken from audit through to a shipped, responsive front-end.',
+        'The positioning was the hard part. Nurone is deliberately selective — "we don\'t work with everyone, we work where we believe we can win" — so the site had to read as a high-end partner rather than an agency competing on volume. I built the page around that: a two-part headline that hands ambition to the client and system-building to Nurone, a "Request Access" CTA instead of a generic contact form, and a numbered narrative — The System, Labs, Case Studies, Process, FAQ — that walks a founder from scepticism to enquiry.',
+        'Visually it commits to a dark, high-contrast treatment with a sculpted 3D monogram as the anchor, held together by a strict type scale and consistent spacing so the restraint reads as confidence. Designed in Figma and implemented in Next.js in the same week.'
+      ],
+      external: { label: 'Live site', href: 'https://nurone-assesment.vercel.app/' },
+      cover: './assets/images/nurone.png',
+      browser: true,
+      gallery: []
+    },
+
     'deal': {
       title: 'Deal',
       tagline: 'A Gen Z marketplace to buy, sell, and swap fashion.',
@@ -689,6 +777,9 @@
     if (data.cover && coverImg && coverSection) {
       coverImg.src = data.cover;
       coverImg.alt = `${data.title} — cover`;
+      // real site screenshots get the mac browser chrome
+      const frame = coverImg.closest('.project-cover');
+      if (frame) frame.classList.toggle('project-cover--browser', !!data.browser);
       coverSection.hidden = false;
     }
 

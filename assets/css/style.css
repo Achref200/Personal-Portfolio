@@ -811,6 +811,53 @@ a.home-list__value:hover { color: var(--accent); }
   .project__cat { text-align: left; }
 }
 
+/* archive -------------------------------------------------------- */
+.archive { padding-top: clamp(48px, 6vw, 90px); }
+.archive .section-head { margin-bottom: 28px; }
+.archive__note {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.archive__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(24px, 4vw, 64px);
+  border-top: 1px solid var(--line-soft);
+}
+.archive__item[hidden] { display: none; }
+.archive__item a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line-soft);
+  transition: color .2s var(--ease), padding-left .25s var(--ease);
+}
+.archive__item a:hover { color: var(--accent); padding-left: 6px; }
+.archive__title {
+  font-family: var(--serif);
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  min-width: 0;
+}
+.archive__meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .archive__list { grid-template-columns: 1fr; }
+}
+
 /* contact page --------------------------------------------------- */
 .contact-hero {
   padding-top: clamp(80px, 10vw, 160px);
@@ -962,10 +1009,24 @@ a.home-list__value:hover { color: var(--accent); }
 }
 
 .project-cover {
-  border-radius: 22px;
+  border-radius: 16px;
   overflow: hidden;
   background: var(--bg-soft);
   border: 1px solid var(--line);
+  box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 30px 60px -30px rgba(0,0,0,.4);
+}
+/* mac title bar — only for real site screenshots */
+.project-cover--browser::before {
+  content: "";
+  display: block;
+  height: 34px;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line-soft);
+  background-image:
+    radial-gradient(circle 5.5px at 20px 17px, #ff5f57 98%, transparent),
+    radial-gradient(circle 5.5px at 40px 17px, #febc2e 98%, transparent),
+    radial-gradient(circle 5.5px at 60px 17px, #28c840 98%, transparent);
+  background-repeat: no-repeat;
 }
 .project-cover img {
   width: 100%;
