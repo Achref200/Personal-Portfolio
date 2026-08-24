@@ -1,0 +1,333 @@
+/* ===================================================================
+   theme layer — warm/serif direction
+   loaded AFTER style.css; overrides tokens only, so every existing
+   component (project.html included) inherits the new system for free.
+   =================================================================== */
+
+:root {
+  /* palette ------------------------------------------------------- */
+  --bg:        #fdf9f5;
+  --bg-soft:   #f9f3ed;
+  --surface:   #f0e3d6;
+  --ink:       #2b1b12;
+  --ink-soft:  #553c30;
+  --muted:     #826b5e;
+  --line:      #e9e0d8;
+  --line-soft: #f3ece5;
+  --accent:    #ca361c;
+  --accent-2:  #2b1b12;
+
+  --secondary:  #6d3b22;
+  --tertiary:   #e0a83c;
+  --on-accent:  #fdf9f5;
+
+  /* type ---------------------------------------------------------- */
+  --serif: "Elsie", "Fraunces", Georgia, serif;
+  --sans:  "Lexend", -apple-system, system-ui, sans-serif;
+  --mono:  "Kode Mono", ui-monospace, monospace;
+
+  --focus: var(--accent);
+}
+
+[data-theme="dark"] {
+  --bg:        #1a130f;
+  --bg-soft:   #231b15;
+  --surface:   #33271e;
+  --ink:       #f5e7d6;
+  --ink-soft:  #e0ccb8;
+  --muted:     #b6a291;
+  --line:      #483c32;
+  --line-soft: #2e241d;
+  --accent:    #f75e3b;
+  --accent-2:  #f5e7d6;
+
+  --secondary:  #793419;
+  --tertiary:   #ffd23f;
+  --on-accent:  #fff7ed;
+}
+
+/* base ------------------------------------------------------------ */
+body { font-family: var(--sans); background: var(--bg); color: var(--ink); }
+
+.display,
+.section-title,
+.hero__name,
+.case__title,
+.discipline__title,
+.foot__big { font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; }
+
+.eyebrow,
+.tag,
+.discipline__num,
+.home-list__label,
+.mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: .11em; }
+
+/* ===================================================================
+   section rhythm + separator rules
+   the reference reads as a document because every section is fenced
+   by a hairline that draws itself in on scroll.
+   =================================================================== */
+
+.sep {
+  border: 0;
+  height: 1px;
+  background: var(--line);
+  margin: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 900ms var(--ease-out);
+}
+.sep.is-in { transform: scaleX(1); }
+
+.band { padding-block: var(--section); }
+.band--tight { padding-block: var(--section-tight); }
+
+/* numbered section header: 01 / Selected work ---------------------- */
+.band__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s4);
+  margin-bottom: var(--s7);
+  flex-wrap: wrap;
+}
+.band__num {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .11em;
+  color: var(--accent);
+}
+.band__title { font-family: var(--serif); font-size: clamp(30px, 5vw, 56px); line-height: 1.05; }
+.band__title em { font-style: italic; color: var(--accent); }
+
+/* ===================================================================
+   typewriter
+   =================================================================== */
+.type-line {
+  font-family: var(--mono);
+  font-size: clamp(13px, 1.6vw, 17px);
+  color: var(--ink-soft);
+  min-height: 1.6em;
+  letter-spacing: .04em;
+}
+.type-line__caret {
+  display: inline-block;
+  width: .6ch;
+  background: var(--accent);
+  color: transparent;
+  animation: caret 1s steps(1) infinite;
+  margin-left: 2px;
+}
+@keyframes caret { 50% { opacity: 0; } }
+
+/* ===================================================================
+   project rows — hover reveals a floating preview
+   =================================================================== */
+.pjt-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.pjt {
+  position: relative;
+  border-bottom: 1px solid var(--line);
+}
+.pjt__link {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr auto;
+  align-items: center;
+  gap: var(--s4);
+  padding: clamp(20px, 3vw, 34px) var(--s2);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  z-index: 1;
+  transition: padding-left var(--t-mid) var(--ease), color var(--t-mid) var(--ease);
+}
+.pjt__link:hover { padding-left: var(--s5); color: var(--accent); }
+
+/* the wash that slides in behind the row */
+.pjt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-soft);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--t-mid) var(--ease-out);
+  z-index: 0;
+}
+.pjt:hover::after { transform: scaleY(1); }
+
+.pjt__idx { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .11em; }
+.pjt__name { font-family: var(--serif); font-size: clamp(22px, 3.4vw, 40px); line-height: 1.1; }
+.pjt__meta { font-family: var(--mono); font-size: 11px; letter-spacing: .11em; color: var(--muted); text-transform: uppercase; text-align: right; }
+.pjt:hover .pjt__meta { color: var(--accent); }
+
+/* floating preview image that tracks the cursor */
+.pjt__peek {
+  position: fixed;
+  top: 0; left: 0;
+  width: clamp(220px, 22vw, 330px);
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 60;
+  transform: translate3d(-50%, -50%, 0) scale(.9) rotate(-3deg);
+  transition: opacity 260ms var(--ease), transform 420ms var(--ease-out);
+  box-shadow: 0 24px 60px rgba(43, 27, 18, .30);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.pjt__peek.is-on { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1) rotate(-2deg); }
+.pjt__peek img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .pjt__peek { display: none; }
+}
+
+/* ===================================================================
+   gallery — UI/UX showcase grid
+   =================================================================== */
+.gal {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: var(--s4);
+}
+.gal__item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  aspect-ratio: 4 / 3;
+  text-decoration: none;
+  color: inherit;
+}
+.gal__item--wide { grid-column: span 2; aspect-ratio: 16 / 9; }
+@media (max-width: 640px) { .gal__item--wide { grid-column: span 1; aspect-ratio: 4 / 3; } }
+
+.gal__item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 700ms var(--ease-soft), filter 400ms var(--ease);
+}
+.gal__item:hover img { transform: scale(1.06); }
+
+.gal__cap {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: var(--s4);
+  background: linear-gradient(to top, rgba(29,16,12,.82), transparent);
+  color: #fff8f6;
+  transform: translateY(18%);
+  opacity: 0;
+  transition: opacity var(--t-mid) var(--ease), transform var(--t-mid) var(--ease-out);
+}
+.gal__item:hover .gal__cap,
+.gal__item:focus-visible .gal__cap { opacity: 1; transform: translateY(0); }
+
+.gal__cap b { display: block; font-family: var(--serif); font-weight: 400; font-size: 18px; }
+.gal__cap span { font-family: var(--mono); font-size: 10px; letter-spacing: .11em; text-transform: uppercase; opacity: .85; }
+@keyframes marq { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marq__track { animation: none; } }
+
+/* ===================================================================
+   corrections
+   =================================================================== */
+
+/* Elsie is a display face — it turns to mush at paragraph length and
+   its `opsz` axis doesn't exist. leads move to the sans. */
+.lead {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: clamp(17px, 1.4vw, 22px);
+  line-height: 1.55;
+  letter-spacing: -0.004em;
+  font-variation-settings: normal;
+}
+
+/* Elsie has no 300/500 weights — clamp everything display to 400/900
+   so the browser stops synthesising a fake light. */
+.display, .section-title, .hero__name,
+.case__title, .discipline__title, .band__title,
+.foot__big, .pjt__name { font-weight: 400; font-variation-settings: normal; }
+
+/* hero: Elsie's tall ascenders need less leading than Fraunces did */
+.hero__name { line-height: .92; }
+
+/* the rail monogram was wrapping onto two lines */
+.brand-role { white-space: nowrap; font-size: 9px; }
+
+/* tighten the hero block — the marquee was being pushed off-screen */
+.hero { padding-block: clamp(72px, 12vh, 132px) var(--s8); }
+.type-line { margin-top: var(--s5); }
+.hero__meta { margin-top: var(--s6); }
+
+/* wide dashboard shots are left-anchored — the sidebar/nav is the part
+   that identifies the product, and centre-cropping cuts it in half. */
+.gal__item--wide img { object-position: left center; }
+
+/* project rows: on phones the three-column grid crushes the name
+   against its meta. stack the meta under the name instead. */
+@media (max-width: 640px) {
+  .pjt__link {
+    grid-template-columns: 2.4rem 1fr;
+    row-gap: 6px;
+    padding-block: var(--s5);
+  }
+  .pjt__meta { grid-column: 2; text-align: left; }
+  .pjt__link:hover { padding-left: var(--s3); }
+}
+
+/* ===================================================================
+   archive — flat list
+   four items never justified two filter groups, per-year sub-sections
+   and a tier system. one quiet table-like list instead.
+   =================================================================== */
+.arc-flat { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.arc-row { border-bottom: 1px solid var(--line); }
+.arc-row a {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(8rem, 14rem) 1fr auto;
+  align-items: baseline;
+  gap: var(--s4);
+  padding: var(--s5) var(--s2);
+  text-decoration: none;
+  color: inherit;
+  transition: background var(--t-fast) var(--ease), padding-left var(--t-mid) var(--ease);
+}
+.arc-row a:hover { background: var(--bg-soft); padding-left: var(--s4); }
+.arc-row__year  { font-family: var(--mono); font-size: 11px; letter-spacing: .11em; color: var(--accent); }
+.arc-row__title { font-family: var(--serif); font-size: 19px; }
+.arc-row__note  { font-size: 14px; color: var(--muted); line-height: 1.5; }
+.arc-row__meta  { font-family: var(--mono); font-size: 10px; letter-spacing: .11em; text-transform: uppercase; color: var(--muted); text-align: right; }
+.arc-row a:hover .arc-row__title { color: var(--accent); }
+
+@media (max-width: 780px) {
+  .arc-row a { grid-template-columns: 3.5rem 1fr; row-gap: 4px; }
+  .arc-row__note { grid-column: 2; }
+  .arc-row__meta { grid-column: 2; text-align: left; }
+}
+
+/* ===================================================================
+   hero block rhythm
+   the typewriter, the bio and the buttons are three separate beats.
+   without explicit spacing the typed line collides with the paragraph
+   below it, and the CTA row drifts to the right edge of the grid.
+   =================================================================== */
+.hero__bio {
+  margin-top: var(--s5);
+  max-width: 46ch;
+}
+.hero .type-line {
+  margin-top: var(--s5);
+  margin-bottom: var(--s2);
+  color: var(--accent);
+}
+.hero__cta {
+  margin-top: var(--s7);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3);
+  justify-content: flex-start;
+}

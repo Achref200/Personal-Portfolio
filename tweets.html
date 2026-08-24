@@ -1,266 +1,357 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tweets | Achref Ben Yaagoub</title>
-  <meta name="description" content="Tweets and current updates from Achref Ben Yaagoub. A profile-style feed with photos, small notes, and quick reactions." />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tweets | Achref Ben Yaagoub</title>
+    <meta name="description" content="Tweets and current updates from Achref Ben Yaagoub. A profile-style feed with photos, small notes, and quick reactions." />
 
-  <link rel="icon" href="./assets/images/logo.png" />
+ <!-- social preview -->
+ <meta property="og:type" content="website" />
+ <meta property="og:site_name" content="Achref Ben Yaagoub" />
+ <meta property="og:title" content="Updates — Achref Ben Yaagoub" />
+ <meta property="og:description" content="Tweets and current updates from Achref Ben Yaagoub. A profile-style feed with photos, small notes, and quick reactions." />
+ <meta property="og:url" content="https://achref-dev.vercel.app/tweets.html" />
+ <meta property="og:image" content="https://achref-dev.vercel.app/assets/images/og-card.png" />
+ <meta property="og:image:width" content="1200" />
+ <meta property="og:image:height" content="630" />
+ <meta name="twitter:card" content="summary_large_image" />
+ <meta name="twitter:title" content="Updates — Achref Ben Yaagoub" />
+ <meta name="twitter:description" content="Tweets and current updates from Achref Ben Yaagoub. A profile-style feed with photos, small notes, and quick reactions." />
+ <meta name="twitter:image" content="https://achref-dev.vercel.app/assets/images/og-card.png" />
+ <link rel="canonical" href="https://achref-dev.vercel.app/tweets.html" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml" />
+    <link rel="icon" href="./assets/images/logo.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="./assets/images/logo.ico" />
 
-  <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&family=Lexend:wght@200;300;400;500;600&family=Kode+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<body>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/theme.css" />
+  </head>
 
-  <div class="app">
+  <body>
 
-    <aside class="rail">
-      <a href="./index.html" class="rail__brand" aria-label="Home">
-        <span class="brand-monogram">ABY</span>
-        <span class="brand-role">Engineer / Designer</span>
-      </a>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-      <nav class="rail__nav" aria-label="Primary">
-        <ul class="rail__list">
-          <li><a class="rail__link" href="./index.html">Home</a></li>
-          <li><a class="rail__link" href="./work.html">Work</a></li>
-          <li><a class="rail__link" href="./about.html">About</a></li>
-          <li><a class="rail__link" href="./tweets.html" aria-current="page">Tweets</a></li>
-          <li><a class="rail__link" href="./contact.html">Contact</a></li>
-        </ul>
-      </nav>
+    <div class="app">
 
-      <div class="rail__foot">
-        <div class="rail__socials">
-          <a href="https://github.com/Achref200" aria-label="GitHub" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2.1.1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/achref-ben-yaagoub-77b6b1229/" aria-label="LinkedIn" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.49 6 1.12 6 0 4.88 0 3.5 0 2.12 1.12 1 2.49 1c1.37 0 2.49 1.12 2.49 2.5zM.22 8.25h4.55V24H.22V8.25zm7.34 0h4.36v2.17h.06c.6-1.1 2.06-2.25 4.24-2.25 4.54 0 5.38 2.99 5.38 6.87V24h-4.55v-7.5c0-1.79-.03-4.09-2.5-4.09-2.5 0-2.88 1.95-2.88 3.96V24H7.56V8.25z"/></svg>
-          </a>
-          <a href="https://www.behance.net/achrefbenyaa" aria-label="Behance" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.4 6.5c1.5 0 2.7.4 3.4 1.1.7.7 1 1.7 1 2.9 0 1.4-.6 2.4-1.8 3 1.6.5 2.4 1.7 2.4 3.5 0 1.4-.5 2.5-1.4 3.3-.9.8-2.3 1.2-4.2 1.2H0V6.5h7.4zm-.3 5.1c.8 0 1.3-.1 1.7-.4.4-.3.6-.7.6-1.3 0-.7-.2-1.1-.6-1.4-.4-.3-1-.4-1.8-.4H3.4v3.5h3.7zm.2 5.7c.9 0 1.6-.2 2-.5.4-.3.7-.9.7-1.5 0-.7-.2-1.2-.7-1.5-.4-.3-1.1-.5-2-.5H3.4v4h3.9zM20.4 9c1.8 0 3.1.6 4.1 1.7 1 1.2 1.5 2.7 1.5 4.7v.7h-7.7c.1.9.4 1.5.9 2 .5.4 1.2.7 2 .7 1.2 0 2-.5 2.5-1.4h2.1c-.4 1.1-1 2-1.9 2.6-.9.6-2 .9-3.3.9-1.8 0-3.1-.5-4.1-1.6-1-1-1.5-2.5-1.5-4.2 0-1.8.5-3.2 1.5-4.3 1-1.2 2.4-1.8 4-1.8zm0 1.9c-.7 0-1.3.2-1.8.6-.5.4-.8 1-.9 1.7h5.4c-.1-.7-.4-1.3-.9-1.7-.5-.4-1.1-.6-1.8-.6zM21.9 7H16V5.4h5.9V7z"/></svg>
-          </a>
+      <aside class="rail">
+        <a href="./index.html" class="rail__brand" aria-label="Home">
+          <span class="brand-monogram">ABY</span>
+          <span class="brand-role">1/2 Engineer / 1/2 Designer</span>
+        </a>
+
+        <nav class="rail__nav" aria-label="Primary">
+          <ul class="rail__list">
+            <li><a class="rail__link" href="./index.html">Home</a></li>
+            <li><a class="rail__link" href="./design.html">Design</a></li>
+            <li><a class="rail__link" href="./work.html">Engineering</a></li>
+            <li><a class="rail__link" href="./about.html">About</a></li>
+            <li><a class="rail__link" href="./tweets.html" aria-current="page">Tweets</a></li>
+            <li><a class="rail__link" href="./contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="rail__foot">
+          <div class="rail__socials">
+            <a href="https://github.com/Achref200" aria-label="GitHub" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2.1.1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/achref-b-77b6b1229/" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.49 6 1.12 6 0 4.88 0 3.5 0 2.12 1.12 1 2.49 1c1.37 0 2.49 1.12 2.49 2.5zM.22 8.25h4.55V24H.22V8.25zm7.34 0h4.36v2.17h.06c.6-1.1 2.06-2.25 4.24-2.25 4.54 0 5.38 2.99 5.38 6.87V24h-4.55v-7.5c0-1.79-.03-4.09-2.5-4.09-2.5 0-2.88 1.95-2.88 3.96V24H7.56V8.25z"/></svg>
+            </a>
+            <a href="https://www.behance.net/achrefbenyaa" aria-label="Behance" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.4 6.5c1.5 0 2.7.4 3.4 1.1.7.7 1 1.7 1 2.9 0 1.4-.6 2.4-1.8 3 1.6.5 2.4 1.7 2.4 3.5 0 1.4-.5 2.5-1.4 3.3-.9.8-2.3 1.2-4.2 1.2H0V6.5h7.4zm-.3 5.1c.8 0 1.3-.1 1.7-.4.4-.3.6-.7.6-1.3 0-.7-.2-1.1-.6-1.4-.4-.3-1-.4-1.8-.4H3.4v3.5h3.7zm.2 5.7c.9 0 1.6-.2 2-.5.4-.3.7-.9.7-1.5 0-.7-.2-1.2-.7-1.5-.4-.3-1.1-.5-2-.5H3.4v4h3.9zM20.4 9c1.8 0 3.1.6 4.1 1.7 1 1.2 1.5 2.7 1.5 4.7v.7h-7.7c.1.9.4 1.5.9 2 .5.4 1.2.7 2 .7 1.2 0 2-.5 2.5-1.4h2.1c-.4 1.1-1 2-1.9 2.6-.9.6-2 .9-3.3.9-1.8 0-3.1-.5-4.1-1.6-1-1-1.5-2.5-1.5-4.2 0-1.8.5-3.2 1.5-4.3 1-1.2 2.4-1.8 4-1.8zm0 1.9c-.7 0-1.3.2-1.8.6-.5.4-.8 1-.9 1.7h5.4c-.1-.7-.4-1.3-.9-1.7-.5-.4-1.1-.6-1.8-.6zM21.9 7H16V5.4h5.9V7z"/></svg>
+            </a>
+          </div>
+          <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>
+            </svg>
+          </button>
         </div>
-        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>
-          </svg>
-        </button>
-      </div>
-    </aside>
+      </aside>
 
-    <main class="page tweets-page" data-tweets-root>
-      <section class="container tweets-shell">
-        <article class="tweets-profile" data-reveal>
-          <div class="tweets-cover"></div>
-          <div class="tweets-profile__body">
-            <div class="tweets-avatar-wrap">
-              <img class="tweets-avatar" src="./assets/images/Screenshot_1.png" alt="Achref Ben Yaagoub profile photo" />
-            </div>
-            <div class="tweets-heading">
-              <p class="eyebrow">Profile</p>
-              <h1>Achref Ben Yaagoub</h1>
-              <p class="tweets-handle">@achrefby</p>
-              <p class="tweets-bio">Lead Design &amp; Software Engineer · Flutter Specialist. My real career updates, shipped projects, and the journey behind them. Based in Sousse, Tunisia 🇹🇳 — open to the world.</p>
-              <div class="tweets-stats">
-                <span><strong>4</strong> companies</span>
-                <span><strong>3+</strong> years experience</span>
-                <span><strong>8</strong> posts</span>
+      <main class="page tweets-page" data-tweets-root>
+        <section class="container tweets-shell">
+          <article class="tweets-profile" data-reveal>
+            <div class="tweets-cover"></div>
+            <div class="tweets-profile__body">
+              <div class="tweets-avatar-wrap">
+                <img class="tweets-avatar" src="./assets/images/Screenshot_1.png" alt="Achref Ben Yaagoub profile photo" />
               </div>
-              <div class="tweets-quick">
-                <a class="btn btn--ghost" href="https://www.linkedin.com/in/achref-ben-yaagoub-77b6b1229/" target="_blank" rel="noopener">LinkedIn updates ↗</a>
+              <div class="tweets-heading">
+                <p class="eyebrow">Profile</p>
+                <h1>Achref Ben Yaagoub</h1>
+                <p class="tweets-handle">@achrefby</p>
+                <p class="tweets-bio">Software Engineer · Lead Design &amp; Flutter Specialist. Currently building <strong>Nesty</strong> and <strong>Voyagi</strong> with clients &amp; partners. My real career updates, shipped projects, and the journey behind them. Based in Sousse, Tunisia — open to the world.</p>
+                <div class="tweets-stats">
+                  <span><strong>2</strong> platforms live</span>
+                  <span><strong>3+</strong> years experience</span>
+                  <span><strong>11</strong> posts</span>
+                </div>
+                <div class="tweets-quick">
+                  <a class="btn btn--ghost" href="https://www.linkedin.com/in/achref-b-77b6b1229/" target="_blank" rel="noopener">LinkedIn updates ↗</a>
+                  <a class="btn btn--ghost" href="./assets/files/Achref_BenYaagoub_CV.pdf" download>Download CV ↓</a>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="tweets-tabs">
-            <button class="tweets-tab is-current" type="button">Posts</button>
-            <button class="tweets-tab" type="button" aria-disabled="true">About</button>
-            <button class="tweets-tab" type="button" aria-disabled="true">Pictures</button>
-          </div>
-        </article>
+            <div class="tweets-tabs">
+              <button class="tweets-tab is-current" type="button">Posts</button>
+              <button class="tweets-tab" type="button" aria-disabled="true">About</button>
+              <button class="tweets-tab" type="button" aria-disabled="true">Pictures</button>
+            </div>
+          </article>
 
-        <ul class="tweet-feed">
+          <ul class="tweet-feed">
 
-          <!-- 1 · current role at TREND IT -->
-          <li class="tweet-card" data-reveal data-tweet-id="trend-it">
-            <header class="tweet-head">
-              <img src="./assets/images/pp.png" alt="Achref avatar" />
-              <div>
-                <p class="tweet-name">Achref Ben Yaagoub</p>
-                <p class="tweet-meta">@achrefby · Nov 2024 — Now</p>
-              </div>
-            </header>
-            <div class="tweet-badge">💼 Lead Role · Remote · France</div>
-            <p class="tweet-text">
-              Just crossed 2 years as <strong>Lead Design & Software Engineer (Flutter Specialist)</strong> at <strong>TREND IT</strong> — France, fully remote.<br /><br />
-              Leading the design team on web &amp; mobile products, mostly back-office admin apps. Running Agile ceremonies on Azure DevOps, shipping Figma prototypes as production Flutter apps, and heading QA on end-to-end flows. It's a lot of hats but I genuinely love it.
-            </p>
-            <img class="tweet-media" src="./assets/images/club1.jpg" alt="Achref working remotely" />
-            <footer class="tweet-actions">
-              <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
-              <span class="tweet-count" data-like-count data-base="212">212</span>
-            </footer>
-          </li>
+            <!-- 0 · graduation — officially a software engineer -->
+            <li class="tweet-card" data-reveal data-tweet-id="graduation-2026">
+              <header class="tweet-head">
+                <img src="./assets/images/pp.png" alt="Achref avatar" loading="lazy" decoding="async" />
+                <div>
+                  <p class="tweet-name">Achref Ben Yaagoub</p>
+                  <p class="tweet-meta">@achrefby · 2026</p>
+                </div>
+              </header>
+              <div class="tweet-badge">Graduated · Software Engineer · EPI Digital School</div>
+              <p class="tweet-text">
+                It's official — I'm a <strong>Software Engineer</strong>.<br /><br />
+                Three years at <strong>EPI Digital School</strong> in Sousse, done while working full-time remote and shipping real products the whole way through. There were weeks where I went from a 9am standup to a lecture to a midnight deploy, and I'd do it again.<br /><br />
+                Huge thanks to everyone who made it possible — the teams who trusted me with real responsibility before I had the paper to justify it, and the people who covered for me when both worlds needed me at once. The degree confirms what the last three years already taught me. Now, onto the next chapter.
+              </p>
+              <img class="tweet-media" src="./assets/images/club4.jpg" alt="Graduation — EPI Digital School" loading="lazy" decoding="async" />
+              <footer class="tweet-actions">
+                <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
+                <span class="tweet-count" data-like-count data-base="486">486</span>
+              </footer>
+            </li>
 
-          <!-- 2 · Deal app launch -->
-          <li class="tweet-card" data-reveal data-tweet-id="deal-launch">
-            <header class="tweet-head">
-              <img src="./assets/images/pp.png" alt="Achref avatar" />
-              <div>
-                <p class="tweet-name">Achref Ben Yaagoub</p>
-                <p class="tweet-meta">@achrefby · Jan 2025</p>
-              </div>
-            </header>
-            <div class="tweet-badge">🚀 Side Project · Deal App</div>
-            <p class="tweet-text">
-              Shipped <strong>Deal</strong> — a Gen Z fashion marketplace I designed &amp; built from scratch in Flutter.<br /><br />
-              Buy, sell, swap clothes inside one vibrant community. The stack: Flutter + Dart on the client, Supabase for auth/storage/Postgres, and Firebase Firestore for real-time chat between buyers &amp; sellers. Listings are visual-first, so browsing feels more like a social app than a store. 📦
-            </p>
-            <img class="tweet-media" src="./assets/images/deal.png" alt="Deal app screenshots" />
-            <footer class="tweet-actions">
-              <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
-              <span class="tweet-count" data-like-count data-base="318">318</span>
-            </footer>
-          </li>
+            <!-- 0b · Nesty platform -->
+            <li class="tweet-card" data-reveal data-tweet-id="nesty-platform">
+              <header class="tweet-head">
+                <img src="./assets/images/pp.png" alt="Achref avatar" loading="lazy" decoding="async" />
+                <div>
+                  <p class="tweet-name">Achref Ben Yaagoub</p>
+                  <p class="tweet-meta">@achrefby · 2026</p>
+                </div>
+              </header>
+              <div class="tweet-badge">Platform · Nesty · Live with partners</div>
+              <p class="tweet-text">
+                <strong>Nesty</strong> is live — and it's a lot more than a website.<br /><br />
+                Four connected surfaces on one data model: a public marketplace, a <strong>mobile app</strong> for seekers and hosts, an <strong>agency workspace</strong> for professional listers managing whole portfolios, and an <strong>admin console</strong> for moderation, verification, and payouts.<br /><br />
+                The hard part wasn't any single screen — it was role-based access across four very different audiences. A renter on a phone, an agency managing sixty units, and an operator moderating the marketplace all need completely different tools without it feeling like three separate products.<br /><br />
+                Now onboarding real agencies and partners in Tunisia. Watching people actually list properties on something you designed hits different.
+              </p>
+              <img class="tweet-media" src="./assets/images/nesty.png" alt="Nesty platform" loading="lazy" decoding="async" />
+              <footer class="tweet-actions">
+                <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
+                <span class="tweet-count" data-like-count data-base="412">412</span>
+              </footer>
+            </li>
 
-          <!-- 3 · Postuly Tn -->
-          <li class="tweet-card" data-reveal data-tweet-id="postuly-launch">
-            <header class="tweet-head">
-              <img src="./assets/images/pp.png" alt="Achref avatar" />
-              <div>
-                <p class="tweet-name">Achref Ben Yaagoub</p>
-                <p class="tweet-meta">@achrefby · Feb 2025</p>
-              </div>
-            </header>
-            <div class="tweet-badge">🇹🇳 Product · Postuly Tn</div>
-            <p class="tweet-text">
-              Proud to share <strong>Postuly Tn</strong> — a career platform built for Tunisian students and recent graduates. PFE topics, reference books, internships, and first jobs all in one place instead of scattered across Facebook groups and notice boards.<br /><br />
-              Stack: Flutter · Dart · Supabase · REST APIs. Candidates apply in a few taps from a structured profile. Recruiters get consistent applications. Graduates get notified the moment something relevant goes live. 🎓
-            </p>
-            <img class="tweet-media" src="./assets/images/postuly1.jpeg" alt="Postuly Tn platform" />
-            <footer class="tweet-actions">
-              <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
-              <span class="tweet-count" data-like-count data-base="274">274</span>
-            </footer>
-          </li>
+            <!-- 0c · Voyagi platform -->
+            <li class="tweet-card" data-reveal data-tweet-id="voyagi-platform">
+              <header class="tweet-head">
+                <img src="./assets/images/pp.png" alt="Achref avatar" loading="lazy" decoding="async" />
+                <div>
+                  <p class="tweet-name">Achref Ben Yaagoub</p>
+                  <p class="tweet-meta">@achrefby · 2026</p>
+                </div>
+              </header>
+              <div class="tweet-badge">B2B SaaS · Voyagi · Onboarding agencies</div>
+              <p class="tweet-text">
+                Shipping <strong>Voyagi</strong> — a multi-tenant SaaS for travel agencies. Every agency gets its own isolated workspace: their catalogue, their branding, their sellers, their commission rules. Clients book under <em>the agency's</em> name, not ours.<br /><br />
+                Three surfaces: the <strong>agency back-office</strong> (catalogue, booking engine, reservations, invoices, revenue dashboards), a <strong>mobile seller app</strong> where collaborators quote clients on the spot and watch their commission accrue live, and a <strong>super-admin console</strong> for onboarding, subscriptions, feature flags, and cross-tenant analytics.<br /><br />
+                The commission engine is the piece I'm proudest of — configurable rates by product, seller, and tier, reconciled every period. It's what turns a scattered network of freelance sellers into a measurable distribution channel.<br /><br />
+                Working directly with agency owners and partners to shape the roadmap. Building B2B software teaches you fast that the prettiest screen loses to the one that closes the books correctly.
+              </p>
+              <img class="tweet-media" src="./assets/images/voyagi.png" alt="Voyagi platform" loading="lazy" decoding="async" />
+              <footer class="tweet-actions">
+                <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
+                <span class="tweet-count" data-like-count data-base="367">367</span>
+              </footer>
+            </li>
 
-          <!-- 4 · Quetratech contract -->
-          <li class="tweet-card" data-reveal data-tweet-id="quetratech">
-            <header class="tweet-head">
-              <img src="./assets/images/pp.png" alt="Achref avatar" />
-              <div>
-                <p class="tweet-name">Achref Ben Yaagoub</p>
-                <p class="tweet-meta">@achrefby · Jul — Nov 2024</p>
-              </div>
-            </header>
-            <div class="tweet-badge">📱 Contract · Quetratech · Mahdia, Tunisia</div>
-            <p class="tweet-text">
-              Wrapped up a great contract with <strong>Quetratech</strong> as UI/UX Designer & Mobile Developer.<br /><br />
-              Architected responsive Flutter apps with MVC + GetX for reactive state, integrated RESTful APIs via Swagger with secure auth flows, and delivered pixel-true Figma-to-code translations. Working with an established design system taught me just how much precision matters in handoff. 🎨
-            </p>
-            <img class="tweet-media" src="./assets/images/club2.jpg" alt="Quetratech work period" />
-            <footer class="tweet-actions">
-              <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
-              <span class="tweet-count" data-like-count data-base="187">187</span>
-            </footer>
-          </li>
+            <!-- 1 · current role at TREND IT -->
+            <li class="tweet-card" data-reveal data-tweet-id="trend-it">
+              <header class="tweet-head">
+                <img src="./assets/images/pp.png" alt="Achref avatar" loading="lazy" decoding="async" />
+                <div>
+                  <p class="tweet-name">Achref Ben Yaagoub</p>
+                  <p class="tweet-meta">@achrefby · Nov 2024 — Now</p>
+                </div>
+              </header>
+              <div class="tweet-badge">Lead Role · Remote · France</div>
+              <p class="tweet-text">
+                Just crossed 2 years as <strong>Lead Design & Software Engineer (Flutter Specialist)</strong> at <strong>TREND IT</strong> — France, fully remote.<br /><br />
+                Leading the design team on web &amp; mobile products, mostly back-office admin apps. Running Agile ceremonies on Azure DevOps, shipping Figma prototypes as production Flutter apps, and heading QA on end-to-end flows. It's a lot of hats but I genuinely love it.
+              </p>
+              <img class="tweet-media" src="./assets/images/club1.jpg" alt="Achref working remotely" loading="lazy" decoding="async" />
+              <footer class="tweet-actions">
+                <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
+                <span class="tweet-count" data-like-count data-base="212">212</span>
+              </footer>
+            </li>
 
-          <!-- 5 · Insight Plus / Exsys -->
-          <li class="tweet-card" data-reveal data-tweet-id="insight-plus">
-            <header class="tweet-head">
-              <img src="./assets/images/pp.png" alt="Achref avatar" />
-              <div>
-                <p class="tweet-name">Achref Ben Yaagoub</p>
-                <p class="tweet-meta">@achrefby · Sep 2023 — Apr 2024</p>
-              </div>
-            </header>
-            <div class="tweet-badge">🏢 Hybrid · Insight Plus · Ariana, Tunisia</div>
-            <p class="tweet-text">
-              7 months at <strong>Insight Plus</strong> as UI/UX Developer — one of the most formative stretches of my career so far.<br /><br />
-              I architected Flutter apps with MVVM + Provider, led the full UI/UX lifecycle for an enterprise ERP and its companion mobile app <em>(Exsys)</em>, and mapped edge cases to make sure every flow felt seamless — even the ones users never expect to hit. 💡
-            </p>
-            <img class="tweet-media" src="./assets/images/Exsys.png" alt="Exsys enterprise app" />
-            <footer class="tweet-actions">
-              <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
-              <span class="tweet-count" data-like-count data-base="203">203</span>
-            </footer>
-          </li>
+            <!-- 2 · Deal app launch -->
+            <li class="tweet-card" data-reveal data-tweet-id="deal-launch">
+              <header class="tweet-head">
+                <img src="./assets/images/pp.png" alt="Achref avatar" loading="lazy" decoding="async" />
+                <div>
+                  <p class="tweet-name">Achref Ben Yaagoub</p>
+                  <p class="tweet-meta">@achrefby · Jan 2025</p>
+                </div>
+              </header>
+              <div class="tweet-badge">Side Project · Deal App</div>
+              <p class="tweet-text">
+                Shipped <strong>Deal</strong> — a Gen Z fashion marketplace I designed &amp; built from scratch in Flutter.<br /><br />
+                Buy, sell, swap clothes inside one vibrant community. The stack: Flutter + Dart on the client, Supabase for auth/storage/Postgres, and Firebase Firestore for real-time chat between buyers &amp; sellers. Listings are visual-first, so browsing feels more like a social app than a store.
+              </p>
+              <img class="tweet-media" src="./assets/images/deal.png" alt="Deal app screenshots" loading="lazy" decoding="async" />
+              <footer class="tweet-actions">
+                <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
+                <span class="tweet-count" data-like-count data-base="318">318</span>
+              </footer>
+            </li>
 
-          <!-- 6 · GOMYCODE internship -->
-          <li class="tweet-card" data-reveal data-tweet-id="gomycode">
-            <header class="tweet-head">
-              <img src="./assets/images/pp.png" alt="Achref avatar" />
-              <div>
-                <p class="tweet-name">Achref Ben Yaagoub</p>
-                <p class="tweet-meta">@achrefby · Jan — Mar 2023</p>
-              </div>
-            </header>
-            <div class="tweet-badge">🌱 Internship · GOMYCODE · Tunis Lac 2</div>
-            <p class="tweet-text">
-              Where it all started. My first UX internship at <strong>GOMYCODE</strong> — a proper design school inside a real company.<br /><br />
-              User research, wireframes, Figma prototypes for in-house learning platform features. Three months of learning the design process from discovery to handoff under the mentorship of senior designers. Still the best foundation I could have asked for. 🙏
-            </p>
-            <img class="tweet-media" src="./assets/images/club3.JPG" alt="GOMYCODE internship" />
-            <footer class="tweet-actions">
-              <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
-              <span class="tweet-count" data-like-count data-base="156">156</span>
-            </footer>
-          </li>
+            <!-- 3 · Postuly Tn -->
+            <li class="tweet-card" data-reveal data-tweet-id="postuly-launch">
+              <header class="tweet-head">
+                <img src="./assets/images/pp.png" alt="Achref avatar" loading="lazy" decoding="async" />
+                <div>
+                  <p class="tweet-name">Achref Ben Yaagoub</p>
+                  <p class="tweet-meta">@achrefby · Feb 2025</p>
+                </div>
+              </header>
+              <div class="tweet-badge">Product · Postuly Tn</div>
+              <p class="tweet-text">
+                Proud to share <strong>Postuly Tn</strong> — a career platform built for Tunisian students and recent graduates. PFE topics, reference books, internships, and first jobs all in one place instead of scattered across Facebook groups and notice boards.<br /><br />
+                Stack: Flutter · Dart · Supabase · REST APIs. Candidates apply in a few taps from a structured profile. Recruiters get consistent applications. Graduates get notified the moment something relevant goes live.
+              </p>
+              <img class="tweet-media" src="./assets/images/postuly1.jpeg" alt="Postuly Tn platform" loading="lazy" decoding="async" />
+              <footer class="tweet-actions">
+                <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
+                <span class="tweet-count" data-like-count data-base="274">274</span>
+              </footer>
+            </li>
 
-          <!-- 7 · EPI / Engineering degree -->
-          <li class="tweet-card" data-reveal data-tweet-id="epi-degree">
-            <header class="tweet-head">
-              <img src="./assets/images/pp.png" alt="Achref avatar" />
-              <div>
-                <p class="tweet-name">Achref Ben Yaagoub</p>
-                <p class="tweet-meta">@achrefby · 2023 — 2026</p>
-              </div>
-            </header>
-            <div class="tweet-badge">🎓 EPI Digital School · Sousse</div>
-            <p class="tweet-text">
-              Mid-way through my <strong>Software Engineering Degree</strong> at EPI Digital School — juggling full-time remote work, real product launches, and a master's at the same time.<br /><br />
-              One of those situations where the classroom and the real world push each other forward. Every project I ship feeds back into what I study. Every lecture I attend changes how I build.
-            </p>
-            <img class="tweet-media" src="./assets/images/club4.jpg" alt="EPI university life" />
-            <footer class="tweet-actions">
-              <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
-              <span class="tweet-count" data-like-count data-base="241">241</span>
-            </footer>
-          </li>
+            <!-- 4 · Quetratech contract -->
+            <li class="tweet-card" data-reveal data-tweet-id="quetratech">
+              <header class="tweet-head">
+                <img src="./assets/images/pp.png" alt="Achref avatar" loading="lazy" decoding="async" />
+                <div>
+                  <p class="tweet-name">Achref Ben Yaagoub</p>
+                  <p class="tweet-meta">@achrefby · Jul — Nov 2024</p>
+                </div>
+              </header>
+              <div class="tweet-badge">Contract · Quetratech · Mahdia, Tunisia</div>
+              <p class="tweet-text">
+                Wrapped up a great contract with <strong>Quetratech</strong> as UI/UX Designer & Mobile Developer.<br /><br />
+                Architected responsive Flutter apps with MVC + GetX for reactive state, integrated RESTful APIs via Swagger with secure auth flows, and delivered pixel-true Figma-to-code translations. Working with an established design system taught me just how much precision matters in handoff.
+              </p>
+              <img class="tweet-media" src="./assets/images/club2.jpg" alt="Quetratech work period" loading="lazy" decoding="async" />
+              <footer class="tweet-actions">
+                <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
+                <span class="tweet-count" data-like-count data-base="187">187</span>
+              </footer>
+            </li>
 
-          <!-- 8 · Dubai Offshore / Digivolution -->
-          <li class="tweet-card" data-reveal data-tweet-id="web-projects">
-            <header class="tweet-head">
-              <img src="./assets/images/pp.png" alt="Achref avatar" />
-              <div>
-                <p class="tweet-name">Achref Ben Yaagoub</p>
-                <p class="tweet-meta">@achrefby · 2024</p>
-              </div>
-            </header>
-            <div class="tweet-badge">🌍 Web Work · Dubai & France</div>
-            <p class="tweet-text">
-              Two web projects I'm really proud of this year:<br /><br />
-              <strong>Dubai Offshore</strong> — a premium corporate site for a Dubai-based offshore consultancy. Next.js + Tailwind, deployed on Vercel. Clean, fast, trustworthy. 🏙️<br /><br />
-              <strong>Digivolution</strong> — a full marketing site for a digital agency in France. Wireframes in Figma, then hand-coded with GSAP animations. Strong typography, real motion. 🎬
-            </p>
-            <img class="tweet-media" src="./assets/images/club5.png" alt="Web projects 2024" />
-            <footer class="tweet-actions">
-              <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
-              <span class="tweet-count" data-like-count data-base="295">295</span>
-            </footer>
-          </li>
+            <!-- 5 · Insight Plus / Exsys -->
+            <li class="tweet-card" data-reveal data-tweet-id="insight-plus">
+              <header class="tweet-head">
+                <img src="./assets/images/pp.png" alt="Achref avatar" loading="lazy" decoding="async" />
+                <div>
+                  <p class="tweet-name">Achref Ben Yaagoub</p>
+                  <p class="tweet-meta">@achrefby · Sep 2023 — Apr 2024</p>
+                </div>
+              </header>
+              <div class="tweet-badge">Hybrid · Insight Plus · Ariana, Tunisia</div>
+              <p class="tweet-text">
+                7 months at <strong>Insight Plus</strong> as UI/UX Developer — one of the most formative stretches of my career so far.<br /><br />
+                I architected Flutter apps with MVVM + Provider, led the full UI/UX lifecycle for an enterprise ERP and its companion mobile app <em>(Exsys)</em>, and mapped edge cases to make sure every flow felt seamless — even the ones users never expect to hit.
+              </p>
+              <img class="tweet-media" src="./assets/images/Exsys.png" alt="Exsys enterprise app" loading="lazy" decoding="async" />
+              <footer class="tweet-actions">
+                <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
+                <span class="tweet-count" data-like-count data-base="203">203</span>
+              </footer>
+            </li>
 
-        </ul>
-      </section>
-    </main>
-  </div>
+            <!-- 6 · GOMYCODE internship -->
+            <li class="tweet-card" data-reveal data-tweet-id="gomycode">
+              <header class="tweet-head">
+                <img src="./assets/images/pp.png" alt="Achref avatar" loading="lazy" decoding="async" />
+                <div>
+                  <p class="tweet-name">Achref Ben Yaagoub</p>
+                  <p class="tweet-meta">@achrefby · Jan — Mar 2023</p>
+                </div>
+              </header>
+              <div class="tweet-badge">Internship · GOMYCODE · Tunis Lac 2</div>
+              <p class="tweet-text">
+                Where it all started. My first UX internship at <strong>GOMYCODE</strong> — a proper design school inside a real company.<br /><br />
+                User research, wireframes, Figma prototypes for in-house learning platform features. Three months of learning the design process from discovery to handoff under the mentorship of senior designers. Still the best foundation I could have asked for.
+              </p>
+              <img class="tweet-media" src="./assets/images/club3.JPG" alt="GOMYCODE internship" loading="lazy" decoding="async" />
+              <footer class="tweet-actions">
+                <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
+                <span class="tweet-count" data-like-count data-base="156">156</span>
+              </footer>
+            </li>
 
-  <script src="./assets/js/script.js"></script>
-</body>
+            <!-- 7 · EPI / Engineering degree -->
+            <li class="tweet-card" data-reveal data-tweet-id="epi-degree">
+              <header class="tweet-head">
+                <img src="./assets/images/pp.png" alt="Achref avatar" loading="lazy" decoding="async" />
+                <div>
+                  <p class="tweet-name">Achref Ben Yaagoub</p>
+                  <p class="tweet-meta">@achrefby · 2023 — 2026</p>
+                </div>
+              </header>
+              <div class="tweet-badge">EPI Digital School · Sousse</div>
+              <p class="tweet-text">
+                Three years into my <strong>Software Engineering Degree</strong> at EPI Digital School — juggling full-time remote work, real product launches, and a master's at the same time.<br /><br />
+                One of those situations where the classroom and the real world push each other forward. Every project I ship feeds back into what I study. Every lecture I attend changes how I build.
+              </p>
+              <img class="tweet-media" src="./assets/images/club4.jpg" alt="EPI university life" loading="lazy" decoding="async" />
+              <footer class="tweet-actions">
+                <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
+                <span class="tweet-count" data-like-count data-base="241">241</span>
+              </footer>
+            </li>
+
+            <!-- 8 · Dubai Offshore / Digivolution -->
+            <li class="tweet-card" data-reveal data-tweet-id="web-projects">
+              <header class="tweet-head">
+                <img src="./assets/images/pp.png" alt="Achref avatar" loading="lazy" decoding="async" />
+                <div>
+                  <p class="tweet-name">Achref Ben Yaagoub</p>
+                  <p class="tweet-meta">@achrefby · 2024</p>
+                </div>
+              </header>
+              <div class="tweet-badge">Web Work · Dubai & France</div>
+              <p class="tweet-text">
+                Two web projects I'm really proud of this year:<br /><br />
+                <strong>Dubai Offshore</strong> — a premium corporate site for a Dubai-based offshore consultancy. Next.js + Tailwind, deployed on Vercel. Clean, fast, trustworthy.<br /><br />
+                <strong>Digivolution</strong> — a full marketing site for a digital agency in France. Wireframes in Figma, then hand-coded with GSAP animations. Strong typography, real motion.
+              </p>
+              <img class="tweet-media" src="./assets/images/club5.png" alt="Web projects 2024" loading="lazy" decoding="async" />
+              <footer class="tweet-actions">
+                <button class="tweet-like" type="button" data-like-btn aria-pressed="false">Like</button>
+                <span class="tweet-count" data-like-count data-base="295">295</span>
+              </footer>
+            </li>
+
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  </body>
 </html>

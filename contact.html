@@ -4,31 +4,52 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact | Achref Ben Yaagoub</title>
-  <meta name="description" content="Get in touch with Achref Ben Yaagoub — software engineer & UX/UI designer." />
+  <meta name="description" content="Get in touch with Achref Ben Yaagoub — software engineer &amp; UX/UI designer." />
 
-  <link rel="icon" href="./assets/images/logo.png" />
+  <!-- social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Achref Ben Yaagoub" />
+  <meta property="og:title" content="Contact — Achref Ben Yaagoub" />
+  <meta property="og:description" content="Get in touch with Achref Ben Yaagoub — software engineer &amp; UX/UI designer." />
+  <meta property="og:url" content="https://achref-dev.vercel.app/contact.html" />
+  <meta property="og:image" content="https://achref-dev.vercel.app/assets/images/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact — Achref Ben Yaagoub" />
+  <meta name="twitter:description" content="Get in touch with Achref Ben Yaagoub — software engineer &amp; UX/UI designer." />
+  <meta name="twitter:image" content="https://achref-dev.vercel.app/assets/images/og-card.png" />
+  <link rel="canonical" href="https://achref-dev.vercel.app/contact.html" />
+
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml" />
+  <link rel="icon" href="./assets/images/logo.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="./assets/images/logo.ico" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&family=Lexend:wght@200;300;400;500;600&family=Kode+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/theme.css" />
 </head>
 
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <div class="app">
 
     <aside class="rail">
       <a href="./index.html" class="rail__brand" aria-label="Home">
         <span class="brand-monogram">ABY</span>
-        <span class="brand-role">Engineer / Designer</span>
+        <span class="brand-role">1/2 Engineer / 1/2 Designer</span>
       </a>
 
       <nav class="rail__nav" aria-label="Primary">
         <ul class="rail__list">
           <li><a class="rail__link" href="./index.html">Home</a></li>
-          <li><a class="rail__link" href="./work.html">Work</a></li>
+          <li><a class="rail__link" href="./design.html">Design</a></li>
+          <li><a class="rail__link" href="./work.html">Engineering</a></li>
           <li><a class="rail__link" href="./about.html">About</a></li>
           <li><a class="rail__link" href="./tweets.html">Tweets</a></li>
           <li><a class="rail__link" href="./contact.html" aria-current="page">Contact</a></li>
@@ -40,7 +61,7 @@
           <a href="https://github.com/Achref200" aria-label="GitHub" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2.1.1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
           </a>
-          <a href="https://www.linkedin.com/in/achref-ben-yaagoub-77b6b1229/" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <a href="https://www.linkedin.com/in/achref-b-77b6b1229/" aria-label="LinkedIn" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.49 6 1.12 6 0 4.88 0 3.5 0 2.12 1.12 1 2.49 1c1.37 0 2.49 1.12 2.49 2.5zM.22 8.25h4.55V24H.22V8.25zm7.34 0h4.36v2.17h.06c.6-1.1 2.06-2.25 4.24-2.25 4.54 0 5.38 2.99 5.38 6.87V24h-4.55v-7.5c0-1.79-.03-4.09-2.5-4.09-2.5 0-2.88 1.95-2.88 3.96V24H7.56V8.25z"/></svg>
           </a>
           <a href="https://www.behance.net/achrefbenyaa" aria-label="Behance" target="_blank" rel="noopener">
@@ -55,7 +76,7 @@
       </div>
     </aside>
 
-    <main class="page">
+    <main class="page" id="main" tabindex="-1">
 
       <section class="container contact-hero">
         <p class="eyebrow" data-reveal>Contact</p>
@@ -65,7 +86,8 @@
         </h1>
 
         <div class="mail-row" data-reveal>
-          <a href="mailto:contact.achrefbenyaagoub@gmail.com">contact.achrefbenyaagoub@gmail.com</a>
+          <a href="mailto:contact.achrefbenyaagoub@gmail.com"><!-- wbr lets the address break at the @ rather than mid-word; the
+               href and the copy-to-clipboard value are untouched -->contact.achrefbenyaagoub<wbr />@gmail.com</a>
           <button class="copy" data-copy="contact.achrefbenyaagoub@gmail.com">Copy</button>
         </div>
 
@@ -77,6 +99,10 @@
           <a class="btn btn--ghost" href="mailto:contact.achrefbenyaagoub@gmail.com">
             Send an email
             <span class="btn__arrow">→</span>
+          </a>
+          <a class="btn btn--ghost btn--cv" href="./assets/files/Achref_BenYaagoub_CV.pdf" download>
+            Download CV
+            <span class="btn__arrow">↓</span>
           </a>
         </div>
       </section>
@@ -154,7 +180,7 @@
             <article class="info-card">
               <span class="k">Elsewhere</span>
               <span class="v">
-                <a href="https://www.linkedin.com/in/achref-ben-yaagoub-77b6b1229/" target="_blank" rel="noopener">LinkedIn</a> ·
+                <a href="https://www.linkedin.com/in/achref-b-77b6b1229/" target="_blank" rel="noopener">LinkedIn</a> ·
                 <a href="https://www.behance.net/achrefbenyaa" target="_blank" rel="noopener">Behance</a> ·
                 <a href="https://github.com/Achref200" target="_blank" rel="noopener">GitHub</a>
               </span>
@@ -175,5 +201,6 @@
   </div>
 
   <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/theme.js"></script>
 </body>
 </html>

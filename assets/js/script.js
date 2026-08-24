@@ -27,10 +27,32 @@
       localStorage.setItem('theme', next);
     });
   }
+  // ---------------- motion preference ----------------
+  // read once, honoured everywhere below. the CSS has its own
+  // prefers-reduced-motion block; this is the JS half, and it matters
+  // more — a requestAnimationFrame loop cannot be stopped by a
+  // stylesheet.
+  const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let reduceMotion = reduceMotionQuery.matches;
+
+  // if someone flips the OS setting mid-visit, reload the behaviour
+  // rather than leaving a rAF loop running that they just asked to stop.
+  const onMotionPrefChange = (e) => {
+    reduceMotion = e.matches;
+    if (reduceMotion) {
+      document.querySelectorAll('.cursor-dot, .cursor-ring').forEach((n) => n.remove());
+      document.querySelectorAll('[data-parallax]').forEach((n) => { n.style.transform = ''; });
+    }
+  };
+  if (typeof reduceMotionQuery.addEventListener === 'function') {
+    reduceMotionQuery.addEventListener('change', onMotionPrefChange);
+  }
 
   // ---------------- cursor ----------------
-  // only spin this up on devices with a real pointer
-  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  // only spin this up on devices with a real pointer — and never when
+  // reduced motion is on: the ring is a continuous easing loop chasing
+  // the pointer, which is exactly what that preference is asking to stop.
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion;
 
   if (fine) {
     const dot  = document.createElement('div');
@@ -78,7 +100,10 @@
 
   // ---------------- reveal on scroll ----------------
   const revealEls = $$('[data-reveal]');
-  if ('IntersectionObserver' in window && revealEls.length) {
+  // under reduced motion the elements are pinned visible by CSS, so
+  // skip the observer entirely rather than animating to a state they
+  // are already in.
+  if ('IntersectionObserver' in window && revealEls.length && !reduceMotion) {
     // stagger children that share a parent
     revealEls.forEach((el, i) => {
       if (!el.style.getPropertyValue('--delay')) {
@@ -102,7 +127,9 @@
 
   // ---------------- parallax on scroll ----------------
   const parallaxEls = $$('[data-parallax]');
-  if (parallaxEls.length) {
+  // parallax is pure decoration tied to scroll position — the single
+  // most common trigger for motion sickness on a portfolio site.
+  if (parallaxEls.length && !reduceMotion) {
     let ticking = false;
     const update = () => {
       const vh = window.innerHeight;
@@ -141,14 +168,17 @@
     setInterval(tick, 30 * 1000);
   }
 
-  // ---------------- project filters (work page) ----------------
+  // ---------------- project filters (work / design pages) ----------------
+  // NOTE: the archive has its own independent year+type filters further
+  // down. these page-level filters deliberately skip archive items so
+  // the two systems never fight over the same `hidden` attribute.
   const filters = $$('[data-filter]');
-  const projects = $$('[data-project]');
+  const projects = $$('[data-project]').filter((el) => !el.hasAttribute('data-arc-item'));
+
   if (filters.length && projects.length) {
-    // hide a whole section (and its heading) when the filter empties it
-    const sections = $$('.gallery, .archive__list').map((list) => ({
+    // hide a whole section (and its heading) when a filter empties it
+    const sections = $$('.gallery, .showcase').map((list) => ({
       list,
-      // the archive heading lives in the parent section, not the list
       section: list.closest('section')
     }));
 
@@ -163,9 +193,9 @@
     filters.forEach((btn) => {
       btn.addEventListener('click', () => {
         const cat = btn.dataset.filter;
-        filters.forEach((b) => b.setAttribute('aria-pressed', b === btn));
+        filters.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
         projects.forEach((p) => {
-          const match = cat === 'all' || p.dataset.category.includes(cat);
+          const match = cat === 'all' || (p.dataset.category || '').includes(cat);
           p.hidden = !match;
         });
         syncSections();
@@ -173,6 +203,103 @@
     });
   }
 
+  // ---------------- archive: year + type filtering ----------------
+  // two independent axes, ANDed together. a year group whose items all
+  // fall away collapses entirely — marker, heading and all — so the
+  // timeline never shows a dangling year with nothing under it.
+  const arcControls = $('[data-arc-controls]');
+  if (arcControls) {
+    const yearBtns = $$('[data-arc-year]', arcControls);
+    const typeBtns = $$('[data-arc-type]', arcControls);
+    const groups   = $$('[data-arc-group]');
+    const items    = $$('[data-arc-item]');
+    const statusEl = $('[data-arc-status]');
+    const emptyEl  = $('[data-arc-empty]');
+
+    let activeYear = 'all';
+    let activeType = 'all';
+
+    // an item matches a type if its space-separated data-type list
+    // contains the token. Planet Food is tagged "web-dev web-design"
+    // because it genuinely was both — the classification should not
+    // force a single bucket where the work did not have one.
+    const typeTokens = (el) => (el.dataset.type || '').split(/\s+/).filter(Boolean);
+
+    const matches = (el) =>
+      (activeYear === 'all' || el.dataset.year === activeYear) &&
+      (activeType === 'all' || typeTokens(el).includes(activeType));
+
+    const pressGroup = (btns, active, attr) => {
+      btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset[attr] === active)));
+    };
+
+    const apply = () => {
+      let shown = 0;
+
+      items.forEach((el) => {
+        const ok = matches(el);
+        el.hidden = !ok;
+        if (ok) shown += 1;
+      });
+
+      // collapse empty year groups, and keep each group's own count honest
+      groups.forEach((g) => {
+        const own = $$('[data-arc-item]', g);
+        const live = own.filter((el) => !el.hidden).length;
+        g.hidden = live === 0;
+        const countEl = $('[data-arc-count]', g);
+        if (countEl) countEl.textContent = live === 1 ? '1 project' : live + ' projects';
+      });
+
+      if (emptyEl) emptyEl.hidden = shown !== 0;
+
+      if (statusEl) {
+        statusEl.textContent = shown === 0
+          ? 'No matches'
+          : (shown === 1 ? '1 project' : shown + ' projects');
+      }
+
+      // disable a filter that could only ever return nothing, rather
+      // than hiding it — the category still exists, it is just empty
+      // under the current selection on the other axis.
+      typeBtns.forEach((b) => {
+        const t = b.dataset.arcType;
+        if (t === 'all') return;
+        const possible = items.some((el) =>
+          typeTokens(el).includes(t) &&
+          (activeYear === 'all' || el.dataset.year === activeYear)
+        );
+        b.disabled = !possible;
+      });
+      yearBtns.forEach((b) => {
+        const y = b.dataset.arcYear;
+        if (y === 'all') return;
+        const possible = items.some((el) =>
+          el.dataset.year === y &&
+          (activeType === 'all' || typeTokens(el).includes(activeType))
+        );
+        b.disabled = !possible;
+      });
+    };
+
+    yearBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeYear = btn.dataset.arcYear;
+        pressGroup(yearBtns, activeYear, 'arcYear');
+        apply();
+      });
+    });
+
+    typeBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeType = btn.dataset.arcType;
+        pressGroup(typeBtns, activeType, 'arcType');
+        apply();
+      });
+    });
+
+    apply();
+  }
   // ---------------- copy mail ----------------
   const copyBtn = $('[data-copy]');
   if (copyBtn) {
@@ -287,11 +414,10 @@
           `?subject=${encodeURIComponent(f.topic)}` +
           `&body=${encodeURIComponent(body)}`;
         window.location.href = mailto;
-        setStatus(
-          'Web3Forms key not set yet — opened your mail app instead. ' +
-          'Add an access key in contact.html to send straight to the inbox.',
-          'err'
-        );
+        // visitor-facing copy only — the setup note goes to the console so
+        // it reaches the developer without leaking config details on the page.
+        setStatus('Opened your mail app with the message ready — just hit send.', 'ok');
+        console.info('[contact] Web3Forms access key not set; using mailto fallback. Set it on the access_key input in contact.html.');
         return;
       }
 
@@ -335,37 +461,50 @@
   const PROJECTS = {
     'nesty': {
       title: 'Nesty',
-      tagline: 'A two-sided rental marketplace for Tunisia — verified seekers, 3D tours, one honest calendar.',
-      category: 'Web Platform · Real estate',
+      tagline: 'A multi-surface rental platform — seeker apps, an agency workspace, and an internal admin console.',
+      category: 'Web & Mobile Platform · Real estate',
       year: '2026',
-      role: 'Product Designer & Front-end Engineer',
-      stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'i18n (EN/FR)', 'Vercel'],
+      role: 'Product Designer & Full-stack Engineer',
+      stack: ['Next.js', 'React', 'TypeScript', 'Flutter', 'Tailwind CSS', 'Postgres', 'Role-based access', 'i18n (EN/FR)'],
       description: [
-        'Nesty is a two-sided rental platform for the Tunisian market. Seekers browse verified homes; hosts and agencies list their places, show them in 3D, and manage nightly, monthly, and long leases from a single calendar.',
-        'The product is built around three promises that drive the entire interface: verified demand, so hosts meet pre-vetted seekers instead of tyre-kickers; 3D tours that let people fall for a space before they visit; and one honest calendar that makes double bookings structurally impossible.',
-        'The front-end splits cleanly into a seeker path and a host path from the first screen, with a dedicated agency login for professional listers. It ships bilingual EN/FR, supports light and dark themes, and includes an in-product assistant ("Ask Nesty") for guiding users through listing and booking.'
+        'Nesty is not a landing page — it is a full rental platform for the Tunisian market, built as four connected surfaces on one shared data model: a public marketplace, a native mobile app for seekers, an agency workspace for professional listers, and an internal admin console that governs the whole marketplace.',
+        'Mobile app (seekers & hosts). The Flutter app is where the marketplace actually lives day to day. Seekers search with map and filter views, walk properties through immersive 3D tours, save shortlists, and message hosts in real time; push notifications fire the moment a matching listing goes live or a booking status changes. Hosts get a pocket version of their dashboard — approve or decline requests, update availability, and answer enquiries without opening a laptop.',
+        'Agency workspace. Agencies are a different user class from individual hosts, so they get their own authenticated space behind a dedicated agency login. It handles multi-property portfolio management, bulk listing creation and media upload, team seats with per-member permissions, lead routing from the shared enquiry inbox, and a performance view showing views, enquiry-to-booking conversion, and occupancy across the portfolio. The unified calendar is the backbone: nightly, monthly, and long-term leases all reconcile in one place, which is what makes double bookings structurally impossible rather than merely discouraged.',
+        'Admin control panel. Behind both sits an internal console I designed and built for the operations side — listing moderation and verification queues, host and agency KYC approval, user and role management, dispute and report handling, commission and payout configuration, and platform-wide metrics. Role-based access control separates seeker, host, agency, and admin permissions at the data layer, so what each account can see and do is enforced server-side, not just hidden in the UI.',
+        'Everything ships bilingual EN/FR with light and dark themes, plus an in-product assistant ("Ask Nesty") that guides users through listing and booking. The design challenge was keeping four very different audiences — a renter on a phone, an agency managing sixty units, and an operator moderating the marketplace — inside one coherent design system.'
       ],
       external: { label: 'Live site', href: 'https://nesty-tn.vercel.app/' },
       cover: './assets/images/nesty.png',
       browser: true,
+      surfaces: [
+        { src: './assets/images/nesty_agency.png', kind: 'browser', title: 'Agency workspace', caption: 'Portfolio dashboard — occupancy, enquiry-to-booking conversion, and the unified calendar that reconciles nightly, monthly, and long leases.' },
+        { src: './assets/images/nesty_admin.png',  kind: 'browser', title: 'Admin control panel', caption: 'Internal console — listing verification queue, KYC approvals, disputes, payouts, and the role-based access matrix enforced at the data layer.' },
+        { src: './assets/images/nesty_mobile.png', kind: 'plain',   title: 'Mobile app · seekers & hosts', caption: 'Search and filter, immersive 3D tours, and a pocket host dashboard for approving booking requests on the go.' }
+      ],
       gallery: []
     },
 
     'voyagi': {
       title: 'Voyagi',
-      tagline: 'B2B SaaS that gives travel agencies their catalogue, booking engine, and commission tracking.',
+      tagline: 'A white-label booking platform for travel agencies — agency back-office, seller app, and super-admin console.',
       category: 'B2B SaaS · Travel tech',
       year: '2026',
-      role: 'Product Designer & Front-end Engineer',
-      stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vercel'],
+      role: 'Product Designer & Full-stack Engineer',
+      stack: ['Next.js', 'React', 'TypeScript', 'Flutter', 'Tailwind CSS', 'Postgres', 'Multi-tenant', 'RBAC'],
       description: [
-        'Voyagi is a white-label software platform for travel agencies: everything an agency sells — excursions, hotels, transfers, packages — consolidated into one catalogue with a booking engine attached and commission tracking across collaborators.',
-        'The core positioning is ownership: clients book under the agency\'s own name, not the platform\'s. That single promise shaped the whole go-to-market page, from the rotating value proposition in the hero to the commissions and multi-workspace sections that follow.',
-        'I designed and built the marketing site that sells it — a demo-request funnel aimed at agency owners, with the pricing/commission model, per-role workspaces, client proof, and FAQ each answering a specific objection in the buying process. Shipped in French for the target market, fully responsive, with motion used to pace the narrative rather than decorate it.'
+        'Voyagi is a multi-tenant SaaS product, not a marketing page. Every travel agency that signs up gets its own isolated workspace — its catalogue, its branding, its sellers, its commission rules — while the whole thing runs on one codebase. The promise that shapes the architecture: clients book under the agency\'s own name, not the platform\'s.',
+        'Agency back-office. This is the core product. Agencies build and price their catalogue — excursions, hotels, transfers, packages — with availability rules, seasonal pricing, and capacity limits. From there they run the business: a booking engine that turns the catalogue into sellable inventory, a reservations pipeline from enquiry through confirmation to payment status, customer records, invoices and vouchers, and a dashboard covering revenue, occupancy, and top-selling products. Team seats let an owner add staff with scoped permissions, so a counter agent sees bookings but not margins.',
+        'Commission engine & seller app. The differentiator is how agencies pay the people who sell for them. Voyagi tracks commissions per collaborator with configurable rates by product, seller, or tier, then reconciles what is owed each period. Sellers and partner resellers work from a mobile app: browse the live catalogue, quote a client on the spot, create a booking, and watch their own commission accrue in real time — which is what turns a scattered network of freelance sellers into a measurable distribution channel.',
+        'Super-admin console. Above the tenants sits the platform console I built for operating the business — agency onboarding and provisioning, subscription and plan management, feature flags per tenant, global product and category taxonomy, support impersonation for debugging a specific agency\'s workspace, and cross-tenant analytics. Multi-tenancy is enforced at the data layer with row-level isolation, so one agency can never read another\'s catalogue, customers, or margins.',
+        'I also designed and built the go-to-market site that sells it — a demo-request funnel aimed at agency owners, where the commission model, per-role workspaces, client proof, and FAQ each answer a specific objection in the buying process. Shipped in French for the target market.'
       ],
       external: { label: 'Live site', href: 'https://voyagi-landing.vercel.app/' },
       cover: './assets/images/voyagi.png',
       browser: true,
+      surfaces: [
+        { src: './assets/images/voyagi_admin.png',  kind: 'browser', title: 'Agency back-office', caption: 'Per-tenant workspace — catalogue, reservations, revenue dashboards, and commissions reconciled per collaborator each period.' },
+        { src: './assets/images/voyagi_mobile.png', kind: 'plain',   title: 'Mobile seller app', caption: 'Sellers browse the live catalogue, quote a client on the spot, and watch their own commission accrue in real time.' }
+      ],
       gallery: []
     },
 
@@ -503,13 +642,15 @@
 
     'i-filter': {
       title: 'I Filter',
-      tagline: 'A mobile app for visual content filtering.',
+      tagline: 'A water-filtration app designed in French, built on one repeating card component.',
       category: 'Mobile UI/UX Design',
       year: '2024',
       role: 'Product Designer',
-      stack: ['Figma', 'Auto Layout', 'Prototyping'],
+      stack: ['Figma', 'Auto-layout', 'Component variants', 'Prototyping', 'Localised UI'],
       description: [
-        'I Filter is a mobile app concept exploring how users can browse, filter, and curate visual content with as little friction as possible. The design system stays minimal so the imagery does the talking.'
+        'I Filter is a mobile product designed end to end in French for a Tunisian audience — which is a design constraint, not a translation step. French labels run roughly 20% longer than their English equivalents, so every component was built with auto-layout and tested at the longest string rather than the prettiest one.',
+        'The most interesting problem was the legal content. Privacy policy and terms are where most apps dump a wall of text and lose the user; here it is split into a three-step progress pattern with an explicit Next affordance, so consent becomes a short guided flow instead of an endless scroll with a checkbox at the bottom.',
+        'The UI system is intentionally soft — rounded fields with subtle inner shadow, a single blue accent, and spot illustration used to carry warmth so the copy does not have to. The profile screen is assembled entirely from one settings-row variant repeated with different icons, which is what keeps the file small enough to hand off cleanly.'
       ],
       external: { label: 'Behance', href: 'https://www.behance.net/gallery/210962863/I-FIlter-Mobile-App' },
       cover: './assets/images/design-5.png',
@@ -518,13 +659,16 @@
 
     'feelart': {
       title: 'FeelArt',
-      tagline: 'A mobile experience for discovering art.',
+      tagline: 'A discovery app for artistic careers — branching onboarding for two very different users.',
       category: 'Mobile UI/UX Design',
       year: '2023',
       role: 'Product Designer',
-      stack: ['Figma', 'Adobe XD'],
+      stack: ['Figma', 'Adobe XD', 'Onboarding UX', 'Maps UI', 'Brand direction'],
       description: [
-        'FeelArt is a mobile app design for art lovers — browse pieces, follow artists, and curate personal collections inside a calm, gallery-like interface.'
+        'FeelArt helps people build an artistic career — find clubs, venues, and events, and connect with the people running them. The tagline "create your artistic career" is the promise the interface has to keep, which meant treating it as a career tool wearing a culture app\'s clothes.',
+        'The defining UX decision is the fork at the very start. FeelArt serves two opposite users — someone presiding over a club and someone who owns a venue — so onboarding asks directly instead of guessing, then routes each into a different home. Getting that question wrong would have meant one audience navigating an app built for the other.',
+        'Discovery runs on two complementary modes: a visual feed for browsing by feeling, and a map for browsing by proximity, with venue cards surfacing inline on the map so a decision never costs a full screen transition.',
+        'The violet identity and rounded, generous cards were chosen to keep the app feeling closer to a cultural space than a directory — the imagery supplies the colour, and the UI stays deliberately quiet around it.'
       ],
       external: { label: 'Behance', href: 'https://www.behance.net/gallery/169225771/FeelArt-Ui-Mobile-Design' },
       cover: './assets/images/feelart.png',
@@ -533,28 +677,34 @@
 
     'barbershop-flows': {
       title: 'Barbershop · Flows',
-      tagline: 'Dual-app flows for users and barbers.',
+      tagline: 'Two apps, one system — the client booking flow and the barber dashboard, mapped end to end.',
       category: 'Mobile UI/UX Design',
       year: '2023',
-      role: 'Product Designer',
-      stack: ['Figma', 'User Flows'],
+      role: 'Product Designer (UX)',
+      stack: ['Figma', 'User flows', 'Wireframing', 'Prototyping', 'Design system'],
       description: [
-        'A complete UX exploration of a barbershop booking platform — covering both the client-facing app and the barber-side dashboard, with full flows and edge-case handling.'
+        'A booking platform for barbershops, designed as two connected products: the app a client books with, and the dashboard a barber runs their day from. Same data, opposite intentions — so the UX had to be drawn as one system rather than two apps that happen to share a database.',
+        'I mapped the flows before drawing a single polished screen: onboarding and account creation, password recovery branching into SMS or email, slot selection, confirmation, and in-app chat. The unhappy paths got the same attention as the happy ones — the time-slot grid marks unavailable slots explicitly rather than hiding them, because a client who can see what is taken understands the shop is busy instead of assuming the app is broken.',
+        'Confirmation is deliberately a full review step — date, time, and chosen style shown together with Reset and Apply — since a mis-booked appointment costs a barber a paid slot. The chat exists for exactly the case a form cannot handle: the client who needs to cancel late and would otherwise just not show up.',
+        'Visually the system is one violet accent over white, with a single card component and one button style carried across both apps, so the barber-side dashboard feels like the same product as the client app without ever being confused for it.'
       ],
       external: { label: 'Behance', href: 'https://www.behance.net/gallery/182840181/BarberShop-(-User-Barber-)-Flows-UI-UX-Design' },
-      cover: null,
+      cover: './assets/images/design-1.png',
       gallery: []
     },
 
     'neurosleep': {
       title: 'NeuroSleep',
-      tagline: 'A sleep-tracking app for a calmer mind.',
+      tagline: 'A sleep-analysis app that shows clinical data without making you feel audited.',
       category: 'Mobile UI/UX Design',
       year: '2024',
       role: 'Product Designer',
-      stack: ['Figma'],
+      stack: ['Figma', 'Design system', 'Dark UI', 'Data visualisation', 'Prototyping'],
       description: [
-        'NeuroSleep is a mobile concept for tracking sleep quality, building healthier rituals, and visualising progress without overwhelming the user with metrics.'
+        'NeuroSleep tracks sleep quality through body movement and night voice recording, then reports it back as hypnograms, radar charts, and trend lines. The design problem was tone: the same data can read as a health insight or as a verdict, and a user opening this app at 7am is not in the mood to be judged.',
+        'The whole interface is built on a near-black surface with a single violet accent. That was a deliberate constraint — colour is spent only where it carries meaning, so the charts read instantly and the chrome around them recedes. It also solves the real-world case: this app gets opened in a dark bedroom, and a bright UI would be hostile.',
+        'The system underneath is small on purpose. One card component covers stats, settings rows, and voice records; one chart treatment covers the hypnogram, the movement radar, and values-over-time. Building the design system before the screens is what kept forty-plus states consistent — onboarding, quick stats, reports, subscription, and settings all inherit the same spacing scale and type ramp.',
+        'The conversational onboarding was the other key decision: rather than a form, the app asks a few short questions and builds the profile from the answers, which sets a supportive tone from the very first screen.'
       ],
       external: { label: 'Behance', href: 'https://www.behance.net/achrefbenyaa' },
       cover: './assets/images/Thumbnail.png',
@@ -578,13 +728,16 @@
 
     'serfice': {
       title: 'Serfice',
-      tagline: 'A services marketplace for everyday needs.',
-      category: 'Mobile UI/UX Design',
+      tagline: 'Brand identity and interface designed in the same file — a marketplace for digital services.',
+      category: 'Branding + Mobile UI/UX',
       year: '2023',
-      role: 'Product Designer',
-      stack: ['Figma'],
+      role: 'Brand & Product Designer',
+      stack: ['Figma', 'Logo design', 'Brand identity', 'Iconography', 'UI system'],
       description: [
-        'Serfice is a mobile design for a local services marketplace — connecting users to plumbers, electricians, cleaners, and more through a fast, trust-led interface.'
+        'Serfice connects clients with providers across digital services — design, video, cyber security, cloud, networking, and data. I did the identity and the product together, which is the point of the case: the brand was never handed over as a logo file and then reinterpreted by someone else.',
+        'The mark is built from the wordmark itself — a negative-space cut through the "I" that reads as a service tick — and the tagline "we serve differently" sets the tone the interface then has to keep. The green system carries from the splash straight into the category grid and the favourites list without a single off-palette value.',
+        'The category grid was the core UX decision. Nine service types is too many for a carousel and too few for search-first, so it opens as a scannable icon grid where every tile is its own component variant: one icon slot, one label, one caption. Adding a tenth category costs nothing.',
+        'Serfice is two-sided, so onboarding forks early with a plain question — "are you a user?" or "are you a partner?" — routing two audiences into the correct experience before either has to guess which half of the app belongs to them.'
       ],
       external: { label: 'Behance', href: 'https://www.behance.net/achrefbenyaa' },
       cover: './assets/images/serfice.png',
@@ -608,17 +761,19 @@
 
     'serenov': {
       title: 'Serenov · E-commerce',
-      tagline: 'A responsive e-commerce experience.',
-      category: 'Web design',
+      tagline: 'A renovation-services storefront designed desktop and mobile in parallel, not sequentially.',
+      category: 'Web design · Responsive',
       year: '2023',
-      role: 'Web Designer',
-      stack: ['Figma'],
+      role: 'Web & Product Designer',
+      stack: ['Figma', 'Responsive design', 'Design system', 'E-commerce UX'],
       description: [
-        'Serenov is a responsive e-commerce design with a soft, editorial visual language — product-led, trust-led, and built to work across breakpoints without losing personality.'
+        'Serenov sells interior and exterior renovation work online — quotes, service pages, and a cart, in French. Selling a service is not selling a product: there is no box to photograph, so the entire design leans on before/after imagery and explicit, unglamorous facts.',
+        'Every service card commits to the two things a customer actually decides on: estimated duration and price, stated plainly rather than hidden behind a "request a quote" wall. That single decision shaped the layout — the imagery sells the outcome, the specs remove the risk, and the CTA pair (Validate / Contact us) covers both the ready buyer and the hesitant one.',
+        'Desktop and mobile were designed side by side in the same file rather than one being squeezed down afterwards. The service card is a single component that re-flows: horizontal with the image left on desktop, stacked with the same type ramp on mobile. Because it re-flows instead of being redrawn, the mobile cart and the desktop catalogue never drifted apart.'
       ],
       external: { label: 'Behance', href: 'https://www.behance.net/gallery/176718625/Serenov-Responsive-web-design' },
       cover: './assets/images/design-2.png',
-      gallery: ['./assets/images/design-2.png', './assets/images/design-3.png']
+      gallery: []
     },
 
     'recloth-web': {
@@ -781,6 +936,38 @@
       const frame = coverImg.closest('.project-cover');
       if (frame) frame.classList.toggle('project-cover--browser', !!data.browser);
       coverSection.hidden = false;
+    }
+
+    // platform surfaces — screenshots of the other spaces (agency, admin, mobile)
+    const surfacesEl      = $('[data-project-surfaces]', projectRoot);
+    const surfacesSection = $('[data-project-surfaces-section]', projectRoot);
+    if (surfacesEl && surfacesSection && data.surfaces && data.surfaces.length) {
+      surfacesEl.innerHTML = '';
+      data.surfaces.forEach((s) => {
+        // note: no [data-reveal] here — these are built after the
+        // IntersectionObserver has already picked up the static nodes,
+        // so they'd stay stuck at opacity 0.
+        const fig = document.createElement('figure');
+        fig.className = 'surface';
+
+        const frame = document.createElement('div');
+        // browser-chrome frame for the desktop consoles, plain for phone shots
+        frame.className = s.kind === 'browser' ? 'surface__shot surface__shot--browser' : 'surface__shot';
+
+        const img = document.createElement('img');
+        img.src = s.src;
+        img.alt = `${data.title} — ${s.title}`;
+        img.loading = 'lazy';
+        frame.appendChild(img);
+
+        const cap = document.createElement('figcaption');
+        cap.className = 'surface__cap';
+        cap.innerHTML = `<span class="surface__title">${s.title}</span><span class="surface__text">${s.caption}</span>`;
+
+        fig.append(frame, cap);
+        surfacesEl.appendChild(fig);
+      });
+      surfacesSection.hidden = false;
     }
 
     // description

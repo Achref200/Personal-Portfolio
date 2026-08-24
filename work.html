@@ -3,32 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Work | Achref Ben Yaagoub</title>
-  <meta name="description" content="Selected work — mobile apps, web projects, and UI/UX design by Achref Ben Yaagoub." />
+  <title>Engineering | Achref Ben Yaagoub</title>
+  <meta name="description" content="Engineering portfolio — Flutter mobile apps, Next.js platforms, multi-tenant SaaS and back-office tools built by Achref Ben Yaagoub." />
 
-  <link rel="icon" href="./assets/images/logo.png" />
+  <!-- social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Achref Ben Yaagoub" />
+  <meta property="og:title" content="Engineering — Achref Ben Yaagoub" />
+  <meta property="og:description" content="Engineering portfolio — Flutter mobile apps, Next.js platforms, multi-tenant SaaS and back-office tools built by Achref Ben Yaagoub." />
+  <meta property="og:url" content="https://achref-dev.vercel.app/work.html" />
+  <meta property="og:image" content="https://achref-dev.vercel.app/assets/images/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Engineering — Achref Ben Yaagoub" />
+  <meta name="twitter:description" content="Engineering portfolio — Flutter mobile apps, Next.js platforms, multi-tenant SaaS and back-office tools built by Achref Ben Yaagoub." />
+  <meta name="twitter:image" content="https://achref-dev.vercel.app/assets/images/og-card.png" />
+  <link rel="canonical" href="https://achref-dev.vercel.app/work.html" />
+
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml" />
+  <link rel="icon" href="./assets/images/logo.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="./assets/images/logo.ico" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&family=Lexend:wght@200;300;400;500;600&family=Kode+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/theme.css" />
 </head>
 
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <div class="app">
 
     <aside class="rail">
       <a href="./index.html" class="rail__brand" aria-label="Home">
         <span class="brand-monogram">ABY</span>
-        <span class="brand-role">Engineer / Designer</span>
+        <span class="brand-role">1/2 Engineer / 1/2 Designer</span>
       </a>
 
       <nav class="rail__nav" aria-label="Primary">
         <ul class="rail__list">
           <li><a class="rail__link" href="./index.html">Home</a></li>
-          <li><a class="rail__link" href="./work.html" aria-current="page">Work</a></li>
+          <li><a class="rail__link" href="./design.html">Design</a></li>
+          <li><a class="rail__link" href="./work.html" aria-current="page">Engineering</a></li>
           <li><a class="rail__link" href="./about.html">About</a></li>
           <li><a class="rail__link" href="./tweets.html">Tweets</a></li>
           <li><a class="rail__link" href="./contact.html">Contact</a></li>
@@ -40,7 +61,7 @@
           <a href="https://github.com/Achref200" aria-label="GitHub" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2.1.1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
           </a>
-          <a href="https://www.linkedin.com/in/achref-ben-yaagoub-77b6b1229/" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <a href="https://www.linkedin.com/in/achref-b-77b6b1229/" aria-label="LinkedIn" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.49 6 1.12 6 0 4.88 0 3.5 0 2.12 1.12 1 2.49 1c1.37 0 2.49 1.12 2.49 2.5zM.22 8.25h4.55V24H.22V8.25zm7.34 0h4.36v2.17h.06c.6-1.1 2.06-2.25 4.24-2.25 4.54 0 5.38 2.99 5.38 6.87V24h-4.55v-7.5c0-1.79-.03-4.09-2.5-4.09-2.5 0-2.88 1.95-2.88 3.96V24H7.56V8.25z"/></svg>
           </a>
           <a href="https://www.behance.net/achrefbenyaa" aria-label="Behance" target="_blank" rel="noopener">
@@ -55,240 +76,122 @@
       </div>
     </aside>
 
-    <main class="page">
+    <main class="page" id="main" tabindex="-1">
 
       <!-- hero -->
       <section class="container work-hero">
-        <p class="eyebrow" data-reveal>Work</p>
+        <p class="eyebrow" data-reveal>Engineering</p>
         <h1 data-reveal>
-          Selected <em>projects</em>.
+          Things I <em>built</em>.
         </h1>
 
-        <!-- filters -->
-        <div class="filters" role="group" aria-label="Filter by category">
-          <button class="filter" data-filter="all"            aria-pressed="true">All</button>
-          <button class="filter" data-filter="web-dev"        aria-pressed="false">Web development</button>
-          <button class="filter" data-filter="app"            aria-pressed="false">Mobile apps</button>
-          <button class="filter" data-filter="web-design"     aria-pressed="false">Web design</button>
-          <button class="filter" data-filter="mobile-design"  aria-pressed="false">Mobile UI/UX</button>
-        </div>
+        <p class="lead" style="margin-top: clamp(28px, 4vw, 44px); max-width: 46ch;" data-reveal>
+          Platforms, mobile apps, and back-office tools shipped to production —
+          Flutter, Next.js, and the backends behind them.
+                 </p>
+
       </section>
 
-      <!-- recent / flagship work -->
-      <section class="container" style="padding-top: 0;">
-        <ul class="gallery">
+      <!-- flagship platforms — image led -->
+      <section class="band container joins-above" aria-labelledby="flagship-heading">
+        <div class="band__head">
+          <span class="band__num" data-reveal>01</span>
+          <h2 class="band__title" id="flagship-heading" data-reveal>Selected <em>work</em>.</h2>
+          <span class="archive__note" data-reveal style="margin-left:auto">Personal &amp; freelance · production</span>
+        </div>
 
-          <li class="project" data-project data-category="web-dev web-design">
-            <a href="./project.html?id=nesty">
-              <div class="project__body">
-                <h3 class="project__title">Nesty</h3>
-                <span class="project__cat">Web Platform · Real estate · 2026</span>
-                <span class="project__open">View →</span>
-              </div>
+        <ul class="pjt-list" data-peek-list>
+          <li class="pjt" data-peek="./assets/images/nesty.png" data-reveal>
+            <a class="pjt__link" href="./project.html?id=nesty">
+              <span class="pjt__idx">001</span>
+              <span class="pjt__name">Nesty</span>
+              <span class="pjt__meta">Platform · Web · Mobile · 2026</span>
             </a>
           </li>
-
-          <li class="project" data-project data-category="web-dev web-design">
-            <a href="./project.html?id=voyagi">
-              <div class="project__body">
-                <h3 class="project__title">Voyagi</h3>
-                <span class="project__cat">B2B SaaS · Travel tech · 2026</span>
-                <span class="project__open">View →</span>
-              </div>
+          <li class="pjt" data-peek="./assets/images/voyagi.png" data-reveal>
+            <a class="pjt__link" href="./project.html?id=voyagi">
+              <span class="pjt__idx">002</span>
+              <span class="pjt__name">Voyagi</span>
+              <span class="pjt__meta">B2B SaaS · Multi-tenant · 2026</span>
             </a>
           </li>
-
-          <li class="project" data-project data-category="web-dev">
-            <a href="./project.html?id=marwen-travel">
-              <div class="project__body">
-                <h3 class="project__title">Marwen Travel</h3>
-                <span class="project__cat">Web Development · Live client · 2026</span>
-                <span class="project__open">View →</span>
-              </div>
+          <li class="pjt" data-peek="./assets/images/marwentravel.png" data-reveal>
+            <a class="pjt__link" href="./project.html?id=marwen-travel">
+              <span class="pjt__idx">003</span>
+              <span class="pjt__name">Marwen Travel</span>
+              <span class="pjt__meta">Live client · Booking UX · 2026</span>
             </a>
           </li>
-
-          <li class="project" data-project data-category="web-design web-dev">
-            <a href="./project.html?id=nurone">
-              <div class="project__body">
-                <h3 class="project__title">Nurone · Redesign</h3>
-                <span class="project__cat">Web design · Redesign · 2026</span>
-                <span class="project__open">View →</span>
-              </div>
+          <li class="pjt" data-peek="./assets/images/deal.png" data-reveal>
+            <a class="pjt__link" href="./project.html?id=deal">
+              <span class="pjt__idx">004</span>
+              <span class="pjt__name">Deal</span>
+              <span class="pjt__meta">Flutter · Supabase · 2025</span>
             </a>
           </li>
-
-          <li class="project" data-project data-category="app mobile-design">
-            <a href="./project.html?id=deal">
-              <div class="project__body">
-                <h3 class="project__title">Deal</h3>
-                <span class="project__cat">Mobile Application · Gen Z fashion · 2025</span>
-                <span class="project__open">View →</span>
-              </div>
+          <li class="pjt" data-peek="./assets/images/postuly1.jpeg" data-reveal>
+            <a class="pjt__link" href="./project.html?id=postuly">
+              <span class="pjt__idx">005</span>
+              <span class="pjt__name">Postuly Tn</span>
+              <span class="pjt__meta">Flutter · Career platform · 2025</span>
             </a>
           </li>
-
-          <li class="project" data-project data-category="app mobile-design">
-            <a href="./project.html?id=postuly">
-              <div class="project__body">
-                <h3 class="project__title">Postuly Tn</h3>
-                <span class="project__cat">Career platform · Tunisia · 2025</span>
-                <span class="project__open">View →</span>
-              </div>
+          <li class="pjt" data-peek="./assets/images/nurone.png" data-reveal>
+            <a class="pjt__link" href="./project.html?id=nurone">
+              <span class="pjt__idx">006</span>
+              <span class="pjt__name">Nurone</span>
+              <span class="pjt__meta">Next.js · 3D / WebGL · 2026</span>
             </a>
           </li>
+        </ul>
+      </section>
 
-          <li class="project" data-project data-category="web-dev">
-            <a href="./project.html?id=dubai-offshore">
-              <div class="project__body">
-                <h3 class="project__title">Dubai Offshore</h3>
-                <span class="project__cat">Web Development · 2024</span>
-                <span class="project__open">View →</span>
-              </div>
-            </a>
-          </li>
+      <hr class="sep" />
 
-          <li class="project" data-project data-category="web-dev">
-            <a href="./project.html?id=digivolution">
-              <div class="project__body">
-                <h3 class="project__title">Digivolution Agency</h3>
-                <span class="project__cat">Web Development · 2024</span>
-                <span class="project__open">View →</span>
-              </div>
-            </a>
-          </li>
+      <!-- archive — earlier work, one flat list. four items never
+           justified two filter groups and a per-year tier system. -->
+      <section class="band container" aria-labelledby="archive-heading">
+        <div class="band__head">
+          <span class="band__num" data-reveal>02</span>
+          <h2 class="band__title" id="archive-heading" data-reveal>Archive<em>.</em></h2>
+          <span class="archive__note" data-reveal style="margin-left:auto">Earlier builds &amp; studies</span>
+        </div>
 
-          <li class="project" data-project data-category="app">
-            <a href="./project.html?id=exsys">
-              <div class="project__body">
-                <h3 class="project__title">Exsys</h3>
-                <span class="project__cat">Mobile Application · 2023</span>
-                <span class="project__open">View →</span>
-              </div>
-            </a>
-          </li>
-
-          <li class="project" data-project data-category="app">
+        <ul class="arc-flat">
+          <li class="arc-row" data-reveal>
             <a href="./project.html?id=talent619">
-              <div class="project__body">
-                <h3 class="project__title">Talent619</h3>
-                <span class="project__cat">Mobile Application · 2024</span>
-                <span class="project__open">View →</span>
-              </div>
+              <span class="arc-row__year">2024</span>
+              <span class="arc-row__title">Talent619</span>
+              <span class="arc-row__note">Talent profiles, opportunities and bookings in one Flutter app.</span>
+              <span class="arc-row__meta">Mobile app</span>
             </a>
           </li>
-
+          <li class="arc-row" data-reveal>
+            <a href="./project.html?id=ai-assistant">
+              <span class="arc-row__year">2024</span>
+              <span class="arc-row__title">AI Assistant</span>
+              <span class="arc-row__note">Chat-first mobile UI experiment with streamed responses.</span>
+              <span class="arc-row__meta">Mobile app</span>
+            </a>
+          </li>
+          <li class="arc-row" data-reveal>
+            <a href="./project.html?id=planet-food">
+              <span class="arc-row__year">2023</span>
+              <span class="arc-row__title">Planet Food</span>
+              <span class="arc-row__note">Early UI study — a warmer, less transactional take on food delivery.</span>
+              <span class="arc-row__meta">Angular</span>
+            </a>
+          </li>
+          <li class="arc-row" data-reveal>
+            <a href="./project.html?id=travel-website">
+              <span class="arc-row__year">2023</span>
+              <span class="arc-row__title">Travel Website</span>
+              <span class="arc-row__note">First editorial web build — big imagery, quiet type system.</span>
+              <span class="arc-row__meta">Angular</span>
+            </a>
+          </li>
         </ul>
       </section>
-
-      <!-- archive — earlier work -->
-      <section class="container archive">
-        <div class="section-head">
-          <h2 class="section-title" data-reveal>Archive<em>.</em></h2>
-          <span class="archive__note" data-reveal>Earlier studies &amp; concept work</span>
-        </div>
-
-        <ul class="archive__list">
-
-          <li class="archive__item" data-project data-category="mobile-design">
-            <a href="./project.html?id=i-filter">
-              <span class="archive__title">I Filter</span>
-              <span class="archive__meta">Mobile UI/UX · 2024</span>
-            </a>
-          </li>
-
-          <li class="archive__item" data-project data-category="mobile-design">
-            <a href="./project.html?id=neurosleep">
-              <span class="archive__title">NeuroSleep</span>
-              <span class="archive__meta">Mobile UI/UX · 2024</span>
-            </a>
-          </li>
-
-          <li class="archive__item" data-project data-category="mobile-design">
-            <a href="./project.html?id=mobile-portfolio">
-              <span class="archive__title">Mobile Portfolio</span>
-              <span class="archive__meta">Mobile UI/UX · 2024</span>
-            </a>
-          </li>
-
-          <li class="archive__item" data-project data-category="app">
-            <a href="./project.html?id=ai-assistant">
-              <span class="archive__title">AI Assistant</span>
-              <span class="archive__meta">Mobile Application · 2024</span>
-            </a>
-          </li>
-
-          <li class="archive__item" data-project data-category="mobile-design">
-            <a href="./project.html?id=feelart">
-              <span class="archive__title">FeelArt</span>
-              <span class="archive__meta">Mobile UI/UX · 2023</span>
-            </a>
-          </li>
-
-          <li class="archive__item" data-project data-category="mobile-design">
-            <a href="./project.html?id=barbershop-flows">
-              <span class="archive__title">Barbershop · Flows</span>
-              <span class="archive__meta">Mobile UI/UX · 2023</span>
-            </a>
-          </li>
-
-          <li class="archive__item" data-project data-category="mobile-design">
-            <a href="./project.html?id=recloth">
-              <span class="archive__title">Recloth</span>
-              <span class="archive__meta">Mobile UI/UX · 2023</span>
-            </a>
-          </li>
-
-          <li class="archive__item" data-project data-category="mobile-design">
-            <a href="./project.html?id=serfice">
-              <span class="archive__title">Serfice</span>
-              <span class="archive__meta">Mobile UI/UX · 2023</span>
-            </a>
-          </li>
-
-          <li class="archive__item" data-project data-category="web-design">
-            <a href="./project.html?id=serenov">
-              <span class="archive__title">Serenov · E-commerce</span>
-              <span class="archive__meta">Web design · 2023</span>
-            </a>
-          </li>
-
-          <li class="archive__item" data-project data-category="web-design">
-            <a href="./project.html?id=recloth-web">
-              <span class="archive__title">Recloth · Web</span>
-              <span class="archive__meta">Web design · 2023</span>
-            </a>
-          </li>
-
-          <li class="archive__item" data-project data-category="web-design">
-            <a href="./project.html?id=planet-food-web">
-              <span class="archive__title">Planet Food · Web</span>
-              <span class="archive__meta">Web design · 2023</span>
-            </a>
-          </li>
-
-          <li class="archive__item" data-project data-category="web-design">
-            <a href="./project.html?id=travel-web">
-              <span class="archive__title">Travel · Web</span>
-              <span class="archive__meta">Web design · 2023</span>
-            </a>
-          </li>
-
-          <li class="archive__item" data-project data-category="web-dev">
-            <a href="./project.html?id=planet-food">
-              <span class="archive__title">Planet Food</span>
-              <span class="archive__meta">Web Development · 2023</span>
-            </a>
-          </li>
-
-          <li class="archive__item" data-project data-category="web-dev">
-            <a href="./project.html?id=travel-website">
-              <span class="archive__title">Travel Website</span>
-              <span class="archive__meta">Web Development · 2023</span>
-            </a>
-          </li>
-
-        </ul>
       </section>
 
       <footer class="foot">
@@ -303,5 +206,6 @@
   </div>
 
   <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/theme.js"></script>
 </body>
 </html>
