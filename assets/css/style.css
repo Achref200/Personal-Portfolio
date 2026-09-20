@@ -277,28 +277,40 @@ ul, ol { list-style: none; }
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    gap: var(--s1);
+    /* slightly larger gap so toggle and menu read as two actions,
+       not one blob */
+    gap: 10px;
+    padding-left: 12px;
+    border-left: 1px solid var(--line-soft);
   }
   .rail__socials { display: none; }
-  .theme-toggle { width: 26px; height: 26px; }
-  .theme-toggle svg { width: 13px; height: 13px; }
+  .theme-toggle { width: 38px; height: 38px; }
+  .theme-toggle svg { width: 16px; height: 16px; }
 
+  /* circular bordered menu button — same visual family as the theme
+     toggle, big enough for a thumb (44px hit target) */
   .hamburger {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 4px;
-    padding: 4px;
+    width: 38px;
+    height: 38px;
     cursor: pointer;
-    border: none;
-    background: none;
+    border: 1px solid var(--line);
+    background: var(--surface);
     color: var(--ink);
-    border-radius: 4px;
-    transition: background .2s var(--ease);
+    border-radius: 50%;
+    transition: background .2s var(--ease), border-color .2s var(--ease), transform .15s var(--ease);
+    -webkit-tap-highlight-color: transparent;
   }
-  .hamburger:hover { background: var(--bg-soft); }
+  .hamburger:hover { background: var(--bg-soft); border-color: var(--ink); }
+  .hamburger:active { transform: scale(0.94); }
+  .hamburger:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
   .hamburger span {
     display: block;
-    width: 18px;
+    width: 15px;
     height: 1.5px;
     background: currentColor;
     border-radius: 1px;

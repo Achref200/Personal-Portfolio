@@ -64,7 +64,9 @@
     hamburger.setAttribute('aria-label', 'Open menu');
     hamburger.setAttribute('aria-expanded', 'false');
     hamburger.innerHTML = '<span></span><span></span><span></span>';
-    rail.querySelector('.rail__brand').after(hamburger);
+    // right-hand group with the theme toggle: brand left, actions right —
+    // a centered menu button reads as a logo, not a control.
+    rail.querySelector('.rail__foot').appendChild(hamburger);
 
     // overlay
     overlay = document.createElement('div');
