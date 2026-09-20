@@ -309,12 +309,17 @@ ul, ol { list-style: none; }
   .hamburger.is-open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
 
   main.page { grid-column: 1 / -1; padding-top: 56px; }
+  /* kill the 180px rail column — without this the fixed-width rail
+     cell keeps squeezing every page on phones */
+  .app { grid-template-columns: 1fr; display: block; }
   .container { padding-left: var(--gutter); padding-right: var(--gutter); }
 
   .mobile-nav-overlay {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100vh;
+    /* inset: 0 + overflow hidden — a width:100% overlay lets its own
+       centered content push the document wider than the viewport */
+    inset: 0;
+    overflow: hidden;
     background: var(--bg);
     z-index: 200;
     display: flex;
@@ -335,6 +340,13 @@ ul, ol { list-style: none; }
     flex-direction: column;
     align-items: center;
     gap: var(--s4);
+  }
+  /* the mobile bar sets .rail__list to row — the overlay list must
+     stack vertically regardless */
+  .mobile-nav-overlay .rail__list {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s2);
   }
   .mobile-nav-overlay .rail__link {
     font-size: 24px;
@@ -369,7 +381,7 @@ ul, ol { list-style: none; }
 
 @media (max-width: 768px) {
   .cursor-dot, .cursor-ring { display: none !important; }
-},
+}
 
 .rail__brand {
   display: inline-flex;
@@ -1324,6 +1336,7 @@ a.home-list__value:hover { color: var(--accent); }
   border-radius: 16px;
   background: var(--surface);
   display: flex; flex-direction: column; gap: 6px;
+  min-width: 0;
 }
 .info-card .k {
   font-family: var(--mono); font-size: 11px;
@@ -1331,6 +1344,11 @@ a.home-list__value:hover { color: var(--accent); }
 }
 .info-card .v {
   font-family: var(--serif); font-size: 22px; letter-spacing: -0.015em;
+  /* the raw email is a single 38-char token — wider than the card at
+     phone widths. anywhere (not break-word) lets it split mid-token,
+     which is correct for an address inside a fixed card. */
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
 /* project detail page -------------------------------------------- */

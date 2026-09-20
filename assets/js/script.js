@@ -98,7 +98,7 @@
     if (mt) mt.addEventListener('click', toggle);
 
     // hamburger toggle
-    hamburger.addEventListener('click', () => menuOpen ? closeMenu() : openMenu);
+    hamburger.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
 
     // overlay background click = close
     overlay.addEventListener('click', (e) => {
@@ -291,7 +291,7 @@
     const emptyEl  = $('[data-arc-empty]');
     let activeYear = 'all', activeType = 'all';
 
-    const typeTokens = (el) => (el.dataset.type || '').split(/\\s+/).filter(Boolean);
+    const typeTokens = (el) => (el.dataset.type || '').split(/\s+/).filter(Boolean);
     const matches = (el) =>
       (activeYear === 'all' || el.dataset.year === activeYear) &&
       (activeType === 'all' || typeTokens(el).includes(activeType));
@@ -423,9 +423,9 @@
         e.preventDefault();
         if (!contactForm.reportValidity()) return;
         const f = readFields();
-        const text = `Hi Achref — ${f.name} here.\\n` +
-          (f.email ? `Email: ${f.email}\\n` : '') +
-          `Subject: ${f.topic}\\n\\n${f.message}`;
+        const text = `Hi Achref — ${f.name} here.\n` +
+          (f.email ? `Email: ${f.email}\n` : '') +
+          `Subject: ${f.topic}\n\n${f.message}`;
         window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
         setStatus('Opening WhatsApp — just hit send in the chat.', 'ok');
       });
@@ -435,7 +435,7 @@
       e.preventDefault();
       const f = readFields();
       if (!f.key || f.key === 'REPLACE_WITH_YOUR_WEB3FORMS_KEY') {
-        const body = `Hi Achref,\\n\\n${f.message}\\n\\n— ${f.name}\\n${f.email}`;
+        const body = `Hi Achref,\n\n${f.message}\n\n— ${f.name}\n${f.email}`;
         window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(f.topic)}&body=${encodeURIComponent(body)}`;
         setStatus('Opened your mail app with the message ready — just hit send.', 'ok');
         console.info('[contact] Web3Forms key not set; using mailto fallback.');
