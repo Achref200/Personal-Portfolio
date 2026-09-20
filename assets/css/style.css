@@ -236,6 +236,9 @@ ul, ol { list-style: none; }
     justify-content: space-between;
     padding: 10px var(--gutter);
     gap: var(--s2);
+    background: var(--bg);
+    border-bottom: 1px solid var(--line-soft);
+    z-index: 100;
   }
 
   .rail__brand {
@@ -252,8 +255,11 @@ ul, ol { list-style: none; }
     gap: var(--s3);
     flex: 1;
     overflow-x: auto;
+    overflow-y: hidden;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    padding: 2px 0;
   }
   .rail__nav::-webkit-scrollbar { display: none; }
   .rail__list {
@@ -262,9 +268,15 @@ ul, ol { list-style: none; }
     flex-shrink: 0;
   }
   .rail__link {
-    padding: 4px 0;
+    padding: 6px 0;
     font-size: 12px;
     white-space: nowrap;
+    min-width: fit-content;
+    border-radius: 4px;
+  }
+  .rail__link:hover,
+  .rail__link:focus-visible {
+    background: var(--bg-soft);
   }
   .rail__link::before { display: none; }
 
