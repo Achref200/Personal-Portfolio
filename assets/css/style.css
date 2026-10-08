@@ -1786,7 +1786,7 @@ a.home-list__value:hover { color: var(--accent); }
 
 @media (max-width: 740px) {
   .tweets-profile__body {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     margin-top: -30px;
   }
 
@@ -1796,6 +1796,7 @@ a.home-list__value:hover { color: var(--accent); }
   }
 
   .tweets-heading {
+    min-width: 0;
     text-align: center;
   }
 
@@ -1805,7 +1806,9 @@ a.home-list__value:hover { color: var(--accent); }
 
   .tweets-quick {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: var(--s3);
   }
 }
 
@@ -1996,161 +1999,6 @@ a.home-list__value:hover { color: var(--accent); }
 @media (max-width: 620px)  { .showcase { grid-template-columns: 1fr; } }
 
 
-/* =================================================================
-   GALLERY — design work, classified by type
-   the counterpart to the Work page archive: same pill component,
-   same status line, same collapse-when-empty behaviour, so the two
-   pages read as one system.
-   ================================================================= */
-.gallery-section { padding-top: var(--section-tight); }
-
-.gal-controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--s5);
-  margin-bottom: var(--s7);
-}
-.gal-controls .filters {
-  margin-top: 0;
-  padding-bottom: 0;
-  border-bottom: 0;
-  gap: 6px;
-}
-.gal-controls .filter {
-  min-height: 36px;
-  padding: 8px 14px;
-  font-size: 11px;
-}
-.gal-status {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-left: auto;
-  white-space: nowrap;
-}
-
-/* the grid. three columns, but a --wide tile spans two — that single
-   variation is what stops a design gallery reading as a contact sheet
-   of identical rectangles. */
-.gal-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(16px, 2vw, 26px);
-  align-items: start;
-}
-.gal-item--wide { grid-column: span 2; }
-
-@media (max-width: 1000px) {
-  .gal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .gal-item--wide { grid-column: span 2; }
-}
-@media (max-width: 620px) {
-  .gal-grid { grid-template-columns: 1fr; }
-  .gal-item--wide { grid-column: span 1; }
-}
-
-.gal-item[hidden] { display: none; }
-
-.gal-item a {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  transition:
-    transform var(--t-slow) var(--ease-out),
-    border-color var(--t-mid) var(--ease),
-    box-shadow var(--t-slow) var(--ease-out);
-}
-.gal-item a:hover,
-.gal-item a:focus-visible {
-  transform: translateY(-4px);
-  border-color: var(--ink);
-  box-shadow: 0 24px 44px -30px rgba(0, 0, 0, .45);
-}
-/* press: settles back down fast, the same asymmetry the buttons use */
-.gal-item a:active {
-  transform: translateY(0);
-  transition-duration: 90ms;
-}
-
-.gal-item__media {
-  display: block;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: var(--bg-soft);
-  border-bottom: 1px solid var(--line-soft);
-}
-/* the wide tile is a letterbox rather than a taller crop — it shows
-   more of the board, which is the point of giving it the extra width */
-.gal-item--wide .gal-item__media { aspect-ratio: 16 / 9; }
-
-.gal-item__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  transition: transform 1s var(--ease-soft);
-}
-.gal-item a:hover .gal-item__media img { transform: scale(1.045); }
-
-.gal-item__body {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 15px 17px 19px;
-}
-.gal-item__title {
-  font-family: var(--serif);
-  font-size: 19px;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
-  transition: color var(--t-mid) var(--ease);
-}
-.gal-item a:hover .gal-item__title,
-.gal-item a:focus-visible .gal-item__title { color: var(--accent); }
-
-.gal-item__meta {
-  font-family: var(--mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--muted);
-}
-
-.gal-empty {
-  padding: var(--s8) 0;
-  text-align: center;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.gal-empty[hidden] { display: none; }
-
-@media (max-width: 620px) {
-  .gal-controls { gap: var(--s4); }
-  .gal-controls .filters {
-    width: 100%;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    scrollbar-width: none;
-    -webkit-mask-image: linear-gradient(to right, #000 92%, transparent 100%);
-    mask-image: linear-gradient(to right, #000 92%, transparent 100%);
-  }
-  .gal-controls .filters::-webkit-scrollbar { display: none; }
-  .gal-status { margin-left: 0; }
-  /* no hover on touch — the lift previews nothing and makes taps feel loose */
-  .gal-item a:hover { transform: none; }
-  .gal-item a:active { background: var(--bg-soft); }
-}
 /* footer ---------------------------------------------------------- */
 .foot {
   border-top: 1px solid var(--line);
@@ -2416,7 +2264,8 @@ a.home-list__value:hover { color: var(--accent); }
   .btn:hover .btn__arrow, .btn:focus-visible .btn__arrow,
   .rail__link:hover, .rail__link:focus-visible, .rail__link:active,
   .arc-item a:hover, .arc-item a:focus-visible, .arc-item a:active,
-  .shot a:hover, .case:hover, .discipline:hover,
+  .shot a:hover, .case:hover, .discipline:hover, .design-card > a:hover,
+  .design-card > a:focus-visible,
   .entry:hover, .arc-item a:active,
   .filter:active {
     transform: none !important;
@@ -2426,6 +2275,7 @@ a.home-list__value:hover { color: var(--accent); }
      the page for someone who has asked for less of it. */
   .shot a:hover .shot__media img,
   .case:hover .case__media img,
+  .design-card > a:hover .design-card__media img,
   .arc-item a:hover .arc-item__thumb img {
     transform: none !important;
   }
@@ -2457,3 +2307,142 @@ a.home-list__value:hover { color: var(--accent); }
   .arc-year__head::before { background: CanvasText; }
   :focus-visible { outline: 2px solid Highlight; }
 }
+
+/* Open section: one clear availability note, then the useful details. */
+.open-section .band__head { align-items: center; }
+.open-section__link { margin-left: auto; }
+.open-section__intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s6);
+  margin-bottom: var(--s6);
+}
+.open-section__intro .lead { max-width: 52ch; margin: 0; }
+.open-section__availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.open-section__availability .dot { margin: 0; }
+.open-list { border-top-color: var(--line); }
+.open-list li {
+  min-height: 62px;
+  grid-template-columns: minmax(125px, 19%) 1fr;
+  gap: var(--s5);
+  padding: 12px 0;
+  border-bottom-color: var(--line);
+}
+.open-list .home-list__value {
+  font-family: var(--sans);
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+@media (max-width: 720px) {
+  .open-section__intro { align-items: flex-start; flex-direction: column; gap: var(--s4); }
+}
+@media (max-width: 480px) {
+  .open-list li { grid-template-columns: 1fr; gap: 6px; }
+  .open-section .band__head { align-items: baseline; }
+  .open-section__link { margin-left: 0; }
+}
+
+/* Design portfolio: simple controls and image-first project cards. */
+.design-portfolio { padding-block: var(--section); }
+.design-portfolio__intro { max-width: 58ch; margin: calc(var(--s5) * -1) 0 var(--s6); }
+.design-controls {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--s4) var(--s5);
+  align-items: center;
+  margin-bottom: var(--s6);
+  padding-block: var(--s4);
+  border-block: 1px solid var(--line);
+}
+.design-controls__filters {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  scrollbar-width: none;
+}
+.design-controls__filters::-webkit-scrollbar { display: none; }
+.design-controls__filters .filter { min-height: 36px; padding: 8px 13px; font-size: 11px; }
+.design-controls__selects { display: flex; gap: var(--s3); }
+.design-controls__selects label {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--muted); font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase;
+}
+.design-controls__selects select {
+  max-width: 145px; min-height: 36px; padding: 7px 26px 7px 10px;
+  border: 1px solid var(--line); border-radius: 3px;
+  background: var(--bg); color: var(--ink); font: 12px var(--sans);
+}
+.design-controls__status { grid-column: 1 / -1; margin: 0; font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.design-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 24px); align-items: start;
+}
+.design-card[hidden] { display: none; }
+.design-card > a {
+  display: flex; flex-direction: column; height: 100%; overflow: hidden;
+  color: inherit; text-decoration: none; background: var(--bg-soft);
+  border: 1px solid var(--line); transition: border-color .2s var(--ease), transform .25s var(--ease);
+}
+.design-card > a:hover, .design-card > a:focus-visible { border-color: var(--ink-soft); transform: translateY(-3px); }
+.design-card__media { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); }
+.design-card__media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .45s var(--ease); }
+.design-card > a:hover img { transform: scale(1.025); }
+.design-card__body { display: flex; flex-direction: column; gap: 8px; padding: 16px 17px 18px; }
+.design-card__meta { color: var(--muted); font: 9px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.design-card__title { font: 400 clamp(22px, 2vw, 29px)/1.1 var(--serif); }
+.design-card__description { color: var(--ink-soft); font-size: 13px; line-height: 1.5; }
+.design-card__view { margin-top: 7px; color: var(--accent); font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.design-empty { padding: var(--s7) 0; text-align: center; color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
+.design-empty[hidden] { display: none; }
+@media (max-width: 960px) { .design-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) {
+  .design-controls { grid-template-columns: 1fr; }
+  .design-controls__filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 3px; }
+  .design-controls__filters .filter { flex: none; }
+  .design-controls__selects { flex-wrap: wrap; }
+  .design-controls__status { grid-column: auto; }
+  .design-grid { grid-template-columns: 1fr; }
+}
+
+/* Experience updates on the engineering page. */
+.experience-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s5); }
+.experience-card { display: grid; grid-template-columns: minmax(120px, 34%) 1fr; min-width: 0; border: 1px solid var(--line); background: var(--bg-soft); }
+.experience-card > img { width: 100%; height: 100%; min-height: 230px; object-fit: cover; object-position: center 30%; }
+.experience-card__body { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; padding: clamp(16px, 2vw, 24px); }
+.experience-card__body .eyebrow { margin: 0; font-size: 9px; }
+.experience-card__body h3 { font: 400 clamp(20px, 2vw, 28px)/1.1 var(--serif); }
+.experience-card__body p:not(.eyebrow) { margin: 0; font-size: 13px; line-height: 1.5; }
+.experience-card__body a { margin-top: auto; padding-top: 12px; color: var(--accent); font: 10px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+@media (max-width: 900px) { .experience-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .experience-card { grid-template-columns: 1fr; }
+  .experience-card > img { height: 260px; min-height: 0; object-position: center 28%; }
+}
+
+/* Contact: give the form and contact details the same quiet structure. */
+.contact-hero .mail-row { margin-top: var(--s6); }
+.contact-grid { align-items: start; gap: clamp(32px, 5vw, 72px); }
+.contact-form { padding: clamp(18px, 3vw, 30px); border: 1px solid var(--line); background: var(--bg-soft); }
+.contact-form .field input, .contact-form .field textarea { padding: 12px 10px; border: 1px solid var(--line); background: var(--bg); }
+.contact-form .field input:focus, .contact-form .field textarea:focus { border-color: var(--accent); }
+.cards { gap: 0; border-top: 1px solid var(--line); }
+.info-card { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; padding: 17px 4px; }
+.info-card .v { font-family: var(--sans); font-size: clamp(16px, 1.5vw, 20px); line-height: 1.4; }
+.info-card .v a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.info-card .v a:hover { color: var(--accent); }
+
+.tweet-source { margin: 12px 0 0; padding: 0 20px 16px; font: 11px var(--mono); }
+.tweet-source a { color: var(--accent); }

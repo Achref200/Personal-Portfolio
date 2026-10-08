@@ -282,6 +282,50 @@
     });
   }
 
+  // ---------------- design portfolio filters ----------------
+  const designPortfolio = $('[data-design-portfolio]');
+  if (designPortfolio) {
+    const grid = $('[data-design-grid]', designPortfolio);
+    const cards = $$('[data-design-item]', grid);
+    const categoryButtons = $$('[data-design-category]', designPortfolio);
+    const industrySelect = $('[data-design-industry]', designPortfolio);
+    const sortSelect = $('[data-design-sort]', designPortfolio);
+    const status = $('[data-design-status]', designPortfolio);
+    const empty = $('[data-design-empty]', designPortfolio);
+    cards.forEach((card, index) => { card.dataset.position = String(index); });
+    let category = 'all';
+
+    const updateDesignPortfolio = () => {
+      const industry = industrySelect?.value || 'all';
+      let visible = 0;
+      cards.forEach(card => {
+        const categories = (card.dataset.category || '').split(/\s+/);
+        const matches = (category === 'all' || categories.includes(category)) &&
+          (industry === 'all' || card.dataset.industry === industry);
+        card.hidden = !matches;
+        if (matches) visible++;
+      });
+      const sort = sortSelect?.value || 'featured';
+      const ordered = [...cards].sort((a, b) => {
+        if (sort === 'featured') return Number(a.dataset.position) - Number(b.dataset.position);
+        const yearDiff = Number(a.dataset.year || 0) - Number(b.dataset.year || 0);
+        return sort === 'newest' ? -yearDiff : yearDiff;
+      });
+      ordered.forEach(card => grid.appendChild(card));
+      if (status) status.textContent = `${visible} ${visible === 1 ? 'project' : 'projects'}`;
+      if (empty) empty.hidden = visible !== 0;
+    };
+
+    categoryButtons.forEach(button => button.addEventListener('click', () => {
+      category = button.dataset.designCategory;
+      categoryButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      updateDesignPortfolio();
+    }));
+    industrySelect?.addEventListener('change', updateDesignPortfolio);
+    sortSelect?.addEventListener('change', updateDesignPortfolio);
+    updateDesignPortfolio();
+  }
+
   // ---------------- archive filters ----------------
   const arcControls = $('[data-arc-controls]');
   if (arcControls) {
