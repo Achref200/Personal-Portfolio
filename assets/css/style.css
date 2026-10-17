@@ -138,7 +138,6 @@ ul, ol { list-style: none; }
 
 .shot a:focus-visible,
 .case:focus-within,
-.discipline:focus-visible,
 .arc-item a:focus-visible { outline-offset: 4px; }
 
 /* skip link — first tab stop on every page */
@@ -161,47 +160,6 @@ ul, ol { list-style: none; }
 .skip-link:focus-visible { transform: translateY(0); outline-offset: 3px; }
 
 ::selection { background: var(--accent); color: #fff; }
-
-/* cursor ---------------------------------------------------------- */
-/* hide the native cursor only on devices that have a fine pointer */
-@media (hover: hover) and (pointer: fine) {
-  body { cursor: none; }
-  a, button, [data-cursor] { cursor: none; }
-}
-
-.cursor-dot,
-.cursor-ring {
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
-}
-
-.cursor-dot {
-  width: 6px; height: 6px;
-  background: #fff;
-  border-radius: 50%;
-  transition: opacity .2s var(--ease);
-}
-
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 1px solid #fff;
-  border-radius: 50%;
-  transition: width .25s var(--ease), height .25s var(--ease),
-              background .25s var(--ease), border-color .25s var(--ease);
-}
-
-.cursor-ring.is-hover {
-  width: 64px; height: 64px;
-  background: #fff;
-}
-
-@media (hover: none), (pointer: coarse) {
-  .cursor-dot, .cursor-ring { display: none; }
-}
 
 /* layout ---------------------------------------------------------- */
 .app {
@@ -389,10 +347,6 @@ ul, ol { list-style: none; }
   .mobile-nav-overlay .rail__foot svg { width: 16px; height: 16px; }
   .mobile-nav-overlay .theme-toggle { width: 36px; height: 36px; }
   .mobile-nav-overlay .theme-toggle svg { width: 16px; height: 16px; }
-}
-
-@media (max-width: 768px) {
-  .cursor-dot, .cursor-ring { display: none !important; }
 }
 
 .rail__brand {
@@ -847,40 +801,6 @@ a.home-list__value:hover { color: var(--accent); }
 .btn--cv .btn__arrow { transition: transform var(--t-slow) var(--settle); }
 .btn--cv:hover .btn__arrow,
 .btn--cv:focus-visible .btn__arrow { transform: translateY(3px); }
-/* "what I do" cards ---------------------------------------------- */
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 56px;
-}
-@media (max-width: 900px) { .work-grid { grid-template-columns: 1fr; } }
-@media (max-width: 480px) { .work-grid { gap: 16px; }
-  .discipline { padding: 28px 20px; min-height: 260px; } }
-
-.discipline {
-  padding: 40px 32px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: var(--surface);
-  display: flex; flex-direction: column; gap: 16px;
-  min-height: 320px;
-  position: relative;
-  overflow: hidden;
-  transition: transform .5s var(--ease), border-color .3s var(--ease);
-}
-.discipline:hover { transform: translateY(-6px); border-color: var(--ink); }
-.discipline__num {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  color: var(--muted);
-}
-.discipline__title { margin-top: auto; }
-.discipline__stack {
-  display: flex; flex-wrap: wrap; gap: 6px;
-  margin-top: 12px;
-}
 .tag {
   font-family: var(--mono);
   font-size: 11px;
@@ -906,6 +826,127 @@ a.home-list__value:hover { color: var(--accent); }
 .about-hero__title { font-size: clamp(56px, 9vw, 132px); }
 
 .bio p + p { margin-top: 18px; }
+
+.profile-section {
+  padding-block: clamp(44px, 7vw, 88px);
+  scroll-margin-top: 24px;
+}
+.profile-section .section-title {
+  margin-bottom: 24px;
+  color: var(--accent);
+  font-size: clamp(28px, 3vw, 36px);
+  letter-spacing: 0;
+}
+.profile-section .bio { max-width: 78ch; }
+.profile-section .bio p { line-height: 1.8; }
+#experience, #education, #toolbox { scroll-margin-top: 24px; }
+
+@media (hover: hover) {
+  .bio:has(p:focus-within) p:not(:focus-within) { opacity: .34; }
+  .bio p:focus-within { color: var(--ink); opacity: 1; }
+}
+
+.practice-section { text-align: center; }
+.practice-section .band__head { justify-content: center; }
+.practice-section .band__title { max-width: 22ch; }
+.practice-copy {
+  max-width: 54ch;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.7;
+}
+.practice-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.centered-content .section-head,
+.centered-content .band__head { justify-content: center; text-align: center; }
+.centered-content .section-title { text-align: center; }
+.centered-content .timeline {
+  width: min(100%, 820px);
+  margin-inline: auto;
+  text-align: center;
+}
+.centered-content .entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 28px 12px;
+  text-align: center;
+  transition: opacity .4s var(--ease), transform .4s var(--ease-out);
+}
+.centered-content .entry:hover { padding-left: 12px; transform: translateY(-3px); }
+.centered-content .entry__when { padding-top: 0; }
+.centered-content .entry__where { max-width: 66ch; margin-inline: auto; }
+.centered-content .entry__desc { max-width: 66ch; margin: 12px auto 0; }
+.centered-content .entry__tag { align-self: center; justify-self: center; }
+.centered-content .timeline:has(.entry:hover) .entry:not(:hover) { opacity: .3; }
+.centered-content .entry p { transition: color .35s var(--ease); }
+.centered-content .entry:hover .entry__role,
+.centered-content .entry:hover .entry__where { color: var(--accent); }
+.centered-content .entry:hover .entry__desc { color: var(--ink); }
+
+.centered-content .skills-grid {
+  width: min(100%, 940px);
+  margin-inline: auto;
+  text-align: center;
+}
+.centered-content .skill {
+  align-items: center;
+  padding: 18px 12px 8px;
+  transition: opacity .4s var(--ease), transform .4s var(--ease-out), border-color .4s var(--ease);
+}
+.centered-content .skill__head { flex-direction: column; align-items: center; gap: 4px; }
+.centered-content .skill__list { max-width: 44ch; }
+.centered-content .skills-grid:has(.skill:hover) .skill:not(:hover) { opacity: .3; }
+.centered-content .skill:hover { border-color: var(--accent); transform: translateY(-3px); }
+.centered-content .skill:hover .skill__name { color: var(--accent); }
+.centered-content .skill:hover .skill__list { color: var(--ink); }
+
+.centered-content.open-section .band__head {
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--s6);
+}
+.centered-content .open-section__link { margin-left: 0; }
+.centered-content .open-section__intro {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: var(--s6);
+}
+.centered-content .open-section__intro .lead { margin-inline: auto; }
+.centered-content .open-list {
+  width: min(100%, 700px);
+  margin-inline: auto;
+  border-top: 0;
+}
+.centered-content .open-list li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 12px;
+  text-align: center;
+  transition: opacity .4s var(--ease), transform .4s var(--ease-out);
+}
+.centered-content .open-list:has(li:hover) li:not(:hover) { opacity: .3; }
+.centered-content .open-list li:hover { transform: translateY(-2px); }
+.centered-content .open-list li:hover .home-list__label { color: var(--accent); }
+.centered-content .open-list li:hover .home-list__value { color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .centered-content .entry,
+  .centered-content .skill,
+  .centered-content .open-list li { transition: none; }
+}
 
 
 .section-head {
@@ -1838,7 +1879,7 @@ a.home-list__value:hover { color: var(--accent); }
 .stat__num {
   font-family: var(--serif);
   font-weight: 300;
-  font-size: clamp(30px, 3.4vw, 46px);
+  font-size: clamp(24px, 2.8vw, 36px);
   line-height: 1;
   letter-spacing: -0.03em;
 }
@@ -2264,7 +2305,7 @@ a.home-list__value:hover { color: var(--accent); }
   .btn:hover .btn__arrow, .btn:focus-visible .btn__arrow,
   .rail__link:hover, .rail__link:focus-visible, .rail__link:active,
   .arc-item a:hover, .arc-item a:focus-visible, .arc-item a:active,
-  .shot a:hover, .case:hover, .discipline:hover, .design-card > a:hover,
+  .shot a:hover, .case:hover, .design-card > a:hover,
   .design-card > a:focus-visible,
   .entry:hover, .arc-item a:active,
   .filter:active {
@@ -2287,13 +2328,6 @@ a.home-list__value:hover { color: var(--accent); }
   /* parallax is JS-driven; the script checks the same query and skips
      it entirely, but clear any inline transform it may have set. */
   [data-parallax] { transform: none !important; }
-
-  /* the custom cursor is a rAF loop chasing the pointer — exactly the
-     kind of continuous motion this query is asking us to stop. the
-     script does not create it at all under reduced motion, so the
-     native cursor must come back. */
-  body, a, button, [data-cursor] { cursor: auto !important; }
-  .cursor-dot, .cursor-ring { display: none !important; }
 
   .tweet-card { opacity: 1 !important; transform: none !important; }
 }
@@ -2398,6 +2432,8 @@ a.home-list__value:hover { color: var(--accent); }
 }
 .design-card > a:hover, .design-card > a:focus-visible { border-color: var(--ink-soft); transform: translateY(-3px); }
 .design-card__media { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface); }
+.design-card--poster .design-card__media { background: #102040; }
+.design-card--poster .design-card__media img { object-fit: contain; }
 .design-card__media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .45s var(--ease); }
 .design-card > a:hover img { transform: scale(1.025); }
 .design-card__body { display: flex; flex-direction: column; gap: 8px; padding: 16px 17px 18px; }
@@ -2405,6 +2441,20 @@ a.home-list__value:hover { color: var(--accent); }
 .design-card__title { font: 400 clamp(22px, 2vw, 29px)/1.1 var(--serif); }
 .design-card__description { color: var(--ink-soft); font-size: 13px; line-height: 1.5; }
 .design-card__view { margin-top: 7px; color: var(--accent); font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+@media (hover: hover) {
+  .bio p {
+    color: var(--muted);
+    transition: color .45s var(--ease), opacity .45s var(--ease);
+  }
+  .bio:has(p:hover) p:not(:hover) { opacity: .34; }
+  .bio p:hover { color: var(--ink); opacity: 1; }
+  .bio p a { color: color-mix(in srgb, var(--accent) 48%, var(--muted)); transition: color .35s var(--ease); }
+  .bio p:hover a { color: var(--accent); }
+  .bio p a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .design-card > a:hover .design-card__title,
+  .pjt__link:hover .pjt__name,
+  .tweet-card:hover .tweet-name { color: var(--accent); }
+}
 .design-empty { padding: var(--s7) 0; text-align: center; color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
 .design-empty[hidden] { display: none; }
 @media (max-width: 960px) { .design-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -2415,6 +2465,30 @@ a.home-list__value:hover { color: var(--accent); }
   .design-controls__selects { flex-wrap: wrap; }
   .design-controls__status { grid-column: auto; }
   .design-grid { grid-template-columns: 1fr; }
+}
+/* Engineering projects use a compact list; these controls filter the list by product type. */
+.engineering-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 var(--s5);
+  padding: var(--s4) 0;
+  border-block: 1px solid var(--line);
+}
+.engineering-filters .filter { min-height: 36px; padding: 8px 13px; font-size: 11px; }
+.engineering-filters__status {
+  margin: 0 0 0 auto;
+  color: var(--muted);
+  font: 10px var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.pjt[hidden] { display: none; }
+@media (max-width: 620px) {
+  .engineering-filters { flex-wrap: nowrap; overflow-x: auto; }
+  .engineering-filters .filter { flex: none; }
+  .engineering-filters__status { margin-left: auto; white-space: nowrap; }
 }
 
 /* Experience updates on the engineering page. */

@@ -107,10 +107,10 @@ async function main() {
     const cs = getComputedStyle(o);
     const links = o.querySelectorAll('a.rail__link').length;
     const r = o.getBoundingClientRect();
-    return { ok: cs.opacity === '1' && cs.pointerEvents !== 'none' && links === 6,
+    return { ok: cs.opacity === '1' && cs.pointerEvents !== 'none' && links === 5,
              why: 'opacity=' + cs.opacity + ' links=' + links, rect: Math.round(r.width) + 'x' + Math.round(r.height) };
   })()`);
-  check('overlay opens with 6 nav links', checks.overlayOpen.ok, JSON.stringify(checks.overlayOpen));
+  check('overlay opens with 5 nav links', checks.overlayOpen.ok, JSON.stringify(checks.overlayOpen));
 
   // ---- screenshot with menu open ----
   const shot1 = path.join(os.tmpdir(), 'mobile-' + pageType + '-menu-open.png');
@@ -137,12 +137,20 @@ async function main() {
 
   // ---- page-specific checks ----
   if (pageType === 'index') {
-    const wg = await evalJs(`(() => {
-      const g = document.querySelector('.work-grid');
-      if (!g) return { n: 0 };
-      return { cols: getComputedStyle(g).gridTemplateColumns.split(' ').length, n: 1 };
+    const centered = await evalJs(`(() => {
+      const practice = document.querySelector('.practice-copy');
+      const entry = document.querySelector('#experience .entry');
+      const skill = document.querySelector('#toolbox .skill');
+      const openRow = document.querySelector('.open-list li');
+      return {
+        practice: practice && getComputedStyle(practice).textAlign,
+        entry: entry && getComputedStyle(entry).alignItems,
+        skill: skill && getComputedStyle(skill).alignItems,
+        openRow: openRow && getComputedStyle(openRow).textAlign
+      };
     })()`);
-    check('work-grid is 1 column on mobile', wg.n > 0 && wg.cols === 1, 'cols=' + wg.cols);
+    check('practice copy is centered on mobile', centered.practice === 'center', 'text-align=' + centered.practice);
+    check('experience, toolkit and Open to are centered', centered.entry === 'center' && centered.skill === 'center' && centered.openRow === 'center', JSON.stringify(centered));
   }
 
   console.log('\n=== ' + pageType.toUpperCase() + ' @ 375x812 ===');

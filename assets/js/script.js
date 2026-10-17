@@ -8,7 +8,7 @@
  * - archive year+type filters
  * - copy email
  * - tweets likes
- * - contact form (Web3Forms + WhatsApp)
+ * - contact form (email + WhatsApp)
  * - project detail page hydration
  */
 
@@ -156,48 +156,11 @@
   const onMotionPrefChange = (e) => {
     reduceMotion = e.matches;
     if (reduceMotion) {
-      document.querySelectorAll('.cursor-dot, .cursor-ring').forEach(n => n.remove());
       document.querySelectorAll('[data-parallax]').forEach(n => { n.style.transform = ''; });
     }
   };
   if (typeof reduceMotionQuery.addEventListener === 'function') {
     reduceMotionQuery.addEventListener('change', onMotionPrefChange);
-  }
-
-  // ---------------- cursor ----------------
-  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion;
-  if (fine) {
-    const dot  = document.createElement('div');
-    const ring = document.createElement('div');
-    dot.className  = 'cursor-dot';
-    ring.className = 'cursor-ring';
-    document.body.append(dot, ring);
-
-    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-    let rx = mx, ry = my;
-
-    window.addEventListener('mousemove', (e) => {
-      mx = e.clientX; my = e.clientY;
-      dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
-    });
-
-    const loop = () => {
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
-      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
-      requestAnimationFrame(loop);
-    };
-    loop();
-
-    const hoverables = 'a, button, [data-cursor], .project a, .f-card, .filter, input, textarea';
-    document.addEventListener('mouseover', (e) => {
-      if (e.target.closest(hoverables)) ring.classList.add('is-hover');
-    });
-    document.addEventListener('mouseout', (e) => {
-      if (e.target.closest(hoverables)) ring.classList.remove('is-hover');
-    });
-    document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
-    document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = '1'; });
   }
 
   // ---------------- reveal on scroll ----------------
@@ -280,6 +243,29 @@
         syncSections();
       });
     });
+  }
+
+  // ---------------- engineering work filters ----------------
+  const engineeringFilters = $$('[data-engineering-filter]');
+  const engineeringItems = $$('[data-engineering-item]');
+  const engineeringStatus = $('[data-engineering-status]');
+  if (engineeringFilters.length && engineeringItems.length) {
+    const updateEngineeringWork = (category) => {
+      let visible = 0;
+      engineeringItems.forEach((item) => {
+        const matches = category === 'all' || (item.dataset.category || '').split(/\s+/).includes(category);
+        item.hidden = !matches;
+        if (matches) visible += 1;
+      });
+      engineeringFilters.forEach((button) => {
+        button.setAttribute('aria-pressed', String(button.dataset.engineeringFilter === category));
+      });
+      if (engineeringStatus) engineeringStatus.textContent = `${visible} ${visible === 1 ? 'project' : 'projects'}`;
+    };
+    engineeringFilters.forEach((button) => {
+      button.addEventListener('click', () => updateEngineeringWork(button.dataset.engineeringFilter));
+    });
+    updateEngineeringWork('all');
   }
 
   // ---------------- design portfolio filters ----------------
@@ -459,7 +445,6 @@
         email:   (d.get('email')         || '').toString().trim(),
         topic:   (d.get('subject_topic') || '').toString().trim() || 'Hello Achref',
         message: (d.get('message')       || '').toString().trim(),
-        key:     (d.get('access_key')    || '').toString().trim()
       };
     };
 
@@ -477,40 +462,18 @@
       });
     }
 
-    contactForm.addEventListener('submit', async (e) => {
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const f = readFields();
-      if (!f.key || f.key === 'REPLACE_WITH_YOUR_WEB3FORMS_KEY') {
-        const body = `Hi Achref,\n\n${f.message}\n\n— ${f.name}\n${f.email}`;
-        window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(f.topic)}&body=${encodeURIComponent(body)}`;
-        setStatus('Opened your mail app with the message ready — just hit send.', 'ok');
-        console.info('[contact] Web3Forms key not set; using mailto fallback.');
-        return;
-      }
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const origLabel = submitBtn ? submitBtn.innerHTML : '';
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = 'Sending…'; }
-      setStatus('Sending your message…', 'ok');
-      try {
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(contactForm)
-        });
-        const out = await res.json().catch(() => ({}));
-        if (res.ok && out.success !== false) {
-          contactForm.reset();
-          setStatus('Thanks — your message just landed in my inbox. I usually reply within a day.', 'ok');
-        } else throw new Error(out.message || 'Send failed');
-      } catch (err) {
-        setStatus('Couldn\'t send right now. WhatsApp +216 53 019 984 or email me.', 'err');
-      } finally {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = origLabel; }
-      }
+      const body = `Hi Achref,\n\n${f.message}\n\n— ${f.name}\n${f.email}`;
+      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(f.topic)}&body=${encodeURIComponent(body)}`;
+      setStatus('Your email app should open with the message ready to send.', 'ok');
     });
   }
 
   // ---------------- project detail hydration ----------------
   const PROJECTS = {
-    nesty: { title: "Nesty", tagline: "A multi-surface rental platform — seeker apps, an agency workspace, and an internal admin console.", category: "Web & Mobile Platform · Real estate", year: "2026", role: "Product Designer & Full-stack Engineer", stack: ["Next.js","React","TypeScript","Flutter","Tailwind CSS","Postgres","Role-based access","i18n (EN/FR)"], description: ["Nesty is not a landing page — it is a full rental platform for the Tunisian market, built as four connected surfaces on one shared data model: a public marketplace, a native mobile app for seekers, an agency workspace for professional listers, and an internal admin console that governs the whole marketplace.","Mobile app (seekers & hosts). The Flutter app is where the marketplace actually lives day to day. Seekers search with map and filter views, walk properties through immersive 3D tours, save shortlists, and message hosts in real time; push notifications fire the moment a matching listing goes live or a booking status changes. Hosts get a pocket version of their dashboard — approve or decline requests, update availability, and answer enquiries without opening a laptop.","Agency workspace. Agencies are a different user class from individual hosts, so they get their own authenticated space behind a dedicated agency login. It handles multi-property portfolio management, bulk listing creation and media upload, team seats with per-member permissions, lead routing from the shared enquiry inbox, and a performance view showing views, enquiry-to-booking conversion, and occupancy across the portfolio. The unified calendar is the backbone: nightly, monthly, and long-term leases all reconcile in one place, which is what makes double bookings structurally impossible rather than merely discouraged.","Admin control panel. Behind both sits an internal console I designed and built for the operations side — listing moderation and verification queues, host and agency KYC approval, user and role management, dispute and report handling, commission and payout configuration, and platform-wide metrics. Role-based access control separates seeker, host, agency, and admin permissions at the data layer, so what each account can see and do is enforced server-side, not just hidden in the UI.","Everything ships bilingual EN/FR with light and dark themes, plus an in-product assistant (\"Ask Nesty\") that guides users through listing and booking. The design challenge was keeping four very different audiences — a renter on a phone, an agency managing sixty units, and an operator moderating the marketplace — inside one coherent design system."], external: { label: "Live site", href: "https://nesty-tn.vercel.app/" }, cover: "./assets/images/nesty.png", browser: true, surfaces: [{ src: "./assets/images/nesty_agency.png", kind: "browser", title: "Agency workspace", caption: "Portfolio dashboard — occupancy, enquiry-to-booking conversion, and the unified calendar that reconciles nightly, monthly, and long leases." },{ src: "./assets/images/nesty_admin.png", kind: "browser", title: "Admin control panel", caption: "Internal console — listing verification queue, KYC approvals, disputes, payouts, and the role-based access matrix enforced at the data layer." },{ src: "./assets/images/nesty_mobile.png", kind: "plain", title: "Mobile app · seekers & hosts", caption: "Search and filter, immersive 3D tours, and a pocket host dashboard for approving booking requests on the go." }], gallery: [] },
+    nesty: { title: "Nesty", tagline: "A Tunisian rental platform with a seeker app, an agency workspace, and an admin console.", category: "Product Platform · PropTech", year: "2026", role: "Product Designer & Full-stack Engineer ? Personal project", stack: ["Flutter", "Next.js", "Supabase", "Postgres", "Row-level security"], description: ["Nesty is my personal product project and the startup I’m building toward: a rental platform for Tunisia shaped around three connected products — a mobile app for people searching for a home, a workspace for hosts and agencies, and an admin console for the platform team.", "For seekers, listings include verification and a trust score. Hosts can create immersive 3D tours from the photos they already take on their phones, so people can explore a home before arranging a visit.", "The agency workspace brings listings, the reservation pipeline, a shared calendar, incidents, and support into one place. The admin console gives the Nesty team tools for agency onboarding, listing moderation, roles, and the support queue.", "The products use Flutter, Next.js, Supabase, and Postgres over a shared schema. Row-level security handles access across the different user roles."], external: { label: "Live site", href: "https://nesty-tn.vercel.app/" }, cover: "./assets/images/nesty.png", browser: true, surfaces: [{ src: "./assets/images/nesty_mobile.png", kind: "plain", title: "Seeker mobile app", caption: "Find a home, review listing trust details, and explore photo-based 3D tours." }, { src: "./assets/images/nesty_agency.png", kind: "browser", title: "Agency workspace", caption: "Listings, reservations, calendar, incidents, and support for hosts and agencies." }, { src: "./assets/images/nesty_admin.png", kind: "browser", title: "Admin console", caption: "Agency onboarding, listing moderation, user roles, and support operations." }], gallery: [] },
     voyagi: { title: "Voyagi", tagline: "A white-label booking platform for travel agencies — agency back-office, seller app, and super-admin console.", category: "B2B SaaS · Travel tech", year: "2026", role: "Product Designer & Full-stack Engineer", stack: ["Next.js","React","TypeScript","Flutter","Tailwind CSS","Postgres","Multi-tenant","RBAC"], description: ["Voyagi is a multi-tenant SaaS product, not a marketing page. Every travel agency that signs up gets its own isolated workspace — its catalogue, its branding, its sellers, its commission rules — while the whole thing runs on one codebase. The promise that shapes the architecture: clients book under the agency's own name, not the platform's.","Agency back-office. This is the core product. Agencies build and price their catalogue — excursions, hotels, transfers, packages — with availability rules, seasonal pricing, and capacity limits. From there they run the business: a booking engine that turns the catalogue into sellable inventory, a reservations pipeline from enquiry through confirmation to payment status, customer records, invoices and vouchers, and a dashboard covering revenue, occupancy, and top-selling products. Team seats let an owner add staff with scoped permissions, so a counter agent sees bookings but not margins.","Commission engine & seller app. The differentiator is how agencies pay the people who sell for them. Voyagi tracks commissions per collaborator with configurable rates by product, seller, or tier, then reconciles what is owed each period. Sellers and partner resellers work from a mobile app: browse the live catalogue, quote a client on the spot, create a booking, and watch their own commission accrue in real time — which is what turns a scattered network of freelance sellers into a measurable distribution channel.","Super-admin console. Above the tenants sits the platform console I built for operating the business — agency onboarding and provisioning, subscription and plan management, feature flags per tenant, global product and category taxonomy, support impersonation for debugging a specific agency's workspace, and cross-tenant analytics. Multi-tenancy is enforced at the data layer with row-level isolation, so one agency can never read another's catalogue, customers, or margins.","I also designed and built the go-to-market site that sells it — a demo-request funnel aimed at agency owners, where the commission model, per-role workspaces, client proof, and FAQ each answer a specific objection in the buying process. Shipped in French for the target market."], external: { label: "Live site", href: "https://voyagi-landing.vercel.app/" }, cover: "./assets/images/voyagi.png", browser: true, surfaces: [{ src: "./assets/images/voyagi_admin.png", kind: "browser", title: "Agency back-office", caption: "Per-tenant workspace — catalogue, reservations, revenue dashboards, and commissions reconciled per collaborator each period." },{ src: "./assets/images/voyagi_mobile.png", kind: "plain", title: "Mobile seller app", caption: "Sellers browse the live catalogue, quote a client on the spot, and watch their own commission accrue in real time." }], gallery: [] },
     "marwen-travel": { title: "Marwen Travel", tagline: "A live booking site for private airport transfers and excursions across Türkiye.", category: "Web Development · Client work", year: "2026", role: "Designer & Front-end Developer", stack: ["Next.js","React","Tailwind CSS","Booking UX","i18n","SEO"], description: ["Marwen Travel is a production travel service running on its own domain out of Istanbul — private airport transfers, chauffeur-driven trips, curated excursions, and hotels across Türkiye. Real customers, real bookings.","The product problem was trust at the moment of arrival: a traveller landing in an unfamiliar country needs to know the price is fixed and someone will actually be waiting. The site answers that above the fold with a fixed-price promise, a 4.9 traveller rating, and a WhatsApp button beside every booking CTA — because this audience converts in chat, not in forms.","The centrepiece is a multi-mode booking widget — transfer, hourly hire, or excursion — with pickup and drop-off search, date and time, passenger count, and a round-trip option that surfaces its own discount. Built responsive and multilingual for an inbound audience that arrives in several languages, with live chat for the questions a form can't catch."], external: { label: "Live site", href: "https://marwentravel.com" }, cover: "./assets/images/marwentravel.png", browser: true, gallery: [] },
     nurone: { title: "Nurone · Redesign", tagline: "A redesign for an AI-augmented engineering studio, delivered as an assessment.", category: "Web design · Redesign", year: "2026", role: "Product Designer & Front-end Engineer", stack: ["Next.js","React","TypeScript","Tailwind CSS","3D / WebGL","Figma"], description: ["A full redesign for Nurone — an AI-augmented team of engineers, architects, and growth hackers that turns ideas and broken MVPs into products that scale. Delivered as a technical assessment, taken from audit through to a shipped, responsive front-end.","The positioning was the hard part. Nurone is deliberately selective — \"we don't work with everyone, we work where we believe we can win\" — so the site had to read as a high-end partner rather than an agency competing on volume. I built the page around that: a two-part headline that hands ambition to the client and system-building to Nurone, a \"Request Access\" CTA instead of a generic contact form, and a numbered narrative — The System, Labs, Case Studies, Process, FAQ — that walks a founder from scepticism to enquiry.","Visually it commits to a dark, high-contrast treatment with a sculpted 3D monogram as the anchor, held together by a strict type scale and consistent spacing so the restraint reads as confidence. Designed in Figma and implemented in Next.js in the same week."], external: { label: "Live site", href: "https://nurone-assesment.vercel.app/" }, cover: "./assets/images/nurone.png", browser: true, gallery: [] },
@@ -533,7 +496,15 @@
     "travel-web": { title: "Travel · Web", tagline: "A desktop travel discovery experience.", category: "Web design", year: "2023", role: "Web Designer", stack: ["Figma"], description: ["The desktop-first take on the travel concept — wider imagery, deeper destination pages, and a planning flow that feels like flipping through a printed guide."], external: { label: "Behance", href: "https://www.behance.net/achrefbenyaa" }, cover: "./assets/images/travel.png", gallery: [] },
     exsys: { title: "Exsys", tagline: "An enterprise mobile companion app.", category: "Mobile Application", year: "2023", role: "Flutter Developer", stack: ["Flutter","Dart","MVVM","Provider"], description: ["Exsys is a mobile companion to an enterprise ERP — built with Flutter on top of an MVVM + Provider architecture, with a strong focus on edge cases and offline behaviour."], external: { label: "Behance", href: "https://www.behance.net/achrefbenyaa" }, cover: "./assets/images/Exsys.png", gallery: [] },
     "ai-assistant": { title: "AI Assistant", tagline: "A mobile AI assistant experiment.", category: "Mobile Application", year: "2024", role: "Flutter Developer", stack: ["Flutter","Dart","AI APIs"], description: ["An AI assistant mobile app, exploring how generative AI fits into a chat-first mobile interface — with streamed responses and a quiet, focused UI."], external: { label: "GitHub", href: "https://github.com/Achref200" }, cover: "./assets/images/Screenshot_2.png", gallery: [] },
-    talent619: { title: "Talent619", tagline: "A talent-management mobile app.", category: "Mobile Application", year: "2024", role: "Flutter Developer", stack: ["Flutter","Dart"], description: ["Talent619 is a mobile platform for managing and showcasing talent — profiles, opportunities, and bookings, packaged into a clean Flutter app."], external: { label: "GitHub", href: "https://github.com/Achref200" }, cover: "./assets/images/mobile-6.png", gallery: [] }
+    talent619: { title: "Talent619", tagline: "A talent-management mobile app.", category: "Mobile Application", year: "2024", role: "Flutter Developer", stack: ["Flutter","Dart"], description: ["Talent619 is a mobile platform for managing and showcasing talent — profiles, opportunities, and bookings, packaged into a clean Flutter app."], external: { label: "GitHub", href: "https://github.com/Achref200" }, cover: "./assets/images/mobile-6.png", gallery: [] },
+    wassly: { title: "Wassly", tagline: "One mobile journey for car rental, licensed drivers, and intercity louage in Tunisia.", category: "Product Design · Mobility", year: "2026 / In progress", role: "Product Designer", stack: ["Flutter", "Dart", "Arabic / French / English", "Design system"], description: ["Wassly brings three everyday travel services together: rent a car, book a licensed driver, or reserve an intercity louage seat. The goal is to make the options bookable in advance with clear terms and one price.", "Language comes first in onboarding, so Arabic-speaking users do not have to navigate French screens to reach the language switch. Before booking, the design makes insurance, mileage, fuel, and deposit terms visible.", "The trust story is part of the interface. Licensing, traceable trips, and clear pricing answer concerns travelers already have about informal transport services.", "This is an in-progress product design case study. It focuses on the product direction and mobile experience."], external: { label: "Request a walkthrough", href: "./contact.html?project=wassly" }, cover: "./assets/images/wassly-03.png", surfaces: [{ src: "./assets/images/wassly-01.png", kind: "plain", title: "Product direction", caption: "Three Tunisian transport services, one app, one price, one booking." }, { src: "./assets/images/wassly-02.png", kind: "plain", title: "The problem", caption: "Separate calls and shifting prices make the trip hard to plan." }, { src: "./assets/images/wassly-03.png", kind: "plain", title: "Language-first onboarding", caption: "Arabic, French, and English are offered at the start of the journey." }, { src: "./assets/images/wassly-05.png", kind: "plain", title: "Trust and choice", caption: "Licensed operators, traceable trips, and the three service options appear in the flow." }], gallery: [] },
+    apply: { title: "Apply", tagline: "A local-first workspace for researching roles, tailoring applications, and preparing follow-up.", category: "Product Platform · Personal tool", year: "2026", role: "Product design & engineering", stack: ["TypeScript", "Local-first data", "Gmail integration", "Optional AI analysis"], description: ["Apply turns a job application into a clear sequence: analyze a role, tailor a CV, compose outreach, then review messages before sending.", "Its matcher compares a job description against a profile across explainable dimensions such as skills, seniority, language, and location. It can generate an ATS-friendly CV with a stable, single-column layout while adapting the content to the role.", "Outreach templates use reusable variables that can be filled from an analyzed job. A review queue keeps each draft editable before sending through the user's own Gmail account.", "The app keeps its data local in readable files. Gmail authorization stays on the user's machine; enhanced AI analysis is optional."], external: { label: "Request a walkthrough", href: "./contact.html?project=apply" }, cover: "./assets/images/apply-design-light.png", browser: true, surfaces: [{ src: "./assets/images/apply-design-light.png", kind: "browser", title: "Design system", caption: "A warm, accessible component library with clear states for review, provenance, and delivery." }, { src: "./assets/images/apply-shortcuts-light.png", kind: "browser", title: "Keyboard shortcuts", caption: "A keyboard-first interaction model for moving through application tasks." }, { src: "./assets/images/apply-palette-light.png", kind: "browser", title: "Command palette", caption: "Fast access to common actions without interrupting the current workflow." }], gallery: [] },
+    "boa-cosmetic": { title: "BOA Cosmetic", tagline: "A premium beauty storefront that brings products, rituals, and salon bookings into one experience.", category: "E-commerce UX · Product design concept", year: "2026", role: "Product Designer", stack: ["Responsive storefront", "Mobile checkout", "Booking flow", "Admin dashboard"], description: ["The concept connects BOA's cosmetic products with care routines and bookable salon services. Visitors can browse the shop, explore products, build a ritual, and reserve a service from the same storefront.", "The internal screens extend the experience to the BOA team: product and content management, incoming orders, bookings, service setup, and a daily operations dashboard.", "The repo contains a full set of desktop, mobile, and admin screen captures. It labels product imagery and business figures as demo content, so this case study presents the interface concept rather than a live commercial deployment."], external: { label: "Request a walkthrough", href: "./contact.html?project=boa-cosmetic" }, cover: "./assets/images/boa-cosmetic-home.png", browser: true, surfaces: [{ src: "./assets/images/boa-cosmetic-home.png", kind: "browser", title: "Storefront direction", caption: "A refined shop experience connecting products, rituals, and appointment booking." }, { src: "./assets/images/boa-cosmetic-services.png", kind: "browser", title: "Service management", caption: "Salon services, durations, locations, capacity, and publication state are managed in one admin view." }], gallery: [] },
+    atastoon: { title: "Atastoon", tagline: "A playful mobile companion for an Isitcom Club robot.", category: "Mobile UI/UX · Product concept", year: "2023", role: "UI/UX Designer & Flutter Developer", stack: ["Flutter", "Dart", "Mobile product design"], description: ["Atastoon explores the interface for a robot companion: welcome and sign-in, a device-centered home, robot discovery, settings, and control options.", "The visual direction pairs a friendly character with a confident blue palette. The screens keep the robot itself at the center, while settings such as power, Bluetooth, and language are presented as familiar mobile controls.", "The repository describes this as a UI/UX and Flutter project. The portfolio image is the project's interface board; the source repository contains the editable design file."], external: { label: "GitHub project", href: "https://github.com/Achref200/Atastoon" }, cover: "./assets/images/atastoon.png", browser: true, gallery: [] },
+    "nuit-webdesign": { title: "Nuit WebDesign", tagline: "A French-language service website concept, designed around clear paths to useful information.", category: "Web UI/UX · Concept", year: "2023", role: "UI/UX Designer", stack: ["Figma", "Information architecture", "Responsive web design"], description: ["This concept organizes a service website into a welcoming home page, an about section, FAQs, services, and a clear account of what makes the offer distinctive.", "The brief focuses on helping visitors quickly understand the service, find answers, and move through the site without friction. The visual direction calls for fluid motion and interactive cards while keeping the content in French for its intended audience.", "The project repository includes the design board, a video walkthrough, and a Figma file."], external: { label: "Open Figma file", href: "https://www.figma.com/file/EzM9yDkhZxEc9QKagxX0bm/UI-challenge?type=design&node-id=0%3A1&mode=design" }, cover: "./assets/images/nuit-webdesign.png", browser: true, gallery: [] },
+    "vehicules-rdv": { title: "VehiculesRDV", tagline: "A Spring Boot microservices platform for managing automotive appointments.", category: "Backend Engineering · Microservices", year: "2025", role: "Backend Developer", stack: ["Java 17", "Spring Boot 3", "Spring Security · JWT", "MySQL", "OpenFeign", "Apache Kafka"], description: ["VehiculesRDV separates authentication, vehicle management, appointments, and notifications into four Spring Boot services. Each service has its own MySQL database.", "The appointment service calls the vehicle service synchronously through OpenFeign. It publishes appointment-created and appointment-canceled events to Kafka, which the notification service consumes asynchronously.", "The project also documents role-based access for clients and admins and exposes OpenAPI/Swagger documentation for each service. The architecture image is a portfolio redraw of the repository's documented design."], external: { label: "GitHub repository", href: "https://github.com/Achref200/VehiculesRDV" }, cover: "./assets/images/vehiculesrdv-architecture.svg", browser: true, gallery: [] },
+    wortwerk: { title: "Wortwerk", tagline: "A Flutter app for learning German through short, guided sessions.", category: "Mobile Application ? Language learning", year: "2026 ? In progress", role: "Personal project ? Product & app development", stack: ["Flutter", "Dart", "Firebase Authentication", "Cloud Firestore", "Cloud Functions", "Bloc/Cubit"], description: ["Wortwerk is my personal project: a mobile app designed to help people learn German in small, steady steps.", "The current build includes onboarding with a self-assessed level or placement quiz, a playable A1 greetings lesson, flashcard review, and server-backed learning progress. Later lessons and levels are still in development.", "The app is built with Flutter and Firebase, with Bloc/Cubit for application state. Its portfolio cover is a typographic placeholder; app screenshots will be added when supplied."], external: { label: "GitHub repository", href: "https://github.com/Achref200/Wortwerk" }, cover: "./assets/images/wortwerk-cover.svg", gallery: [] },
+    "adp-mobile": { title: "ADP Mobile", tagline: "A mobile app connecting people, initiatives, and the Djerba community.", category: "Mobile Application · Community", year: "Completed", role: "Freelance app project", stack: ["Flutter", "Dart"], description: ["Completed freelance mobile app work for Association Djerba Project. The app brings people, local initiatives, and the Djerba community together in one mobile experience."], external: { label: "GitHub", href: "https://github.com/Achref200/adp_mobile" }, cover: "./assets/images/achref-adp.jpg", gallery: [] }
   };
 
   const FALLBACK_LINKS = { github: "https://github.com/Achref200", behance: "https://www.behance.net/achrefbenyaa" };

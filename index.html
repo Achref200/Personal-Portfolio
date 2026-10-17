@@ -47,10 +47,9 @@
 
       <nav class="rail__nav" aria-label="Primary">
         <ul class="rail__list">
-          <li><a class="rail__link" href="./index.html"  aria-current="page">Home</a></li>
+          <li><a class="rail__link" href="./index.html#top" aria-current="page">Home</a></li>
           <li><a class="rail__link" href="./design.html">Design</a></li>
           <li><a class="rail__link" href="./work.html">Engineering</a></li>
-          <li><a class="rail__link" href="./about.html">About</a></li>
           <li><a class="rail__link" href="./tweets.html">Tweets</a></li>
           <li><a class="rail__link" href="./contact.html">Contact</a></li>
         </ul>
@@ -78,7 +77,7 @@
     <main class="page" id="main" tabindex="-1">
 
       <!-- ============ hero ============ -->
-      <section class="hero container">
+      <section class="hero container" id="top">
         <p class="eyebrow" data-reveal>Sousse, Tunisia — available now</p>
 
         <h1 class="display hero__name" data-reveal>
@@ -86,14 +85,10 @@
           <em>Ben&nbsp;Yaagoub</em><span style="color:var(--accent)">.</span>
         </h1>
 
-        <p class="type-line" data-reveal
-           data-typewriter='["I design in Figma and ship in Flutter.","Project Manager at Advance Web.","Half engineer. Half designer. No handoff gap.","Sousse, Tunisia — open to roles abroad."]'></p>
+        <p class="type-line" data-reveal data-typewriter='["Figma ideas, carried through to working apps.","Contract Project Manager at Advance Web.","Building Nesty for the Tunisian rental market.","Product design with hands-on engineering."]'></p>
 
         <p class="lead hero__bio" data-reveal>
-          Software engineer and lead product designer based in Sousse, Tunisia.
-          I design digital products in Figma, build them in Flutter, and lead
-          delivery from prototype to production. I previously led the design
-          team at TREND IT and now work as a Project Manager at Advance Web.
+          I'm a software engineer and product designer in Tunisia. I manage delivery at Advance Web as a contract Project Manager, and I'm building Nesty, my rental product for Tunisia. I care about the path between a useful Figma flow and an app people can rely on.
         </p>
 
         <div class="hero__cta" data-reveal>
@@ -101,58 +96,201 @@
             Download CV
             <span class="btn__arrow" aria-hidden="true">↓</span>
           </a>
-          <a class="btn btn--ghost" href="./contact.html">Get in touch</a>
+          <a class="btn btn--ghost" href="#about">A little about me</a>
         </div>
       </section>
 
       <hr class="sep" />
 
-      <!-- ============ 01 · two halves ============ -->
-      <section class="band container" aria-labelledby="two-h">
+      <section class="band container practice-section" aria-labelledby="practice-heading">
         <div class="band__head">
           <span class="band__num" data-reveal>01</span>
-          <h2 class="band__title" id="two-h" data-reveal>Two <em>halves</em>.</h2>
+          <h2 class="band__title" id="practice-heading" data-reveal>Design &amp; engineering,<br /><em>working together</em>.</h2>
+        </div>
+        <p class="practice-copy" data-reveal>I move between product design and development: shaping a clear experience in Figma, then working through the details that bring it to life in code.</p>
+        <div class="practice-links" data-reveal>
+          <a class="link-arrow" href="./design.html">Explore design <span aria-hidden="true">?</span></a>
+          <a class="link-arrow" href="./work.html">Explore engineering <span aria-hidden="true">?</span></a>
+        </div>
+      </section>
+
+      <hr class="sep" />
+
+      <!-- Profile, experience, education and skills -->
+      <section class="container profile-section" id="about" aria-labelledby="about-heading">
+        <h2 class="section-title" id="about-heading" data-reveal>Profile</h2>
+        <div class="bio" data-reveal>
+          <p>I'm a software engineer and product designer based in Tunisia. I like taking an idea from its first flow through Figma and into an app people can use. I stay close to the implementation so the small decisions in a design still make sense in a working product.</p>
+          <p>I'm currently managing delivery at <a href="https://www.linkedin.com/company/2862217/" target="_blank" rel="noopener">Advance Web</a> on a contract while building <a href="./project.html?id=nesty">Nesty</a>, my rental product for Tunisia, into a product of my own.</p>
+          <p>I previously led design at TREND IT, working across web and mobile products and carrying Figma work into Flutter implementation. That experience shaped how I think about design: it should give the team a clear direction and still hold up when people use it.</p>
+          <p>I'm focusing on app development and product design, and starting a Scrum Product Owner course to strengthen the product side of my work. <a href="https://www.udemy.com/course/certifiez-vous-scrum-product-owner/" target="_blank" rel="noopener">Course details</a>.</p>
+        </div>
+      </section>
+
+      <!-- experience -->
+      <section class="container is-loose centered-content" id="experience" aria-labelledby="experience-heading">
+        <div class="section-head">
+          <h2 class="section-title" id="experience-heading" data-reveal>Experience.</h2>
         </div>
 
-        <div class="work-grid">
-          <a class="discipline" href="./design.html" data-reveal>
-            <span class="discipline__num">01 — Design</span>
-            <h3 class="discipline__title">UX/UI, brand identity &amp; design systems.</h3>
-            <p style="font-size:15px;">
-              I own the visual layer end to end — research and flows,
-              component libraries in Figma, colour and type systems, and the
-              brand rules that keep every screen recognisably the same product.
-            </p>
-            <div class="discipline__stack">
-              <span class="tag">Figma</span>
-              <span class="tag">Design systems</span>
-              <span class="tag">Branding</span>
-              <span class="tag">Prototyping</span>
+        <ol class="timeline">
+          <li class="entry" data-reveal>
+            <span class="entry__when">Jul 2026 — Present</span>
+            <div>
+              <p class="entry__role">Project Manager</p>
+              <p class="entry__where">
+                <a href="https://www.linkedin.com/company/2862217/" target="_blank" rel="noopener">Advance Web</a>
+                — Hybrid, Délégation Djerba Houmet Souk, Médenine, Tunisia
+              </p>
+              <p class="entry__desc">
+                I coordinate delivery for an international project with a French client, keeping the team, priorities, and stakeholders aligned as work moves forward. The role sits between product and engineering: I help turn goals into a workable plan, support sprint follow-through, and keep testing and delivery visible as the project approaches its planned production release.
+              </p>
             </div>
-          </a>
+            <span class="entry__tag">Contract</span>
+          </li>
 
-          <a class="discipline" href="./work.html" data-reveal>
-            <span class="discipline__num">02 — Engineering</span>
-            <h3 class="discipline__title">Software engineer &amp; mobile app specialist.</h3>
-            <p style="font-size:15px;">
-              The reason my designs survive handoff: I build them myself.
-              Mobile apps, back-office platforms, and multi-tenant SaaS — from
-              the prototype through to the store listing.
-            </p>
-            <div class="discipline__stack">
-              <span class="tag">Flutter</span>
-              <span class="tag">Next.js</span>
-              <span class="tag">Postgres</span>
-              <span class="tag">CI/CD</span>
+          <li class="entry" data-reveal>
+            <span class="entry__when">Nov 2024 — Jul 2026</span>
+            <div>
+              <p class="entry__role">Lead Design &amp; Software Engineer <span style="color:var(--muted)">(Flutter Specialist)</span></p>
+              <p class="entry__where">TREND IT — Remote, France</p>
+              <p class="entry__desc">
+                I led design work across web and mobile products, with a particular focus on back-office tools where dense workflows need to stay understandable. I carried Figma work into Flutter implementation, coordinated Agile routines in Azure DevOps, and worked with the wider team on backend services and end-to-end quality checks. That mix taught me to treat the handoff as a conversation between design, engineering, and the people using the product.
+              </p>
             </div>
-          </a>
+            <span class="entry__tag">Lead</span>
+          </li>
+
+          <li class="entry" data-reveal>
+            <span class="entry__when">Jul — Nov 2024</span>
+            <div>
+              <p class="entry__role">UI/UX Designer &amp; Mobile Developer <span style="color:var(--muted)">(Flutter Specialist)</span></p>
+              <p class="entry__where">Quetratech — Remote, Mahdia, Tunisia</p>
+              <p class="entry__desc">
+                I worked on Flutter applications built with MVC and GetX, connecting interface work to REST APIs documented through Swagger. Alongside implementation, I refined authentication and everyday interaction flows, then checked the screens against the existing Figma system so the finished app felt consistent rather than merely close to the mock-up.
+              </p>
+            </div>
+            <span class="entry__tag">Contract</span>
+          </li>
+
+          <li class="entry" data-reveal>
+            <span class="entry__when">Sep 2023 — Apr 2024</span>
+            <div>
+              <p class="entry__role">UI/UX Developer</p>
+              <p class="entry__where">Insight Plus — Hybrid, Ariana, Tunisia</p>
+              <p class="entry__desc">
+                I contributed to an enterprise ERP and its companion mobile app, working across interface design and Flutter development. The app used MVVM with Provider; I helped shape the screens, translate approved designs into implementation, and account for less common states so the mobile experience supported the larger ERP workflow.
+              </p>
+            </div>
+            <span class="entry__tag">Hybrid</span>
+          </li>
+
+          <li class="entry" data-reveal>
+            <span class="entry__when">Jan — Mar 2023</span>
+            <div>
+              <p class="entry__role">UX Product Designer Intern</p>
+              <p class="entry__where">GOMYCODE — On-site, Tunis Lac 2, Tunisia</p>
+              <p class="entry__desc">
+                I joined the product team for an internship and supported early discovery through research notes and wireframes. I made Figma prototypes for features in the in-house learning platform and saw how those ideas moved from a first problem statement to a handoff reviewed with senior designers.
+              </p>
+            </div>
+            <span class="entry__tag">Internship</span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- education -->
+      <section class="container joins-above centered-content" id="education" aria-labelledby="education-heading">
+        <div class="section-head">
+          <h2 class="section-title" id="education-heading" data-reveal>Education.</h2>
+        </div>
+
+        <ol class="timeline">
+          <li class="entry" data-reveal>
+            <span class="entry__when">2023 — 2026</span>
+            <div>
+              <p class="entry__role">Software Engineering Degree</p>
+              <p class="entry__where">Multidisciplinary &amp; International Digital University — EPI Digital School, Sousse</p>
+            </div>
+            <span class="entry__tag">Master</span>
+          </li>
+          <li class="entry" data-reveal>
+            <span class="entry__when">2020 — 2023</span>
+            <div>
+              <p class="entry__role">Bachelor's, Information &amp; Communication Technology</p>
+              <p class="entry__where">ISITCOM — Higher Institute of Computer Science and Communication Technologies, Sousse</p>
+            </div>
+            <span class="entry__tag">Bachelor</span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- skills -->
+      <section class="container is-tight centered-content" id="toolbox" aria-labelledby="toolbox-heading">
+        <div class="section-head">
+          <h2 class="section-title" id="toolbox-heading" data-reveal>Toolkit.</h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill" data-reveal>
+            <div class="skill__head"><span class="skill__name">Product design</span><span class="skill__lvl">Expert</span></div>
+            <p class="skill__list">Figma (expert), Figma Make, FigJam, Adobe XD &middot; UX research, user flows, wireframing, prototyping</p>
+          </div>
+          <div class="skill" data-reveal>
+            <div class="skill__head"><span class="skill__name">Design systems</span><span class="skill__lvl">Expert</span></div>
+            <p class="skill__list">Component libraries, variants &amp; auto-layout, design tokens, theming (light/dark), accessibility &amp; contrast</p>
+          </div>
+          <div class="skill" data-reveal>
+            <div class="skill__head"><span class="skill__name">Brand &amp; visual identity</span><span class="skill__lvl">Advanced</span></div>
+            <p class="skill__list">Logo systems, colour &amp; typography direction, brand guidelines, marketing &amp; social assets</p>
+          </div>
+          <div class="skill" data-reveal>
+            <div class="skill__head"><span class="skill__name">Adobe Creative Suite</span><span class="skill__lvl">Advanced</span></div>
+            <p class="skill__list">Photoshop, Illustrator, XD &middot; asset production and retouching</p>
+          </div>
+          <div class="skill" data-reveal>
+            <div class="skill__head"><span class="skill__name">Front-end</span><span class="skill__lvl">Daily</span></div>
+            <p class="skill__list">Angular, Dart (Flutter), HTML/CSS, TypeScript, REST APIs, Swagger</p>
+          </div>
+          <div class="skill" data-reveal>
+            <div class="skill__head"><span class="skill__name">Programming</span><span class="skill__lvl">Daily</span></div>
+            <p class="skill__list">Dart, SQL (SQLite, PostgreSQL), C#, .NET</p>
+          </div>
+          <div class="skill" data-reveal>
+            <div class="skill__head"><span class="skill__name">Test automation</span><span class="skill__lvl">Often</span></div>
+            <p class="skill__list">C#, .NET, Selenium, QA reports</p>
+          </div>
+          <div class="skill" data-reveal>
+            <div class="skill__head"><span class="skill__name">Cloud</span><span class="skill__lvl">Sometimes</span></div>
+            <p class="skill__list">AWS, Microsoft Azure</p>
+          </div>
+          <div class="skill" data-reveal>
+            <div class="skill__head"><span class="skill__name">DevOps &amp; tooling</span><span class="skill__lvl">Daily</span></div>
+            <p class="skill__list">Docker, Kubernetes, GitHub, Azure DevOps, Regex</p>
+          </div>
+          <div class="skill" data-reveal>
+            <div class="skill__head"><span class="skill__name">Process</span><span class="skill__lvl">Always</span></div>
+            <p class="skill__list">Agile methodology, team coordination, QA reports</p>
+          </div>
+          <div class="skill" data-reveal>
+            <div class="skill__head"><span class="skill__name">IDEs &amp; office</span><span class="skill__lvl">Daily</span></div>
+            <p class="skill__list">VS Code, Visual Studio, Android Studio &middot; Microsoft Office, Google Workspace, Adobe Suite</p>
+          </div>
+           <div class="skill" data-reveal>
+            <div class="skill__head"><span class="skill__name">Databases &amp; Baas</span><span class="skill__lvl">Daily</span></div>
+            <p class="skill__list">SSMS, SQL Server, MySQL &middot; Firebase, Firestore, Supabase</p>
+          </div>
+          <div class="skill" data-reveal>
+            <div class="skill__head"><span class="skill__name">Languages</span><span class="skill__lvl">Speak</span></div>
+            <p class="skill__list">Arabic (native) &middot; English C1 &middot; French C1</p>
+          </div>
         </div>
       </section>
 
       <hr class="sep" />
 
       <!-- ============ 02 · open to ============ -->
-      <section class="band container open-section" aria-labelledby="open-h">
+      <section class="band container open-section centered-content" aria-labelledby="open-h">
         <div class="band__head">
           <span class="band__num" data-reveal>02</span>
           <h2 class="band__title" id="open-h" data-reveal>Open <em>to</em>.</h2>

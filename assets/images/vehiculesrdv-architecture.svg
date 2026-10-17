@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 840" role="img" aria-labelledby="title desc">
+  <title id="title">VehiculesRDV service architecture</title>
+  <desc id="desc">A client connects to an API gateway and four Spring Boot services. The appointment service calls the vehicle service with OpenFeign and publishes events to Kafka, which the notification service consumes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111d27"/><stop offset="1" stop-color="#182d38"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d2f27a"/><stop offset="1" stop-color="#89d6c1"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%"><feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#071016" flood-opacity=".32"/></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 10 5 0 10z" fill="#b7ccce"/></marker>
+    <marker id="greenArrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 10 5 0 10z" fill="#bfe978"/></marker>
+    <style>
+      text{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;fill:#edf3ed}
+      .muted{fill:#9aadb1}.small{font-size:16px;letter-spacing:.04em}.label{font-size:14px;letter-spacing:.12em;font-weight:700;fill:#bfe978}.service{font-size:22px;font-weight:650}.sub{font-size:16px;fill:#b4c3c5}
+      .box{fill:#203640;stroke:#3b5960;stroke-width:1.5}.db{fill:#182b33;stroke:#49656b;stroke-width:1.3}
+      .line{fill:none;stroke:#b7ccce;stroke-width:2;marker-end:url(#arrow)}.event{fill:none;stroke:#bfe978;stroke-width:2.5;marker-end:url(#greenArrow)}
+    </style>
+  </defs>
+  <rect width="1440" height="840" rx="34" fill="url(#bg)"/>
+  <text x="72" y="82" class="label">BACKEND ENGINEERING · JAVA 17 · SPRING BOOT</text>
+  <text x="72" y="138" font-size="42" font-weight="650">VehiculesRDV</text>
+  <text x="72" y="174" class="muted" font-size="19">Four focused services. One appointment flow. Two communication patterns.</text>
+  <g filter="url(#shadow)">
+    <rect x="72" y="326" width="190" height="116" rx="18" class="box"/>
+    <rect x="324" y="326" width="190" height="116" rx="18" class="box"/>
+    <rect x="580" y="238" width="250" height="150" rx="18" class="box"/>
+    <rect x="580" y="454" width="250" height="150" rx="18" class="box"/>
+    <rect x="902" y="238" width="250" height="150" rx="18" class="box"/>
+    <rect x="902" y="454" width="250" height="150" rx="18" class="box"/>
+    <rect x="1210" y="340" width="164" height="120" rx="60" fill="#273d34" stroke="#809c59" stroke-width="1.5"/>
+  </g>
+  <text x="167" y="371" text-anchor="middle" class="service">Client</text><text x="167" y="405" text-anchor="middle" class="sub">Web / mobile</text>
+  <text x="419" y="371" text-anchor="middle" class="service">API Gateway</text><text x="419" y="405" text-anchor="middle" class="sub">Routes requests</text>
+  <text x="705" y="285" text-anchor="middle" class="service">MS · Auth</text><text x="705" y="319" text-anchor="middle" class="sub">JWT · users · 8081</text><rect x="650" y="340" width="110" height="30" rx="15" class="db"/><text x="705" y="360" text-anchor="middle" class="small">auth_db</text>
+  <text x="705" y="501" text-anchor="middle" class="service">MS · RendezVous</text><text x="705" y="535" text-anchor="middle" class="sub">Appointments · 8083</text><rect x="650" y="556" width="110" height="30" rx="15" class="db"/><text x="705" y="576" text-anchor="middle" class="small">rendezvous_db</text>
+  <text x="1027" y="285" text-anchor="middle" class="service">MS · Vehicule</text><text x="1027" y="319" text-anchor="middle" class="sub">Vehicle records · 8082</text><rect x="972" y="340" width="110" height="30" rx="15" class="db"/><text x="1027" y="360" text-anchor="middle" class="small">vehicule_db</text>
+  <text x="1027" y="501" text-anchor="middle" class="service">MS · Notification</text><text x="1027" y="535" text-anchor="middle" class="sub">Event consumer · 8084</text><rect x="972" y="556" width="110" height="30" rx="15" class="db"/><text x="1027" y="576" text-anchor="middle" class="small">notification_db</text>
+  <text x="1292" y="390" text-anchor="middle" class="service">Kafka</text><text x="1292" y="423" text-anchor="middle" class="sub">Event broker</text>
+  <path d="M262 384h62" class="line"/><path d="M514 355h35v-42h31" class="line"/><path d="M549 355v174h31" class="line"/>
+  <path d="M830 529h32V313h40" class="line"/><text x="862" y="298" text-anchor="middle" class="small muted">OpenFeign</text>
+  <path d="M830 529h54v-126h326" class="event"/><text x="1030" y="391" text-anchor="middle" class="small" fill="#d6efa8">created / canceled</text>
+  <path d="M1210 400v129h-50" class="event"/>
+  <rect x="72" y="700" width="1296" height="1" fill="#3a5056"/>
+  <text x="72" y="750" class="small muted">Solid line: synchronous HTTP / OpenFeign</text><text x="454" y="750" class="small" fill="#d6efa8">Green line: asynchronous Kafka events</text><text x="975" y="750" class="small muted">Data stays per service</text>
+</svg>

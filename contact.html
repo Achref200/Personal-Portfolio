@@ -47,10 +47,9 @@
 
       <nav class="rail__nav" aria-label="Primary">
         <ul class="rail__list">
-          <li><a class="rail__link" href="./index.html">Home</a></li>
+          <li><a class="rail__link" href="./index.html#top">Home</a></li>
           <li><a class="rail__link" href="./design.html">Design</a></li>
           <li><a class="rail__link" href="./work.html">Engineering</a></li>
-          <li><a class="rail__link" href="./about.html">About</a></li>
           <li><a class="rail__link" href="./tweets.html">Tweets</a></li>
           <li><a class="rail__link" href="./contact.html" aria-current="page">Contact</a></li>
         </ul>
@@ -111,17 +110,6 @@
         <div class="contact-grid">
 
           <form class="contact-form" data-reveal data-contact-form>
-            <!--
-              Web3Forms — free, no signup, sends straight to your inbox.
-              Get your own key in 30 seconds:
-                1. Open https://web3forms.com/
-                2. Paste contact.achrefbenyaagoub@gmail.com in the "Create access key" box
-                3. They email you a key — paste it below in value="..."
-            -->
-            <input type="hidden" name="access_key" value="REPLACE_WITH_YOUR_WEB3FORMS_KEY" data-w3f-key />
-            <input type="hidden" name="subject" value="New message from your portfolio" />
-            <input type="hidden" name="from_name" value="Portfolio · achref" />
-            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" />
 
             <div class="field">
               <label for="name">Your name</label>
@@ -145,14 +133,14 @@
 
             <div class="form-actions">
               <button type="submit" class="btn" data-send="email">
-                Send to inbox
+                Prepare email
                 <span class="btn__arrow">→</span>
               </button>
               <button type="button" class="btn btn--ghost" data-send="whatsapp">
                 Send via WhatsApp
                 <span class="btn__arrow">→</span>
               </button>
-              <p class="form-status" data-form-status hidden></p>
+              <p class="form-status" data-form-status role="status" aria-live="polite" hidden></p>
             </div>
           </form>
 

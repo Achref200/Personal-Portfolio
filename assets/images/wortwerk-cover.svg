@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Wortwerk German learning app</title>
+  <desc id="desc">A typographic project cover for Wortwerk, an in-progress Flutter app for learning German.</desc>
+  <rect width="1200" height="760" fill="#f4f1ea"/>
+  <circle cx="1010" cy="190" r="150" fill="#f6e39a"/>
+  <circle cx="1065" cy="525" r="90" fill="#bfe3c4"/>
+  <path d="M790 0h410v760H890c48-120 41-210-21-293-70-94-123-250-79-467Z" fill="#d4bdee"/>
+  <path d="M794 574c83-107 173-125 270-52 50 37 94 52 136 49v189H818c19-64 10-128-24-186Z" fill="#f5c2dc"/>
+  <text x="92" y="112" fill="#55525c" font-family="Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="4">PERSONAL PROJECT · IN PROGRESS</text>
+  <text x="82" y="365" fill="#1e1d22" font-family="Arial, sans-serif" font-size="120" font-weight="800" letter-spacing="-6">Wortwerk</text>
+  <text x="94" y="435" fill="#55525c" font-family="Arial, sans-serif" font-size="31">A Flutter app for learning German</text>
+  <path d="M99 514h182" stroke="#e8590c" stroke-width="8" stroke-linecap="round"/>
+  <text x="95" y="585" fill="#1e1d22" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3">FLUTTER · FIREBASE · PRODUCT DESIGN</text>
+  <text x="95" y="680" fill="#55525c" font-family="Arial, sans-serif" font-size="18">Portfolio cover · app screenshots to follow</text>
+  <g transform="translate(930 286) rotate(8)">
+    <rect x="0" y="0" width="174" height="252" rx="30" fill="#1e1d22"/>
+    <rect x="9" y="9" width="156" height="234" rx="24" fill="#fffdf8"/>
+    <rect x="60" y="18" width="54" height="6" rx="3" fill="#d9d4c8"/>
+    <circle cx="87" cy="86" r="35" fill="#f6e39a"/>
+    <text x="87" y="98" text-anchor="middle" fill="#1e1d22" font-family="Arial, sans-serif" font-size="31" font-weight="700">ä</text>
+    <rect x="34" y="141" width="106" height="10" rx="5" fill="#d9d4c8"/>
+    <rect x="48" y="161" width="78" height="8" rx="4" fill="#e8e3d9"/>
+    <rect x="30" y="191" width="114" height="31" rx="15" fill="#1e1d22"/>
+    <text x="87" y="212" text-anchor="middle" fill="#fffdf8" font-family="Arial, sans-serif" font-size="11" font-weight="700">LOS GEHT'S</text>
+  </g>
+</svg>

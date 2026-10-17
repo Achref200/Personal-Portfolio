@@ -47,10 +47,9 @@
 
       <nav class="rail__nav" aria-label="Primary">
         <ul class="rail__list">
-          <li><a class="rail__link" href="./index.html">Home</a></li>
+          <li><a class="rail__link" href="./index.html#top">Home</a></li>
           <li><a class="rail__link" href="./design.html">Design</a></li>
           <li><a class="rail__link" href="./work.html" aria-current="page">Engineering</a></li>
-          <li><a class="rail__link" href="./about.html">About</a></li>
           <li><a class="rail__link" href="./tweets.html">Tweets</a></li>
           <li><a class="rail__link" href="./contact.html">Contact</a></li>
         </ul>
@@ -86,9 +85,10 @@
         </h1>
 
         <p class="lead" style="margin-top: clamp(28px, 4vw, 44px); max-width: 46ch;" data-reveal>
-          Platforms, mobile apps, and back-office tools shipped to production —
-          Flutter, Next.js, and the backends behind them.
-                 </p>
+          A mix of client products, personal builds, and engineering studies.
+          I work across Flutter apps, web platforms, and the services behind them,
+          with each project labelled by its current stage.
+        </p>
 
       </section>
 
@@ -97,50 +97,85 @@
         <div class="band__head">
           <span class="band__num" data-reveal>01</span>
           <h2 class="band__title" id="flagship-heading" data-reveal>Selected <em>work</em>.</h2>
-          <span class="archive__note" data-reveal style="margin-left:auto">Personal &amp; freelance · production</span>
+          <span class="archive__note" data-reveal style="margin-left:auto">Platforms · client work · personal tools</span>
         </div>
 
-        <ul class="pjt-list" data-peek-list>
-          <li class="pjt" data-peek="./assets/images/nesty.png" data-reveal>
+        <div class="engineering-filters" data-engineering-filters role="group" aria-label="Filter engineering projects">
+          <button class="filter" type="button" data-engineering-filter="all" aria-pressed="true">All work</button>
+          <button class="filter" type="button" data-engineering-filter="platform" aria-pressed="false">Platforms</button>
+          <button class="filter" type="button" data-engineering-filter="mobile" aria-pressed="false">Mobile apps</button>
+          <button class="filter" type="button" data-engineering-filter="client" aria-pressed="false">Client work</button>
+          <p class="engineering-filters__status" data-engineering-status role="status" aria-live="polite"></p>
+        </div>
+        <ul class="pjt-list" data-peek-list data-engineering-list>
+          <li class="pjt" data-engineering-item data-category="platform mobile" data-peek="./assets/images/nesty.png" data-reveal>
             <a class="pjt__link" href="./project.html?id=nesty">
               <span class="pjt__idx">001</span>
               <span class="pjt__name">Nesty</span>
-              <span class="pjt__meta">Platform · Web · Mobile · 2026</span>
+              <span class="pjt__meta">Personal product · In progress · 2026</span>
             </a>
           </li>
-          <li class="pjt" data-peek="./assets/images/voyagi.png" data-reveal>
+          <li class="pjt" data-engineering-item data-category="platform mobile" data-peek="./assets/images/voyagi.png" data-reveal>
             <a class="pjt__link" href="./project.html?id=voyagi">
               <span class="pjt__idx">002</span>
               <span class="pjt__name">Voyagi</span>
               <span class="pjt__meta">B2B SaaS · Multi-tenant · 2026</span>
             </a>
           </li>
-          <li class="pjt" data-peek="./assets/images/marwentravel.png" data-reveal>
+          <li class="pjt" data-engineering-item data-category="client" data-peek="./assets/images/marwentravel.png" data-reveal>
             <a class="pjt__link" href="./project.html?id=marwen-travel">
               <span class="pjt__idx">003</span>
               <span class="pjt__name">Marwen Travel</span>
               <span class="pjt__meta">Live client · Booking UX · 2026</span>
             </a>
           </li>
-          <li class="pjt" data-peek="./assets/images/deal.png" data-reveal>
+          <li class="pjt" data-engineering-item data-category="mobile" data-peek="./assets/images/deal.png" data-reveal>
             <a class="pjt__link" href="./project.html?id=deal">
               <span class="pjt__idx">004</span>
               <span class="pjt__name">Deal</span>
               <span class="pjt__meta">Flutter · Supabase · 2025</span>
             </a>
           </li>
-          <li class="pjt" data-peek="./assets/images/postuly1.jpeg" data-reveal>
+          <li class="pjt" data-engineering-item data-category="mobile" data-peek="./assets/images/postuly1.jpeg" data-reveal>
             <a class="pjt__link" href="./project.html?id=postuly">
               <span class="pjt__idx">005</span>
               <span class="pjt__name">Postuly Tn</span>
               <span class="pjt__meta">Flutter · Career platform · 2025</span>
             </a>
           </li>
-          <li class="pjt" data-peek="./assets/images/nurone.png" data-reveal>
+          <li class="pjt" data-engineering-item data-category="client" data-peek="./assets/images/nurone.png" data-reveal>
             <a class="pjt__link" href="./project.html?id=nurone">
               <span class="pjt__idx">006</span>
               <span class="pjt__name">Nurone</span>
               <span class="pjt__meta">Next.js · 3D / WebGL · 2026</span>
+            </a>
+          </li>
+          <li class="pjt" data-engineering-item data-category="client mobile" data-peek="./assets/images/achref-adp.jpg" data-reveal>
+            <a class="pjt__link" href="./project.html?id=adp-mobile">
+              <span class="pjt__idx">007</span>
+              <span class="pjt__name">ADP Mobile</span>
+              <span class="pjt__meta">Community app · Completed</span>
+            </a>
+          </li>
+          <li class="pjt" data-engineering-item data-category="platform" data-peek="./assets/images/apply-design-light.png" data-reveal>
+            <a class="pjt__link" href="./project.html?id=apply">
+              <span class="pjt__idx">008</span>
+              <span class="pjt__name">Apply</span>
+              <span class="pjt__meta">Local-first job application tool · 2026</span>
+            </a>
+          </li>
+          <li class="pjt" data-engineering-item data-category="platform" data-peek="./assets/images/vehiculesrdv-architecture.svg" data-reveal>
+            <a class="pjt__link" href="./project.html?id=vehicules-rdv">
+              <span class="pjt__idx">009</span>
+              <span class="pjt__name">VehiculesRDV</span>
+              <span class="pjt__meta">Java · Spring Boot · Kafka</span>
+            </a>
+          </li>
+          <li class="pjt" data-engineering-item data-category="mobile" data-peek="./assets/images/wortwerk-cover.svg" data-reveal>
+            <a class="pjt__link" href="./project.html?id=wortwerk">
+              <span class="pjt__idx">010</span>
+              <span class="pjt__name">Wortwerk</span>
+              <span class="pjt__meta">Flutter · Firebase · German learning · In progress</span>
             </a>
           </li>
         </ul>
@@ -151,8 +186,8 @@
       <section class="band container experience-section" aria-labelledby="experience-heading">
         <div class="band__head">
           <span class="band__num" data-reveal>02</span>
-          <h2 class="band__title" id="experience-heading" data-reveal>Recent <em>experience</em>.</h2>
-          <span class="archive__note" data-reveal>Work beyond the product list</span>
+          <h2 class="band__title" id="experience-heading" data-reveal>Recent <em>delivery</em>.</h2>
+          <span class="archive__note" data-reveal>Role and completed project</span>
         </div>
         <div class="experience-grid">
           <article class="experience-card" data-reveal>
@@ -161,7 +196,8 @@
               <p class="eyebrow">Advance Web</p>
               <h3>Project Manager</h3>
               <p>Jul 2026 — Present · Contract</p>
-              <p>Hybrid · Délégation Djerba Houmet Souk, Médenine, Tunisia</p>
+              <p>Hybrid · Djerba, Tunisia</p>
+              <p>On contract, I coordinate delivery for an international project with a French client. My work connects planning, team follow-through, stakeholder communication, and testing as the product moves toward production.</p>
               <a href="https://lnkd.in/p/dXKN4xzB" target="_blank" rel="noopener">Read the LinkedIn update <span aria-hidden="true">↗</span></a>
             </div>
           </article>
@@ -169,8 +205,9 @@
             <img src="./assets/images/achref-adp.jpg" alt="ADP mobile app for Association Djerba Project" loading="lazy" />
             <div class="experience-card__body">
               <p class="eyebrow">Association Djerba Project</p>
-              <h3>Freelance · ADP Mobile App</h3>
-              <p>Product work for an app connecting people, initiatives and the Djerba community.</p>
+              <h3>ADP Mobile · Completed</h3>
+              <p>A completed freelance mobile app project for Association Djerba Project. The app brings people, local initiatives, and community information together in one place.</p>
+              <a href="./project.html?id=adp-mobile">View the project <span aria-hidden="true">↗</span></a>
               <a href="https://lnkd.in/p/dMthTbvD" target="_blank" rel="noopener">Read the LinkedIn update <span aria-hidden="true">↗</span></a>
             </div>
           </article>
@@ -179,8 +216,7 @@
 
       <hr class="sep" />
 
-      <!-- archive — earlier work, one flat list. four items never
-           justified two filter groups and a per-year tier system. -->
+      <!-- Earlier projects -->
       <section class="band container" aria-labelledby="archive-heading">
         <div class="band__head">
           <span class="band__num" data-reveal>03</span>
@@ -222,7 +258,6 @@
             </a>
           </li>
         </ul>
-      </section>
       </section>
 
       <footer class="foot">

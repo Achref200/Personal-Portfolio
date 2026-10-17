@@ -53,12 +53,10 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); }
 .section-title,
 .hero__name,
 .case__title,
-.discipline__title,
 .foot__big { font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; }
 
 .eyebrow,
 .tag,
-.discipline__num,
 .home-list__label,
 .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: .11em; }
 
@@ -249,7 +247,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--ink); }
 /* Elsie has no 300/500 weights — clamp everything display to 400/900
    so the browser stops synthesising a fake light. */
 .display, .section-title, .hero__name,
-.case__title, .discipline__title, .band__title,
+.case__title, .band__title,
 .foot__big, .pjt__name { font-weight: 400; font-variation-settings: normal; }
 
 /* hero: Elsie's tall ascenders need less leading than Fraunces did */
